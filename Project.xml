@@ -18,6 +18,9 @@
 
     <classpath name="src" />
 
+    <assets path="assets/preload" rename="assets" preload="true" exclude="*.ogg" if="web" />
+    <assets path="assets/preload" rename="assets" preload="true" exclude="*.mp3" unless="web" />
+
     <haxelib name="flixel" />
     <haxedev set="webgl" />
     <haxelib name="flixel-addons" />
