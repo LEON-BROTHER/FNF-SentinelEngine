@@ -47,6 +47,7 @@
     <assets path="assets/fonts" embed="true" />
 
     <assets path="example_mods" rename="mods" if="MODS_ALLOWED" />
+    <assets path="mod_projects" rename="projects" if="MODS_ALLOWED" />
 
     <haxelib name="flixel" />
     <haxedev set="webgl" />
