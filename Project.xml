@@ -31,6 +31,8 @@
     <assets path="assets/week2" library="week2" exclude="*.mp3" unless="web" />
     <assets path="assets/week3" library="week3" exclude="*.ogg" if="web" />
     <assets path="assets/week3" library="week3" exclude="*.mp3" unless="web" />
+    <assets path="assets/week4" library="week4" exclude="*.ogg" if="web" />
+    <assets path="assets/week4" library="week4" exclude="*.mp3" unless="web" />
     <assets path="assets/week7" library="week7" exclude="*.ogg" if="web" />
     <assets path="assets/week7" library="week7" exclude="*.mp3" unless="web" />
 
