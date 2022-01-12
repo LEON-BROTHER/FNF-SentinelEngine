@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <app title="Friday Night Funkin': Sentinel Engine" file="FNF" packageName="com.generalisk.fnf-sentinel" package="com.generalisk.fnf-sentinel" main="Main" version="0" company="Generalisk" />
+
+    <set name="APP_ID" value="0x0100f6c013bbc000" />
+
+    <set name="SWF_VERSION" value="11.8" />
+
+    <window width="1280" height="720" fps="" background="#000000" hardware="true" vsync="false" />
+    <window if="html5" resizable="true" />
+    <window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false" />
+    <window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false" />
+    <window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
+
+    <set name="BUILD_DIR" value="export/debug" if="debug" />
+    <set name="BUILD_DIR" value="export/release" unless="debug" />
+    
+    <set name="BUILD_DIR" value="export/32bit" if="32" />
+
+    <classpath name="src" />
+
+    <haxelib name="flixel" />
+    <haxedev set="webgl" />
+    <haxelib name="flixel-addons" />
+    <haxelib name="flixel-ui" />
+
+    <haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
+    <haxedef name="FLX_NO_DEBUG" unless="debug" />
+    <haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
+
+    <icon path="appdata/icon8.png" size="8"/>
+	<icon path="appdata/icon16.png" size="16"/>
+	<icon path="appdata/icon32.png" size="32"/>
+	<icon path="appdata/icon64.png" size="64"/>
+	<icon path="appdata/icon128.png" size="128"/>
+	<icon path="appdata/icon256.png" size="256"/>
+	<icon path="appdata/icon512.png" size="512"/>
+	<icon path="appdata/iconOG.png" />
+</project>
