@@ -14,7 +14,6 @@
 
     <set name="BUILD_DIR" value="export/debug" if="debug" />
     <set name="BUILD_DIR" value="export/release" unless="debug" />
-    
     <set name="BUILD_DIR" value="export/32bit" if="32" />
 
     <classpath name="src" />
@@ -28,12 +27,12 @@
     <haxedef name="FLX_NO_DEBUG" unless="debug" />
     <haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
-    <icon path="appdata/icon8.png" size="8"/>
-	<icon path="appdata/icon16.png" size="16"/>
-	<icon path="appdata/icon32.png" size="32"/>
-	<icon path="appdata/icon64.png" size="64"/>
-	<icon path="appdata/icon128.png" size="128"/>
-	<icon path="appdata/icon256.png" size="256"/>
-	<icon path="appdata/icon512.png" size="512"/>
+    <icon path="appdata/icon8.png" size="8" />
+	<icon path="appdata/icon16.png" size="16" />
+	<icon path="appdata/icon32.png" size="32" />
+	<icon path="appdata/icon64.png" size="64" />
+	<icon path="appdata/icon128.png" size="128" />
+	<icon path="appdata/icon256.png" size="256" />
+	<icon path="appdata/icon512.png" size="512" />
 	<icon path="appdata/iconOG.png" />
 </project>
