@@ -18,8 +18,6 @@
 
     <classpath name="src" />
 
-    <define name="MODS_ALLOWED" if="desktop" />
-
     <assets path="assets/preload" rename="assets" preload="true" exclude="*.ogg" if="web" />
     <assets path="assets/preload" rename="assets" preload="true" exclude="*.mp3" unless="web" />
 
@@ -46,8 +44,9 @@
 
     <assets path="assets/fonts" embed="true" />
 
-    <assets path="example_mods" rename="mods" if="MODS_ALLOWED" />
-    <assets path="mod_projects" rename="projects" if="MODS_ALLOWED" />
+    <assets path="example_mods" rename="mods" if="desktop" />
+    <assets path="mod_projects" rename="projects" if="desktop" />
+    <assets path="workshop_mods" rename="projects" if="desktop" />
 
     <haxelib name="flixel" />
     <haxedev set="webgl" />
