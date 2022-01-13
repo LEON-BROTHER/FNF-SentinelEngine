@@ -46,7 +46,7 @@
 
     <assets path="example_mods" rename="mods" if="desktop" />
     <assets path="mod_projects" rename="projects" if="desktop" />
-    <assets path="workshop_mods" rename="projects" if="desktop" />
+    <assets path="workshop_mods" rename="workshop" if="desktop" />
 
     <haxelib name="flixel" />
     <haxedev set="webgl" />
