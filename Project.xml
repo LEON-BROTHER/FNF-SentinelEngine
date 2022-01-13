@@ -44,6 +44,10 @@
 
     <assets path="assets/fonts" embed="true" />
 
+    <assets path="assets/MissingTexture.png" embed="true" />
+    <assets path="assets/MissingSound.mp3" embed="true" if="web" />
+    <assets path="assets/MissingSound.ogg" embed="true" unless="web" />
+
     <assets path="example_mods" rename="mods" if="desktop" />
     <assets path="mod_projects" rename="projects" if="desktop" />
     <assets path="workshop_mods" rename="workshop" if="desktop" />
