@@ -1,6 +1,8 @@
 package;
 
+#if !js
 import sys.FileSystem;
+#end
 
 class Files
 {
@@ -26,6 +28,7 @@ class Files
             output = library + ":assets/" + library + "/" + directory + "/" + file + "." + extension;
         }
 
+        #if !js
         if (!FileSystem.exists(output))
         {
             switch (extension)
@@ -38,6 +41,7 @@ class Files
                     output = null;
             }
         }
+        #end
 
         return output;
     }
@@ -91,5 +95,10 @@ class Files
         #else
         return getPath("Voices", "ogg", songName, "songs");
         #end
+    }
+
+    inline static public function font(file:String):String
+    {
+        return "assets/fonts/" + file;
     }
 }
