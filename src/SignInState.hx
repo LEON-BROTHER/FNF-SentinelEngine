@@ -32,6 +32,7 @@ class SignInState extends FlxState
         var logIn:FlxButton = new FlxButton(0, 0, "Log In", login);
         logIn.setSize(310, 140);
         logIn.updateHitbox();
+        logIn.scale.x = logIn.scale.y = 3;
         logIn.screenCenter();
         add(logIn);
         logIn.y -= 100;
@@ -48,7 +49,7 @@ class SignInState extends FlxState
         skip.updateHitbox();
         skip.screenCenter();
         add(skip);
-        skip.y += 350;
+        skip.y += 210;
     }
 
     public function login():Void
