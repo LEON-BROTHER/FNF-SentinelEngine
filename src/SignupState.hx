@@ -1,5 +1,6 @@
 package;
 
+import flixel.addons.ui.FlxInputText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
 import flixel.FlxG;
@@ -8,6 +9,10 @@ import flixel.FlxState;
 
 class SignupState extends FlxState
 {
+    private var username:FlxInputText;
+    private var email:FlxInputText;
+    private var password:FlxInputText;
+
     public function new()
     {
         super();
@@ -36,11 +41,32 @@ class SignupState extends FlxState
 
         var skip:FlxButton = new FlxButton(0, 0, "Skip Login", skipLogin);
         skip.setSize(310, 140);
+        skip.scale.x = 4;
+        skip.scale.y = 2;
+        skip.label.fieldWidth *= 4;
         skip.updateHitbox();
         skip.label.setFormat(Files.font("vcr.ttf"), 24, FlxColor.GRAY, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
         skip.screenCenter();
         add(skip);
         skip.y += 210;
+
+        username = new FlxInputText(0, 0, 500, null, 24, FlxColor.BLACK, FlxColor.WHITE, true);
+        username.setFormat(Files.font("vcr.ttf"), 24, FlxColor.BLACK, FlxTextAlign.LEFT, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
+        username.screenCenter();
+        add(username);
+        username.y -= 200;
+
+        email = new FlxInputText(0, 0, 500, null, 24, FlxColor.BLACK, FlxColor.WHITE, true); //TODO: Make It So That It Doesn't Use The American Keyboard Because I'm Bri'ish -Generalisk
+        email.setFormat(Files.font("vcr.ttf"), 24, FlxColor.BLACK, FlxTextAlign.LEFT, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
+        email.screenCenter();
+        add(email);
+        email.y -= 75;
+
+        password = new FlxInputText(0, 0, 500, null, 24, FlxColor.BLACK, FlxColor.WHITE, true);
+        password.setFormat(Files.font("vcr.ttf"), 24, FlxColor.BLACK, FlxTextAlign.LEFT, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
+        password.screenCenter();
+        add(password);
+        password.y += 50;
     }
 
     public function login():Void
