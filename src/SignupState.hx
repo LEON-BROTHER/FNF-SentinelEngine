@@ -25,7 +25,11 @@ class SignupState extends FlxState
 
         var logIn:FlxButton = new FlxButton(0, 0, "Already Have An Account? Login!", login);
         logIn.setSize(640, 140);
+        logIn.scale.x = 7;
+        logIn.scale.y = 2;
+        logIn.label.fieldWidth *= 7;
         logIn.updateHitbox();
+        logIn.label.setFormat(null, 24, FlxColor.GRAY, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
         logIn.screenCenter();
         add(logIn);
         logIn.y += 300;

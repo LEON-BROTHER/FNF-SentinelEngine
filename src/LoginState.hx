@@ -25,7 +25,11 @@ class LoginState extends FlxState
 
         var signUp:FlxButton = new FlxButton(0, 0, "Don't Have An Account Yet? Sign Up, It's Free!", signup);
         signUp.setSize(640, 140);
+        signUp.scale.x = 9;
+        signUp.scale.y = 2;
+        signUp.label.fieldWidth *= 9;
         signUp.updateHitbox();
+        signUp.label.setFormat(null, 24, FlxColor.GRAY, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
         signUp.screenCenter();
         add(signUp);
         signUp.y += 300;
