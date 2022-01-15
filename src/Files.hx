@@ -1,5 +1,6 @@
 package;
 
+import flixel.graphics.frames.FlxAtlasFrames;
 #if !js
 import sys.FileSystem;
 #end
@@ -100,5 +101,10 @@ class Files
     inline static public function font(file:String):String
     {
         return "assets/fonts/" + file;
+    }
+
+    inline static public function getSparrowAtlas(fileName:String, ?library:String = null):FlxAtlasFrames
+    {
+        return FlxAtlasFrames.fromSparrow(image(fileName, library), file(fileName, "xml", "images", library));
     }
 }

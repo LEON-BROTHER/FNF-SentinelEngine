@@ -29,7 +29,7 @@ class SignupState extends FlxState
         logIn.scale.y = 2;
         logIn.label.fieldWidth *= 7;
         logIn.updateHitbox();
-        logIn.label.setFormat(null, 24, FlxColor.GRAY, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
+        logIn.label.setFormat(Files.font("vcr.ttf"), 24, FlxColor.GRAY, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
         logIn.screenCenter();
         add(logIn);
         logIn.y += 300;
@@ -37,6 +37,7 @@ class SignupState extends FlxState
         var skip:FlxButton = new FlxButton(0, 0, "Skip Login", skipLogin);
         skip.setSize(310, 140);
         skip.updateHitbox();
+        skip.label.setFormat(Files.font("vcr.ttf"), 24, FlxColor.GRAY, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
         skip.screenCenter();
         add(skip);
         skip.y += 210;

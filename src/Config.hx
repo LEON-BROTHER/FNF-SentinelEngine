@@ -1,5 +1,6 @@
 package;
 
+import openfl.display.DisplayObject;
 import flixel.FlxG;
 
 class Config
@@ -8,10 +9,9 @@ class Config
 
     public static function loadConfig()
     {
-        antialiasing = FlxG.save.data.antialiasing;
-        if (antialiasing == null)
+        if (FlxG.save.data.antialiasing != null)
         {
-            antialiasing = false;
+            antialiasing = FlxG.save.data.antialiasing;
         }
     }
 

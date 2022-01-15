@@ -11,6 +11,8 @@ class SignInState extends FlxState
     public function new()
     {
         super();
+
+        Config.loadConfig();
     }
 
     override function create()

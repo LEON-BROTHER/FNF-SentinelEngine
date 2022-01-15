@@ -1,5 +1,6 @@
 package;
 
+import flixel.addons.ui.FlxInputText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
 import flixel.FlxG;
@@ -8,6 +9,8 @@ import flixel.FlxState;
 
 class LoginState extends FlxState
 {
+    private var username:FlxInputText;
+
     public function new()
     {
         super();
@@ -29,7 +32,7 @@ class LoginState extends FlxState
         signUp.scale.y = 2;
         signUp.label.fieldWidth *= 9;
         signUp.updateHitbox();
-        signUp.label.setFormat(null, 24, FlxColor.GRAY, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
+        signUp.label.setFormat(Files.font("vcr.ttf"), 24, FlxColor.GRAY, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
         signUp.screenCenter();
         add(signUp);
         signUp.y += 300;
@@ -37,9 +40,16 @@ class LoginState extends FlxState
         var skip:FlxButton = new FlxButton(0, 0, "Skip Login", skipLogin);
         skip.setSize(310, 140);
         skip.updateHitbox();
+        skip.label.setFormat(Files.font("vcr.ttf"), 24, FlxColor.GRAY, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
         skip.screenCenter();
         add(skip);
         skip.y += 210;
+
+        /*username = new FlxInputText(0, 0, 500, "Username", 24, FlxColor.BLACK, FlxColor.WHITE, true);
+        username.setFormat(Files.font("vcr.ttf"), 24, FlxColor.GRAY, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
+        username.screenCenter();
+        add(username);
+        username.y -= 100;*/
     }
 
     public function signup():Void
