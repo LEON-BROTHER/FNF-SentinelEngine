@@ -1,9 +1,9 @@
 package;
 
+import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.text.FlxText;
-import flixel.FlxSprite;
 import flixel.FlxState;
 
 class SignInState extends FlxState
@@ -28,5 +28,27 @@ class SignInState extends FlxState
         description.screenCenter();
         add(description);
         description.y = 120;
+
+        var logIn:FlxButton = new FlxButton(0, 0, "Log In", login);
+        logIn.setSize(175, 75);
+        logIn.screenCenter();
+        add(logIn);
+        logIn.y -= 100;
+
+        var signUp:FlxButton = new FlxButton(0, 0, "Sign Up", signup);
+        signUp.setSize(175, 75);
+        signUp.screenCenter();
+        add(signUp);
+        signUp.y += 100;
+    }
+
+    public function login():Void
+    {
+        FlxG.switchState(new LoginState());
+    }
+
+    public function signup():Void
+    {
+        FlxG.switchState(new SignupState());
     }
 }

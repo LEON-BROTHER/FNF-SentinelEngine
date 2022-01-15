@@ -17,6 +17,6 @@ class Main extends Sprite
         super();
 
         addChild(new FlxGame(Lib.current.stage.stageWidth, Lib.current.stage.stageHeight, SignInState, 1, 60, 60, true, false));
-        //addChild(new FPS(5, 5, 0xFFFFFF));
+        addChild(new FPS(5, 5, 0xFFFFFF));
     }
 }
