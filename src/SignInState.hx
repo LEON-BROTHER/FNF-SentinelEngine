@@ -30,16 +30,25 @@ class SignInState extends FlxState
         description.y = 120;
 
         var logIn:FlxButton = new FlxButton(0, 0, "Log In", login);
-        logIn.setSize(175, 75);
+        logIn.setSize(310, 140);
+        logIn.updateHitbox();
         logIn.screenCenter();
         add(logIn);
         logIn.y -= 100;
 
         var signUp:FlxButton = new FlxButton(0, 0, "Sign Up", signup);
-        signUp.setSize(175, 75);
+        signUp.setSize(310, 140);
+        signUp.updateHitbox();
         signUp.screenCenter();
         add(signUp);
         signUp.y += 100;
+
+        var skip:FlxButton = new FlxButton(0, 0, "Skip Login", skipLogin);
+        skip.setSize(310, 140);
+        skip.updateHitbox();
+        skip.screenCenter();
+        add(skip);
+        skip.y += 350;
     }
 
     public function login():Void
@@ -50,5 +59,10 @@ class SignInState extends FlxState
     public function signup():Void
     {
         FlxG.switchState(new SignupState());
+    }
+
+    public function skipLogin():Void
+    {
+        FlxG.switchState(new TitleState());
     }
 }
