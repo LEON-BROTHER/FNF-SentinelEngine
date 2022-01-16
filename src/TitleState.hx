@@ -58,9 +58,12 @@ class TitleState extends FlxState
         enterText.antialiasing = Config.antialiasing;
         add(enterText);
 
-        bg = new FlxSprite().makeGraphic(3840, 2160, FlxColor.BLACK, true, "title-bg");
-        bg.antialiasing = false;
-        add(bg);
+        if (introPlaying)
+        {
+            bg = new FlxSprite().makeGraphic(3840, 2160, FlxColor.BLACK, true, "title-bg");
+            bg.antialiasing = false;
+            add(bg);
+        }
     }
 
     override function update(elapsed:Float)
@@ -77,6 +80,7 @@ class TitleState extends FlxState
             {
                 FlxG.camera.flash(FlxColor.WHITE, 1);
                 FlxG.sound.play(Files.sound("confirmMenu", "preload"));
+                enterText.animation.play("selected");
             }
         }
     }

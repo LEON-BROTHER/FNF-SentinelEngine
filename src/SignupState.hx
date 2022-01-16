@@ -82,6 +82,6 @@ class SignupState extends FlxState
     public function skipLogin():Void
     {
         FlxG.sound.play(Files.sound("cancelMenu", "preload"));
-        FlxG.switchState(new TitleState());
+        FlxG.switchState(new TitleState(false));
     }
 }
