@@ -10,11 +10,20 @@ class TitleState extends FlxState
     private var enterText:FlxSprite;
     private var bg:FlxSprite;
 
-    public function new()
+    public var introPlaying:Bool = false;
+
+    public function new(?skipIntro:Bool = true)
     {
         super();
 
         Config.loadConfig();
+
+        introPlaying = false;
+
+        if (!skipIntro)
+        {
+            startIntro();
+        }
     }
 
     override function create()
@@ -66,9 +75,21 @@ class TitleState extends FlxState
             }
             else
             {
-                //FlxG.camera.flash(FlxColor.WHITE, 2.5);
                 FlxG.camera.flash(FlxColor.WHITE, 1);
+                FlxG.sound.play(Files.sound("confirmMenu", "preload"));
             }
         }
+    }
+
+    public function startIntro()
+    {
+        introPlaying = true;
+    }
+
+    public function endIntro()
+    {
+        bg.destroy();
+        FlxG.camera.flash(FlxColor.WHITE, 2.5);
+        introPlaying = false;
     }
 }
