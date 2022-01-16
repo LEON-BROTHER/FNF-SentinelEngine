@@ -1,14 +1,20 @@
 package;
 
+import flixel.util.FlxColor;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.FlxState;
 
 class TitleState extends FlxState
 {
+    private var enterText:FlxSprite;
+    private var bg:FlxSprite;
+
     public function new()
     {
         super();
+
+        Config.loadConfig();
     }
 
     override function create()
@@ -34,5 +40,35 @@ class TitleState extends FlxState
         titleCard.animation.play("logo");
         titleCard.antialiasing = Config.antialiasing;
         add(titleCard);
+
+        enterText = new FlxSprite(100, FlxG.height * 0.8);
+        enterText.frames = Files.getSparrowAtlas("titleEnter", "preload");
+        enterText.animation.addByPrefix("idle", "Press Enter to Begin", 24, true);
+        enterText.animation.addByPrefix("selected", "ENTER PRESSED", 24, true);
+        enterText.animation.play("idle");
+        enterText.antialiasing = Config.antialiasing;
+        add(enterText);
+
+        bg = new FlxSprite().makeGraphic(3840, 2160, FlxColor.BLACK, true, "title-bg");
+        bg.antialiasing = false;
+        add(bg);
+    }
+
+    override function update(elapsed:Float)
+    {
+        super.update(elapsed);
+
+        if (FlxG.keys.justPressed.ENTER)
+        {
+            if (introPlaying)
+            {
+                endIntro();
+            }
+            else
+            {
+                //FlxG.camera.flash(FlxColor.WHITE, 2.5);
+                FlxG.camera.flash(FlxColor.WHITE, 1);
+            }
+        }
     }
 }

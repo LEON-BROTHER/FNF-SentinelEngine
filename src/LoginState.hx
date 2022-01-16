@@ -62,6 +62,11 @@ class LoginState extends FlxState
         password.y += 25;
     }
 
+    public function login():Void
+    {
+        //IDK
+    }
+
     public function signup():Void
     {
         FlxG.switchState(new SignupState());
@@ -69,6 +74,7 @@ class LoginState extends FlxState
 
     public function skipLogin():Void
     {
+        FlxG.sound.play(Files.sound("cancelMenu", "preload"));
         FlxG.switchState(new TitleState());
     }
 }
