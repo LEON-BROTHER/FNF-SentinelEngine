@@ -16,7 +16,12 @@ class Main extends Sprite
     {
         super();
 
+        #if LOGIN_ALLOWED
         addChild(new FlxGame(Lib.current.stage.stageWidth, Lib.current.stage.stageHeight, SignInState, 1, 60, 60, true, false));
+        #else
+        addChild(new FlxGame(Lib.current.stage.stageWidth, Lib.current.stage.stageHeight, TitleState, 1, 60, 60, true, false));
+        #end
+
         addChild(new FPS(5, 5, 0xFFFFFF));
     }
 }
