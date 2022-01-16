@@ -1,6 +1,5 @@
 package;
 
-import openfl.display.DisplayObject;
 import flixel.FlxG;
 
 class Config
@@ -9,6 +8,8 @@ class Config
 
     public static function loadConfig()
     {
+        FlxG.save.bind("FNF", "Generalisk");
+
         if (FlxG.save.data.antialiasing != null)
         {
             antialiasing = FlxG.save.data.antialiasing;
@@ -17,6 +18,8 @@ class Config
 
     public static function saveConfig()
     {
+        FlxG.save.bind("FNF", "Generalisk");
+        
         FlxG.save.data.antialiasing = antialiasing;
     }
 }
