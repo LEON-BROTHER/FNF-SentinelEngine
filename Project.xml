@@ -18,6 +18,8 @@
 
     <classpath name="src" />
 
+    <define name="LOGIN_ALLOWED" if="windows" />
+
     <assets path="assets/preload" rename="assets" preload="true" exclude="*.ogg" if="web" />
     <assets path="assets/preload" rename="assets" preload="true" exclude="*.mp3" unless="web" />
 
