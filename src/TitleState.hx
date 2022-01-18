@@ -1,5 +1,6 @@
 package;
 
+import flixel.math.FlxRandom;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
@@ -7,14 +8,16 @@ import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.FlxState;
 
+using StringTools;
+
 class TitleState extends FlxState
 {
     private var enterText:FlxSprite;
     private var bg:FlxSprite;
 
-    public var introPlaying:Bool = false;
+    private var introPlaying:Bool = false;
 
-    public var introText:FlxTypedGroup<FlxSprite>;
+    private var introText:FlxTypedGroup<FlxSprite>;
 
     private var introStart:Bool = false;
 
@@ -85,6 +88,10 @@ class TitleState extends FlxState
                 FlxG.camera.flash(FlxColor.WHITE, 1);
                 FlxG.sound.play(Files.sound("confirmMenu", "preload"));
                 enterText.animation.play("selected");
+
+                new FlxTimer().start(1.5, function(tmr:FlxTimer) {
+                    FlxG.switchState(new MainMenuState());
+                });
             }
         }
     }
@@ -96,7 +103,8 @@ class TitleState extends FlxState
         introText = new FlxTypedGroup<FlxSprite>();
         add(introText);
 
-        intro(0);
+        var random:FlxRandom =  new FlxRandom();
+        intro(0, random.int(0, Files.readTextFile(Files.txt("introText", "data", "preload")).length));
     }
 
     public function endIntro()
@@ -107,7 +115,7 @@ class TitleState extends FlxState
         introPlaying = false;
     }
 
-    public function intro(num:Int)
+    public function intro(num:Int, text:Int)
     {
         trace("Intro");
         if (introPlaying)
@@ -117,21 +125,21 @@ class TitleState extends FlxState
             case 0:
                 clearText();
             case 1:
-                updateText(["Generalisk", "& The FNF Team"], 1);
+                updateText(Files.readTextFile(Files.txt("creators", "data", "preload")), 1);
             case 2:
                 updateText(["Present's"]);
             case 3:
                 clearText();
             case 4:
-                updateText(["In Ascociation With"], 10);
+                updateText([Files.readTextFile(Files.txt("ascociation", "data", "preload"))[0]], 5);
             case 5:
-                updateText(["Newgrounds"], 9);
+                updateText(Files.readTextFile(Files.txt("ascociation", "data", "preload"))[1].split("="), 4);
             case 6:
                 clearText();
             case 7:
-                updateText(["Top Text"], 1);
+                updateText([Files.readTextFile(Files.txt("introText", "data", "preload"))[text].split("=")[0]], 1);
             case 8:
-                updateText(["Bottom Text"]);
+                updateText([Files.readTextFile(Files.txt("introText", "data", "preload"))[text].split("=")[1]]);
             case 9:
                 clearText();
             case 10:
@@ -146,7 +154,7 @@ class TitleState extends FlxState
             }
             
             new FlxTimer().start(0.625, function(tmr:FlxTimer) {
-                intro(num + 1);
+                intro(num + 1, text);
             });
         }
     }
@@ -155,11 +163,20 @@ class TitleState extends FlxState
     {
         for (line in 0...text.length)
         {
-            for (letter in 0...text[line].length)
+            if (text[line] == "[NG]")
             {
-                var alpha:Alphabet = new Alphabet(text[line].charAt(letter), true);
-                alpha.calculatePosition(letter, text[line].length, line, text.length + blankLines);
-                introText.add(alpha);
+                var pic:FlxSprite = new FlxSprite().loadGraphic(Files.image("newgrounds_logo", "preload"));
+                pic.screenCenter();
+                introText.add(pic);
+            }
+            else
+            {
+                for (letter in 0...text[line].length)
+                {
+                    var alpha:Alphabet = new Alphabet(text[line].charAt(letter), true);
+                    alpha.calculatePosition(letter, text[line].length, line, text.length + blankLines);
+                    introText.add(alpha);
+                }
             }
         }
     }

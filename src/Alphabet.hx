@@ -67,8 +67,26 @@ class Alphabet extends FlxSprite
                     animation.addByPrefix("text", "Y bold", 24, true);
                 case "z":
                     animation.addByPrefix("text", "Z bold", 24, true);
-                default:
-                    animation.addByPrefix("text", "A bold", 24, true);
+                case "0":
+                    animation.addByPrefix("text", "bold0", 24, true);
+                case "1":
+                    animation.addByPrefix("text", "bold1", 24, true);
+                case "2":
+                    animation.addByPrefix("text", "bold2", 24, true);
+                case "3":
+                    animation.addByPrefix("text", "bold3", 24, true);
+                case "4":
+                    animation.addByPrefix("text", "bold4", 24, true);
+                case "5":
+                    animation.addByPrefix("text", "bold5", 24, true);
+                case "6":
+                    animation.addByPrefix("text", "bold6", 24, true);
+                case "7":
+                    animation.addByPrefix("text", "bold7", 24, true);
+                case "8":
+                    animation.addByPrefix("text", "bold8", 24, true);
+                case "9":
+                    animation.addByPrefix("text", "bold9", 24, true);
             }
         }
 

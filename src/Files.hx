@@ -1,9 +1,15 @@
 package;
 
 import flixel.graphics.frames.FlxAtlasFrames;
-#if !js
+
+#if sys
+import sys.io.File;
 import sys.FileSystem;
+#else
+import openfl.utils.Assets;
 #end
+
+using StringTools;
 
 class Files
 {
@@ -29,8 +35,11 @@ class Files
             output = library + ":assets/" + library + "/" + directory + "/" + file + "." + extension;
         }
 
-        #if !js
+        #if sys
         if (!FileSystem.exists(output))
+        #else
+        if(!Assets.exists(output))
+        #end
         {
             switch (extension)
             {
@@ -42,7 +51,6 @@ class Files
                     output = null;
             }
         }
-        #end
 
         return output;
     }
@@ -106,5 +114,22 @@ class Files
     inline static public function getSparrowAtlas(fileName:String, ?library:String = null):FlxAtlasFrames
     {
         return FlxAtlasFrames.fromSparrow(image(fileName, library), file(fileName, "xml", "images", library));
+    }
+
+    inline static public function readTextFile(file:String):Array<String>
+    {
+        var textFile:Array<String> = [];
+		#if sys
+		if(FileSystem.exists(file)) textFile = File.getContent(file).trim().split('\n');
+		#else
+		if(Assets.exists(file)) textFile = Assets.getText(file).trim().split('\n');
+		#end
+
+		for (i in 0...textFile.length)
+		{
+			textFile[i] = textFile[i].trim();
+		}
+
+        return textFile;
     }
 }
