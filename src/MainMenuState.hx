@@ -1,11 +1,14 @@
 package;
 
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxSprite;
 import flixel.FlxState;
+
+using StringTools;
 
 class MainMenuState extends FlxState
 {
@@ -19,6 +22,8 @@ class MainMenuState extends FlxState
 
     private var bg:FlxSprite;
 
+    private var menuButtons:FlxTypedGroup<FlxSprite>;
+
     public function new()
     {
         super();
@@ -30,8 +35,26 @@ class MainMenuState extends FlxState
 
         bg = new FlxSprite().loadGraphic(Files.image("menuBG", "preload"));
         bg.antialiasing = Config.antialiasing;
+        bg.setGraphicSize(Math.round(bg.width * 1.1), Math.round(bg.height * 1.1));
         bg.screenCenter();
         add(bg);
+        bg.x = 0;
+
+        menuButtons = new FlxTypedGroup<FlxSprite>();
+        add(menuButtons);
+
+        for (num in 0...menuData.length)
+        {
+            var id:String = menuData[num].toLowerCase().replace(" ", "-");
+            var button:FlxSprite = new FlxSprite();
+            button.antialiasing = Config.antialiasing;
+            button.centerOrigin();
+            button.frames = Files.getSparrowAtlas("mainmenu/menu_" + id, "preload");
+            button.animation.addByPrefix("idle", id + " idle", 24, true);
+            button.animation.addByPrefix("selected", id + " selected", 24, true);
+            button.animation.play("idle");
+            menuButtons.add(button);
+        }
 
         selectItem(0);
     }
@@ -73,9 +96,44 @@ class MainMenuState extends FlxState
 
         FlxTween.cancelTweensOf(bg);
 
-        FlxTween.tween(bg, {y: (item - (item * 2)) * 24}, 1.5, {
+        for (num in 0...menuData.length)
+        {
+            FlxTween.cancelTweensOf(menuButtons.members[num]);
+        }
+
+        var int:Int = 0;
+        if (item < 3)
+        {
+            int = 0;
+        }
+        else if (item > menuData.length - 4)
+        {
+            int = menuData.length - 4;
+        }
+        else
+        {
+            int = item - 3;
+        }
+
+        FlxTween.tween(bg, {y: ((int - 2) - ((int - 2) * 2)) * (40 / (menuData.length - 6))}, 1.5, {
             ease: FlxEase.expoOut,
         });
+
+        for (num in 0...menuData.length)
+        {
+            FlxTween.tween(menuButtons.members[num], {y: 69 + ((num - item) * 130)}, 1.5, {
+                ease: FlxEase.expoOut,
+            });
+
+            if (num == item)
+            {
+                menuButtons.members[num].animation.play("selected");
+            }
+            else
+            {
+                menuButtons.members[num].animation.play("idle");
+            }
+        }
     }
 
     public function select(num:Int)
