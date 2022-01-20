@@ -41,6 +41,7 @@ class Files
         if(!Assets.exists(output))
         #end
         {
+            trace(output + " Does Not Exist");
             switch (extension)
             {
                 case "png":
@@ -91,18 +92,18 @@ class Files
     inline static public function inst(songName:String):String
     {
         #if web
-        return getPath("Inst", "mp3", songName, "songs");
+        return getPath("Inst", "mp3", songName.toLowerCase(), "songs");
         #else
-        return getPath("Inst", "ogg", songName, "songs");
+        return getPath("Inst", "ogg", songName.toLowerCase(), "songs");
         #end
     }
 
     inline static public function voices(songName:String):String
     {
         #if web
-        return getPath("Voices", "mp3", songName, "songs");
+        return getPath("Voices", "mp3", songName.toLowerCase(), "songs");
         #else
-        return getPath("Voices", "ogg", songName, "songs");
+        return getPath("Voices", "ogg", songName.toLowerCase(), "songs");
         #end
     }
 
