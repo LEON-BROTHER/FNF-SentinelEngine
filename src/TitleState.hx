@@ -117,7 +117,6 @@ class TitleState extends FlxState
 
     public function intro(num:Int, text:Int)
     {
-        trace("Intro");
         if (introPlaying)
         {
             switch (num)
