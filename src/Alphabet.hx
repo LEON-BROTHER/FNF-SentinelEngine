@@ -4,6 +4,9 @@ import flixel.FlxSprite;
 
 class Alphabet extends FlxSprite
 {
+    public var songID:Int = -1;
+    public var songLetterOffset:Int = -1;
+
     public function new(letter:String, ?bold:Bool = false)
     {
         super();

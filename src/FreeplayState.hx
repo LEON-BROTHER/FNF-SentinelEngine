@@ -1,5 +1,6 @@
 package;
 
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;
 import flixel.FlxG;
 import flixel.tweens.FlxTween;
@@ -12,6 +13,9 @@ class FreeplayState extends FlxState
     private var item:Int;
 
     private var bg:FlxSprite;
+
+    private var text:FlxTypedGroup<Alphabet>;
+    private var iconz:FlxTypedGroup<HealthIcon>;
 
     public function new()
     {
@@ -30,6 +34,30 @@ class FreeplayState extends FlxState
         bg.screenCenter();
         add(bg);
         bg.x = 0;
+
+        text = new FlxTypedGroup<Alphabet>();
+        add(text);
+
+        iconz = new FlxTypedGroup<HealthIcon>();
+        add(iconz);
+
+        for (song in 0...songsList.length)
+        {
+            var name:String = songsList[song].split(":")[0];
+            for (letter in 0...name.length)
+            {
+                var alpha:Alphabet = new Alphabet(name.charAt(letter), true);
+                alpha.songID = song;
+                alpha.songLetterOffset = letter;
+                text.add(alpha);
+            }
+
+            if (songsList[song].split(":").length > 1)
+            {
+                var icon:HealthIcon = new HealthIcon(songsList[song].split(":")[1]);
+                iconz.add(icon);
+            }
+        }
 
         selectItem(0);
     }
@@ -71,16 +99,41 @@ class FreeplayState extends FlxState
 
         FlxTween.cancelTweensOf(bg);
 
-        for (num in 0...songsList.length)
+        for (num in 0...text.length)
         {
-            FlxTween.cancelTweensOf(songsList[num]);
+            FlxTween.cancelTweensOf(text.members[num]);
+        }
+
+        for (num in 0...iconz.length)
+        {
+            FlxTween.cancelTweensOf(iconz.members[num]);
         }
 
         FlxTween.tween(bg, {y: ((item - 2) - ((item - 2) * 2)) * (35 / (songsList.length - 1))}, 1.5, {
             ease: FlxEase.expoOut,
         });
 
-        FlxG.sound.playMusic(Files.inst(songsList[item].split(":")[0]));
+        FlxG.sound.playMusic(Files.inst(songsList[item].split(":")[0])); //TODO: Fix This Fucking Bullshit Not Loading
+
+        for (num in 0...text.length)
+        {
+            FlxTween.tween(text.members[num], {y: 450 + ((text.members[num].songID - item) * 160)}, 1.5, {
+                ease: FlxEase.expoOut,
+            });
+            FlxTween.tween(text.members[num], {x: 110 + (12 * (text.members[num].songID - item)) + (50 * text.members[num].songLetterOffset)}, 1.5, {
+                ease: FlxEase.expoOut,
+            });
+        }
+
+        for (num in 0...iconz.length)
+        {
+            FlxTween.tween(iconz.members[num], {y: 450 + (num - item) * 160}, 1.5, {
+                ease: FlxEase.expoOut,
+            });
+            FlxTween.tween(iconz.members[num], {x: (songsList[item].split(":")[0].length * 50) + (12 * (num - item)) + (50 * text.members[num].songLetterOffset)}, 1.5, {
+                ease: FlxEase.expoOut,
+            });
+        }
     }
 
     public function select(num:Int)
