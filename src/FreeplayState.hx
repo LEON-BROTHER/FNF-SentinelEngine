@@ -1,5 +1,6 @@
 package;
 
+import flixel.util.FlxColor;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;
 import flixel.FlxG;
@@ -81,11 +82,18 @@ class FreeplayState extends FlxState
         {
             select(item);
         }
+
+        if (FlxG.keys.justPressed.ESCAPE)
+        {
+            FlxG.sound.play(Files.sound("cancelMenu", "preload"));
+            FlxG.switchState(new MainMenuState());
+        }
     }
 
-    public function selectItem(num:Int)
+    public function selectItem(numb:Int)
     {
-        item = num;
+        var temp:Int = item;
+        item = numb;
     
         if (item < 0)
         {
@@ -97,7 +105,7 @@ class FreeplayState extends FlxState
             item = 0;
         }
 
-        FlxTween.cancelTweensOf(bg);
+        FlxTween.cancelTweensOf(bg, ["y"]);
 
         for (num in 0...text.length)
         {
@@ -113,6 +121,36 @@ class FreeplayState extends FlxState
             ease: FlxEase.expoOut,
         });
 
+        if (songsList[item].split(":").length > 2 && songsList[temp].split(":").length > 2)
+        {
+            if (songsList[item].split(":")[2] != songsList[temp].split(":")[2])
+            {
+                FlxTween.cancelTweensOf(bg, ["color"]);
+                var clr:FlxColor = 0xFFFFFFFF;
+                switch (songsList[item].split(":")[2])
+                {
+                    case "0":
+                        clr = 0xFFFF0062;
+                    case "1":
+                        clr = 0xFFAE00FF;
+                    case "2":
+                        clr = 0xFFFFAA00;
+                    case "3":
+                        clr = 0xFF00FF00;
+                    case "4":
+                        clr = 0xFFFF00AA;
+                    case "5":
+                        clr = 0xFFFFFFFF;
+                    case "6":
+                        clr = 0xFFFF00FF;
+                    default:
+                        clr = 0xFFFFFFFF;
+                }
+
+                FlxTween.tween(bg, {color: clr}, 1.5, {});
+            }
+        }
+
         FlxG.sound.playMusic(Files.inst(songsList[item].split(":")[0])); //TODO: Fix This Fucking Bullshit Not Loading
 
         for (num in 0...text.length)
@@ -127,10 +165,10 @@ class FreeplayState extends FlxState
 
         for (num in 0...iconz.length)
         {
-            FlxTween.tween(iconz.members[num], {y: 450 + (num - item) * 160}, 1.5, {
+            FlxTween.tween(iconz.members[num], {y: 450 + ((num - item) * 160) - 50}, 1.5, {
                 ease: FlxEase.expoOut,
             });
-            FlxTween.tween(iconz.members[num], {x: (songsList[item].split(":")[0].length * 50) + (12 * (num - item)) + (50 * text.members[num].songLetterOffset)}, 1.5, {
+            FlxTween.tween(iconz.members[num], {x: (songsList[num].split(":")[0].length * 50) + (12 * (num - item)) + 100}, 1.5, {
                 ease: FlxEase.expoOut,
             });
         }
