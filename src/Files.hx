@@ -32,7 +32,7 @@ class Files
         }
         else
         {
-            output = library + ":assets/" + library + "/" + directory + "/" + file + "." + extension;
+            output = "assets/" + library + "/" + directory + "/" + file + "." + extension;
         }
 
         #if sys
