@@ -51,19 +51,19 @@ class PlayState extends FlxState
         background = new Stage(stage);
         add(background);
 
-        boyfriend = new Character(player1);
-        boyfriend.screenCenter();
-        add(boyfriend);
-        boyfriend.x += 450;
+        girlfriend = new Character(gf);
+        girlfriend.screenCenter();
+        add(girlfriend);
 
         dad = new Character(player2);
         dad.screenCenter();
         add(dad);
         dad.x -= 450;
 
-        girlfriend = new Character(gf);
-        girlfriend.screenCenter();
-        add(girlfriend);
+        boyfriend = new Character(player1);
+        boyfriend.screenCenter();
+        add(boyfriend);
+        boyfriend.x += 450;
 
         startSong();
     }
@@ -98,7 +98,7 @@ class PlayState extends FlxState
         FlxG.sound.playMusic(Files.inst(song));
         //FlxG.sound.play(Files.voices(song));
 
-        moveCam(dad);
+        moveCam(boyfriend);
     }
 
     public function moveCam(target:Character)
