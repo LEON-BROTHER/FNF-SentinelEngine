@@ -1,9 +1,15 @@
 package;
 
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.FlxCamera;
+import flixel.FlxG;
 import flixel.FlxState;
 
 class PlayState extends FlxState
 {
+    public var game:FlxCamera;
+
     public var song:String = "null";
 
     public var player1:String = "bf";
@@ -16,6 +22,8 @@ class PlayState extends FlxState
 
     public var stage:String = "stage";
 
+    public var background:Stage;
+
     public function new(lSong:String, ?p1:String = "bf", ?p2:String = "dad", ?p3:String = "gf", ?bg:String = "stage")
     {
         super();
@@ -25,22 +33,80 @@ class PlayState extends FlxState
         player2 = p2;
         gf = p3;
         stage = bg;
+
+        if (FlxG.sound.music != null)
+        {
+            FlxG.sound.music.stop();
+        }
     }
 
     override function create()
     {
         super.create();
 
+        game = new FlxCamera();
+
+        FlxG.cameras.add(game);
+
+        background = new Stage(stage);
+        add(background);
+
         boyfriend = new Character(player1);
         boyfriend.screenCenter();
         add(boyfriend);
+        boyfriend.x += 450;
 
         dad = new Character(player2);
         dad.screenCenter();
         add(dad);
+        dad.x -= 450;
 
         girlfriend = new Character(gf);
         girlfriend.screenCenter();
         add(girlfriend);
+
+        startSong();
+    }
+
+    override function update(elapsed:Float)
+    {
+        super.update(elapsed);
+
+        if (FlxG.keys.pressed.UP)
+        {
+            boyfriend.up();
+        }
+
+        if (FlxG.keys.pressed.DOWN)
+        {
+            boyfriend.down();
+        }
+
+        if (FlxG.keys.pressed.LEFT)
+        {
+            boyfriend.left();
+        }
+
+        if (FlxG.keys.pressed.RIGHT)
+        {
+            boyfriend.right();
+        }
+    }
+
+    public function startSong()
+    {
+        FlxG.sound.playMusic(Files.inst(song));
+        //FlxG.sound.play(Files.voices(song));
+
+        moveCam(dad);
+    }
+
+    public function moveCam(target:Character)
+    {
+        FlxTween.cancelTweensOf(game);
+        game.follow(target, FlxCameraFollowStyle.LOCKON, 1);
+        FlxTween.tween(game, {zoom: 0.8}, 1, {
+            ease: FlxEase.expoOut,
+        });
     }
 }

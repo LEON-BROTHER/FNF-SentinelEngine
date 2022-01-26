@@ -1,5 +1,6 @@
 package;
 
+import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;
@@ -151,7 +152,7 @@ class FreeplayState extends FlxState
             }
         }
 
-        FlxG.sound.playMusic(Files.inst(songsList[item].split(":")[0])); //TODO: Fix This Fucking Bullshit Not Loading
+        FlxG.sound.playMusic(Files.inst(songsList[item].split(":")[0])); //TODO: Fix This Fucking Bullshit Not Loading //Update: Temporarily Fixed For Now, But Not Good. Need's Proper Fix...
 
         for (num in 0...text.length)
         {
@@ -178,12 +179,59 @@ class FreeplayState extends FlxState
     {
         FlxG.sound.play(Files.sound("confirmMenu", "preload"));
 
-        /*switch(menuData[num])
-        {
-            case "story mode":
-                new FlxTimer().start(1.5, function(tmr:FlxTimer) {
-                    FlxG.switchState(new StoryModeState());
-                });
-        }*/
+        new FlxTimer().start(1.5, function(tmr:FlxTimer) {
+            //TODO: Softcode This
+            var bf:String = "bf";
+            var gf:String = "gf";
+            var stage:String = "stage";
+
+            switch (songsList[num].split(":")[2])
+            {
+                case "4":
+                    bf = "bf-car";
+                    gf = "gf-car";
+                case "5":
+                    bf = "bf-christmas";
+                    gf = "gf-christmas";
+                case "6":
+                    bf = "bf-pixel";
+                    gf = "gf-pixel";
+                default:
+                    bf = "bf";
+                    gf = "gf";
+            }
+
+            switch (songsList[num].split(":")[2])
+            {
+                case "2":
+                    stage = "halloween";
+                case "3":
+                    stage = "philly";
+                case "4":
+                    stage = "limo";
+                case "5":
+                    if (songsList[num].split(":")[0] == "winter-horrorland")
+                    {
+                        stage = "mall-evil";
+                    }
+                    else
+                    {
+                        stage = "mall";
+                    }
+                case "6":
+                    if (songsList[num].split(":")[0] == "thorns")
+                    {
+                        stage = "school-evil";
+                    }
+                    else
+                    {
+                        stage = "school";
+                    }
+                default:
+                    stage = "stage";
+            }
+
+            FlxG.switchState(new PlayState(songsList[num].split(":")[0], bf, songsList[num].split(":")[1], gf, stage));
+        });
     }
 }
