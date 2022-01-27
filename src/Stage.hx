@@ -11,13 +11,6 @@ class Stage extends FlxTypedGroup<FlxSprite>
 
         switch (stage)
         {
-            case "halloween":
-                var bg:FlxSprite = new FlxSprite();
-                bg.antialiasing = Config.antialiasing;
-                bg.frames = Files.getSparrowAtlas("halloween_bg", "week2");
-                bg.setGraphicSize(Std.int(bg.width * 2), Std.int(bg.height * 2));
-                bg.screenCenter();
-                add(bg);
             default:
                 var bg:FlxSprite = new FlxSprite().loadGraphic("stageback", "shared");
                 bg.antialiasing = Config.antialiasing;
