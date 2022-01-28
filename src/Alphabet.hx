@@ -96,16 +96,4 @@ class Alphabet extends FlxSprite
         animation.play("text");
         antialiasing = Config.antialiasing;
     }
-
-    public function calculatePosition(collumn:Int, totalCollumns:Int, row:Int, totalRows:Int) //TODO
-    {
-        screenCenter();
-        var col:Int = collumn * 50;
-        var totalCol:Int = totalCollumns * 50;
-        var rohw:Int = row * 100;
-        var totalRohw:Int = totalRows * 100;
-
-        x += col - (totalCol / 2);
-        y += rohw - (totalRohw / 2);
-    }
 }

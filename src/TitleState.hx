@@ -173,7 +173,13 @@ class TitleState extends FlxState
                 for (letter in 0...text[line].length)
                 {
                     var alpha:Alphabet = new Alphabet(text[line].charAt(letter), true);
-                    alpha.calculatePosition(letter, text[line].length, line, text.length + blankLines);
+                    var col:Int = letter * 50;
+                    var totalCol:Int = text[line].length * 50;
+                    var rohw:Int = line * 100;
+                    var totalRohw:Int = (text.length + blankLines) * 100;
+                    
+                    alpha.x += col - (totalCol / 2);
+                    alpha.y += rohw - (totalRohw / 2);
                     introText.add(alpha);
                 }
             }
