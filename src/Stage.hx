@@ -25,7 +25,7 @@ class Stage extends FlxTypedGroup<FlxSprite>
                 front.scrollFactor.set(0.9, 0.9);
                 front.screenCenter();
                 add(front);
-                front.y += 420;
+                front.y += 640;
 
                 if (!Config.lowquality)
                 {

@@ -1,6 +1,5 @@
 package;
 
-import haxe.display.Display.Package;
 import flixel.FlxSprite;
 
 class HealthIcon extends FlxSprite

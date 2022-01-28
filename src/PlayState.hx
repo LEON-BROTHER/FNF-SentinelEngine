@@ -54,6 +54,7 @@ class PlayState extends FlxState
         girlfriend = new Character(gf);
         girlfriend.screenCenter();
         add(girlfriend);
+        girlfriend.y += 360;
 
         dad = new Character(player2);
         dad.screenCenter();
@@ -64,6 +65,7 @@ class PlayState extends FlxState
         boyfriend.screenCenter();
         add(boyfriend);
         boyfriend.x += 450;
+        boyfriend.y += 360;
 
         startSong();
     }
