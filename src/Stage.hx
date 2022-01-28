@@ -12,17 +12,17 @@ class Stage extends FlxTypedGroup<FlxSprite>
         switch (stage)
         {
             default:
-                var bg:FlxSprite = new FlxSprite().loadGraphic("stageback", "shared");
+                var bg:FlxSprite = new FlxSprite().loadGraphic(Files.image("stageback", "shared"));
                 bg.antialiasing = Config.antialiasing;
                 bg.setGraphicSize(Std.int(bg.width * 2), Std.int(bg.height * 2));
                 bg.screenCenter();
                 add(bg);
-                var front:FlxSprite = new FlxSprite().loadGraphic("stagefront", "shared");
-                front.antialiasing = Config.antialiasing;
-                add(front);
-                var curtain:FlxSprite = new FlxSprite().loadGraphic("stagecurtains", "shared");
-                curtain.antialiasing = Config.antialiasing;
-                add(curtain);
+                //var front:FlxSprite = new FlxSprite().loadGraphic(Files.image("stagefront", "shared"));
+                //front.antialiasing = Config.antialiasing;
+                //add(front);
+                //var curtain:FlxSprite = new FlxSprite().loadGraphic(Files.image("stagecurtains", "shared"));
+                //curtain.antialiasing = Config.antialiasing;
+                //add(curtain);
         }
     }
 }
