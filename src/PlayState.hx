@@ -105,7 +105,7 @@ class PlayState extends FlxState
     {
         FlxTween.cancelTweensOf(game);
         game.follow(target, FlxCameraFollowStyle.LOCKON, 1);
-        FlxTween.tween(game, {zoom: 0.8}, 1, {
+        FlxTween.tween(game, {zoom: 0.65}, 1, {
             ease: FlxEase.expoOut,
         });
     }
