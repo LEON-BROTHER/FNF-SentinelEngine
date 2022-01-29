@@ -13,6 +13,35 @@ using StringTools;
 
 class Files
 {
+    #if sys
+    private static function getMods(file:String, extension:String, directory:String, ?library:String = null):Array<String>
+    {
+        var array:Array<String> = FileSystem.readDirectory("mods");
+
+        var output:Array<String> = new Array<String>();
+
+        for (i in 0...array.length)
+        {
+            if (library == "preload")
+            {
+                if (FileSystem.exists("mods/" + array[i] + "/" + directory + "/" + file + "." + extension))
+                {
+                    output.insert(array.length + 1, array[i] + "/" + directory + "/" + file + "." + extension);
+                }
+            }
+            else
+            {
+                if (FileSystem.exists("mods/" + array[i] + "/" + library + "/" + directory + "/" + file + "." + extension))
+                {
+                    output.insert(array.length + 1, array[i] + "/" + library + "/" + directory + "/" + file + "." + extension);
+                }
+            }
+        }
+
+        return output;
+    }
+    #end
+
     private static function getLibrary(file:String, extension:String, directory:String):String
     {
         return "shared"; //TODO
@@ -36,7 +65,9 @@ class Files
         }
 
         #if sys
-        if (!FileSystem.exists(output))
+        var mods:Array<String> = getMods(file, extension, directory, library);
+
+        if (!FileSystem.exists(output) && mods == new Array<String>())
         #else
         if(!Assets.exists(output))
         #end
