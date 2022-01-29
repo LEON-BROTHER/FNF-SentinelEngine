@@ -1,5 +1,7 @@
 package;
 
+import flixel.util.FlxColor;
+import flixel.FlxSprite;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxCamera;
@@ -9,6 +11,7 @@ import flixel.FlxState;
 class PlayState extends FlxState
 {
     public var game:FlxCamera;
+    public var target:FlxSprite;
 
     public var song:String = "null";
 
@@ -44,8 +47,12 @@ class PlayState extends FlxState
     {
         super.create();
 
-        game = new FlxCamera();
+        target = new FlxSprite().makeGraphic(1, 1, FlxColor.TRANSPARENT, true, "targettedlol");
+        target.antialiasing = false;
+        add(target);
 
+        game = new FlxCamera();
+        game.follow(target, FlxCameraFollowStyle.NO_DEAD_ZONE, 1);
         FlxG.cameras.add(game);
 
         background = new Stage(stage);
@@ -103,11 +110,17 @@ class PlayState extends FlxState
         moveCam(boyfriend);
     }
 
-    public function moveCam(target:Character)
+    public function moveCam(char:Character)
     {
         FlxTween.cancelTweensOf(game);
-        game.follow(target, FlxCameraFollowStyle.NO_DEAD_ZONE, 1);
         FlxTween.tween(game, {zoom: 0.65}, 1, {
+            ease: FlxEase.expoOut,
+        });
+        FlxTween.cancelTweensOf(target);
+        FlxTween.tween(target, {x: char.x}, 1, {
+            ease: FlxEase.expoOut,
+        });
+        FlxTween.tween(target, {y: char.y}, 1, {
             ease: FlxEase.expoOut,
         });
     }
