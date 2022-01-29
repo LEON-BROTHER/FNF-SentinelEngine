@@ -49,6 +49,7 @@ class PlayState extends FlxState
 
         target = new FlxSprite().makeGraphic(1, 1, FlxColor.TRANSPARENT, true, "targettedlol");
         target.antialiasing = false;
+        target.screenCenter();
         add(target);
 
         game = new FlxCamera();
@@ -61,7 +62,7 @@ class PlayState extends FlxState
         girlfriend = new Character(gf);
         girlfriend.screenCenter();
         add(girlfriend);
-        girlfriend.y += 360;
+        girlfriend.y += 100;
 
         dad = new Character(player2);
         dad.screenCenter();
