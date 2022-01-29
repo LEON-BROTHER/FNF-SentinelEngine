@@ -93,6 +93,18 @@ class Character extends FlxSprite
             case "gf":
                 frames = Files.getSparrowAtlas("characters/GF_assets", "shared");
                 animation.addByPrefix("idle", "GF Dancing Beat", 24, true);
+                animation.addByPrefix("idle-land", "GF Dancing Beat Hair Landing", 24, false);
+                animation.addByPrefix("idle-blow", "GF Dancing Beat Hair blowing", 24, true);
+
+                animation.addByPrefix("left", "GF left note", 24, false);
+                animation.addByPrefix("right", "GF Right Note", 24, false);
+                animation.addByPrefix("up", "GF Up Note", 24, false);
+                animation.addByPrefix("down", "GF Down Note", 24, false);
+
+                animation.addByPrefix("sad", "gf sad", 24, false);
+
+                animation.addByPrefix("cheer", "GF Cheer", 24, false); //Week 1
+                animation.addByPrefix("scared", "GF FEAR ", 24, false); //Week 2
         }
 
         idle();
