@@ -16,4 +16,4 @@ Eggnog:parents:5
 Winter Horrorland:monster:5
 Senpai:senpai:6
 Roses:senpai:6
-Thorns:senpai:6
+Thorns:spirit:6
