@@ -67,7 +67,7 @@ class Files
         #if sys
         var mods:Array<String> = getMods(file, extension, directory, library);
 
-        if (!FileSystem.exists(output) && mods == new Array<String>())
+        if (!FileSystem.exists(output) && mods.length < 1)
         #else
         if(!Assets.exists(output))
         #end
@@ -83,6 +83,12 @@ class Files
                     output = null;
             }
         }
+        #if sys
+        else
+        {
+            output = "mods/" + mods[0];
+        }
+        #end
 
         return output;
     }
