@@ -133,6 +133,16 @@ class Character extends FlxSprite
                 animation.addByPrefix("idle", "GF IDLE", 24, true);
 
                 facingRight = false;
+            case "dad":
+                frames = Files.getSparrowAtlas("characters/DADDY_DEAREST", "shared");
+                animation.addByPrefix("idle", "Dad idle dance", 24, true);
+
+                animation.addByPrefix("left", "Dad Sing Note LEFT", 24, false);
+                animation.addByPrefix("right", "Dad Sing Note RIGHT", 24, false);
+                animation.addByPrefix("up", "Dad Sing Note UP", 24, false);
+                animation.addByPrefix("down", "Dad Sing Note DOWN", 24, false);
+
+                facingRight = false;
         }
 
         idle();
