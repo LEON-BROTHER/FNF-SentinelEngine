@@ -84,7 +84,7 @@ class Files
             }
         }
         #if sys
-        else if (!FileSystem.exists("mods/" + mods[0]))
+        else if (FileSystem.exists("mods/" + mods[0]))
         {
             output = "mods/" + mods[0];
         }
