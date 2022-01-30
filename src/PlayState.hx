@@ -68,6 +68,7 @@ class PlayState extends FlxState
         dad.screenCenter();
         add(dad);
         dad.x -= 450;
+        dad.y += 100;
 
         boyfriend = new Character(player1);
         boyfriend.screenCenter();
