@@ -5,6 +5,7 @@ import flixel.FlxSprite;
 
 class Stage extends FlxTypedGroup<FlxSprite>
 {
+    public var camZoom = 0.65;
     public function new(stage:String)
     {
         super();
@@ -12,6 +13,8 @@ class Stage extends FlxTypedGroup<FlxSprite>
         switch (stage)
         {
             default:
+                camZoom = 0.65;
+
                 var bg:FlxSprite = new FlxSprite().loadGraphic(Files.image("stageback", "shared"));
                 bg.antialiasing = Config.antialiasing;
                 bg.setGraphicSize(Std.int(bg.width * 1.1), Std.int(bg.height * 1.1));

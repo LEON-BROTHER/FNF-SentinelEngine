@@ -114,7 +114,7 @@ class PlayState extends FlxState
     public function moveCam(char:Character)
     {
         FlxTween.cancelTweensOf(game);
-        FlxTween.tween(game, {zoom: 0.65}, 1, {
+        FlxTween.tween(game, {zoom: background.camZoom}, 1, {
             ease: FlxEase.expoOut,
         });
         FlxTween.cancelTweensOf(target);
