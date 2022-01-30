@@ -93,8 +93,8 @@ class Character extends FlxSprite
             case "gf":
                 frames = Files.getSparrowAtlas("characters/GF_assets", "shared");
                 animation.addByPrefix("idle", "GF Dancing Beat", 24, true);
-                animation.addByPrefix("idle-land", "GF Dancing Beat Hair Landing", 24, false);
-                animation.addByPrefix("idle-blow", "GF Dancing Beat Hair blowing", 24, true);
+                animation.addByPrefix("idle-land", "GF Dancing Beat Hair Landing", 24, false); //Week 3 Possibly
+                animation.addByPrefix("idle-blow", "GF Dancing Beat Hair blowing", 24, true); // Week 3 Possibly
 
                 animation.addByPrefix("left", "GF left note", 24, false);
                 animation.addByPrefix("right", "GF Right Note", 24, false);
@@ -105,6 +105,34 @@ class Character extends FlxSprite
 
                 animation.addByPrefix("cheer", "GF Cheer", 24, false); //Week 1
                 animation.addByPrefix("scared", "GF FEAR ", 24, false); //Week 2
+
+                facingRight = false;
+            case "gf-car":
+                frames = Files.getSparrowAtlas("characters/gfCar", "shared");
+                animation.addByPrefix("idle", "GF Dancing Beat Hair blowing CAR", 24, true);
+
+                facingRight = false;
+            case "gf-christmas":
+                frames = Files.getSparrowAtlas("characters/gfChristmas", "shared");
+                animation.addByPrefix("idle", "GF Dancing Beat", 24, true);
+                animation.addByPrefix("idle-land", "GF Dancing Beat Hair Landing", 24, false); //Week 3 Possibly
+
+                animation.addByPrefix("left", "GF left note", 24, false);
+                animation.addByPrefix("right", "GF Right Note", 24, false);
+                animation.addByPrefix("up", "GF Up Note", 24, false);
+                animation.addByPrefix("down", "GF Down Note", 24, false);
+
+                animation.addByPrefix("sad", "gf sad", 24, false);
+
+                animation.addByPrefix("cheer", "GF Cheer", 24, false); //Week 1
+                animation.addByPrefix("scared", "GF FEAR ", 24, false); //Week 2
+
+                facingRight = false;
+            case "gf-pixel":
+                frames = Files.getSparrowAtlas("characters/gfPixel", "shared");
+                animation.addByPrefix("idle", "GF IDLE", 24, true);
+
+                facingRight = false;
         }
 
         idle();
