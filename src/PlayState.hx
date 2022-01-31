@@ -1,5 +1,6 @@
 package;
 
+import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
 import flixel.FlxSprite;
 import flixel.tweens.FlxEase;
@@ -54,6 +55,7 @@ class PlayState extends FlxState
 
         game = new FlxCamera();
         game.follow(target, FlxCameraFollowStyle.NO_DEAD_ZONE, 1);
+        game.zoom = 1;
         FlxG.cameras.add(game);
 
         background = new Stage(stage);
@@ -110,6 +112,7 @@ class PlayState extends FlxState
         //FlxG.sound.play(Files.voices(song));
 
         moveCam(boyfriend);
+        loop();
     }
 
     public function moveCam(char:Character)
@@ -119,11 +122,22 @@ class PlayState extends FlxState
             ease: FlxEase.expoOut,
         });
         FlxTween.cancelTweensOf(target);
-        FlxTween.tween(target, {x: char.x}, 1, {
+        FlxTween.tween(target, {x: char.getGraphicMidpoint().x}, 2.5, {
             ease: FlxEase.expoOut,
         });
-        FlxTween.tween(target, {y: char.y}, 1, {
+        FlxTween.tween(target, {y: char.getGraphicMidpoint().y}, 2.5, {
             ease: FlxEase.expoOut,
+        });
+    }
+
+    public function loop() //Temporary
+    {
+        new FlxTimer().start(3.5, function(tmr:FlxTimer) {
+            moveCam(dad);
+            new FlxTimer().start(3.5, function(tmr:FlxTimer) {
+                moveCam(boyfriend);
+                loop();
+            });
         });
     }
 }
