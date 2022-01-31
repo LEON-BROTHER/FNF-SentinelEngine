@@ -55,7 +55,7 @@ class PlayState extends FlxState
 
         game = new FlxCamera();
         game.follow(target, FlxCameraFollowStyle.NO_DEAD_ZONE, 1);
-        game.zoom = 1;
+        game.zoom = 1.3;
         FlxG.cameras.add(game);
 
         background = new Stage(stage);
