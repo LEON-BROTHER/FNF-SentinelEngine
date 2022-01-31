@@ -13,7 +13,7 @@ class Stage extends FlxTypedGroup<FlxSprite>
         switch (stage)
         {
             default:
-                camZoom = 0.65;
+                camZoom = 0.75;
 
                 var bg:FlxSprite = new FlxSprite().loadGraphic(Files.image("stageback", "shared"));
                 bg.antialiasing = Config.antialiasing;
