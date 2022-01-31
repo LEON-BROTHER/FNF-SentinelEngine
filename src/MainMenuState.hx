@@ -48,7 +48,6 @@ class MainMenuState extends FlxState
             var id:String = menuData[num].toLowerCase().replace(" ", "-");
             var button:FlxSprite = new FlxSprite();
             button.antialiasing = Config.antialiasing;
-            button.screenCenter(X);
             button.frames = Files.getSparrowAtlas("mainmenu/menu_" + id, "preload");
             button.animation.addByPrefix("idle", id + " idle", 24, true);
             button.animation.addByPrefix("selected", id + " selected", 24, true);
@@ -121,6 +120,10 @@ class MainMenuState extends FlxState
 
         for (num in 0...menuData.length)
         {
+            FlxTween.tween(menuButtons.members[num], {x: Std.int(640 - (menuButtons.members[num].width / 2))}, 1.5, {
+                ease: FlxEase.expoOut,
+            });
+
             FlxTween.tween(menuButtons.members[num], {y: 69 + ((num - item) * 160)}, 1.5, {
                 ease: FlxEase.expoOut,
             });
