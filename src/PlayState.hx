@@ -1,5 +1,6 @@
 package;
 
+import flixel.system.FlxSound;
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
 import flixel.FlxSprite;
@@ -11,6 +12,8 @@ import flixel.FlxState;
 
 class PlayState extends FlxState
 {
+    public var voices:FlxSound;
+
     public var game:FlxCamera;
     public var target:FlxSprite;
 
@@ -104,12 +107,18 @@ class PlayState extends FlxState
         {
             boyfriend.right();
         }
+
+        if (!voices.playing)
+        {
+            FlxG.switchState(new FreeplayState());
+        }
     }
 
     public function startSong()
     {
         FlxG.sound.playMusic(Files.inst(song));
-        //FlxG.sound.play(Files.voices(song));
+        voices = FlxG.sound.play(Files.voices(song));
+        FlxG.sound.music.time = voices.time;
 
         moveCam(boyfriend);
         loop();
