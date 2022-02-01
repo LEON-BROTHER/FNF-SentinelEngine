@@ -75,4 +75,21 @@ class Config
                 return "404-Invalid";
         }
     }
+
+    inline static public function updateValueByName(name:String, value:Dynamic)
+    {
+        switch (name)
+        {
+            case "Anti-Aliasing":
+                antialiasing = value;
+            case "Low Quality":
+                lowquality = value;
+            case "Record Replay's":
+                recordreplays = value;
+            case "Cache Replay File's":
+                cachereplayfiles = value;
+            case "Down Scroll":
+                downscroll = value;
+        }
+    }
 }

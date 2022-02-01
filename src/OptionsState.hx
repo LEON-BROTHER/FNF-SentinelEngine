@@ -79,6 +79,12 @@ class OptionsState extends FlxState
             selectItem(item - 1);
         }
 
+        if (FlxG.keys.justPressed.ENTER)
+        {
+            FlxG.sound.play(Files.sound("scrollMenu", "preload"));
+            optionids[item].select();
+        }
+
         if (FlxG.keys.justPressed.ESCAPE)
         {
             FlxG.sound.play(Files.sound("cancelMenu", "preload"));
@@ -139,6 +145,11 @@ class OptionType
     {
         return Config.getValueByName(title);
     }
+
+    public function select()
+    {
+        //IDK
+    }
 }
 
 class BoolOptionType extends OptionType
@@ -150,5 +161,21 @@ class BoolOptionType extends OptionType
         super(titl, desc);
 
         value = getValue();
+    }
+
+    override function select()
+    {
+        super.select();
+
+        if (value)
+        {
+            value = false;
+        }
+        else
+        {
+            value = true;
+        }
+
+        Config.updateValueByName(title, value);
     }
 }
