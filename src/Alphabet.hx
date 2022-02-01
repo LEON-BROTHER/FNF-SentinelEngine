@@ -4,8 +4,8 @@ import flixel.FlxSprite;
 
 class Alphabet extends FlxSprite
 {
-    public var songID:Int = -1;
-    public var songLetterOffset:Int = -1;
+    public var itemID:Int = -1;
+    public var itemLetterOffset:Int = -1;
 
     public function new(letter:String, ?bold:Bool = false)
     {
@@ -90,6 +90,8 @@ class Alphabet extends FlxSprite
                     animation.addByPrefix("text", "bold8", 24, true);
                 case "9":
                     animation.addByPrefix("text", "bold9", 24, true);
+                default:
+                    alpha = 0;
             }
         }
 

@@ -49,8 +49,8 @@ class FreeplayState extends FlxState
             for (letter in 0...name.length)
             {
                 var alpha:Alphabet = new Alphabet(name.charAt(letter), true);
-                alpha.songID = song;
-                alpha.songLetterOffset = letter;
+                alpha.itemID = song;
+                alpha.itemLetterOffset = letter;
                 text.add(alpha);
             }
 
@@ -156,10 +156,10 @@ class FreeplayState extends FlxState
 
         for (num in 0...text.length)
         {
-            FlxTween.tween(text.members[num], {y: 450 + ((text.members[num].songID - item) * 160)}, 1.5, {
+            FlxTween.tween(text.members[num], {y: 450 + ((text.members[num].itemID - item) * 160)}, 1.5, {
                 ease: FlxEase.expoOut,
             });
-            FlxTween.tween(text.members[num], {x: 110 + (12 * (text.members[num].songID - item)) + (50 * text.members[num].songLetterOffset)}, 1.5, {
+            FlxTween.tween(text.members[num], {x: 110 + (12 * (text.members[num].itemID - item)) + (50 * text.members[num].itemLetterOffset)}, 1.5, {
                 ease: FlxEase.expoOut,
             });
         }

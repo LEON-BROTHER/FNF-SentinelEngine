@@ -14,6 +14,7 @@ class Config
     public static var lowquality:Bool = false;
     public static var recordreplays:Bool = true;
     public static var cachereplayfiles:Bool = true;
+    public static var downscroll:Bool = false;
 
     public static function loadConfig()
     {
@@ -38,6 +39,11 @@ class Config
         {
             cachereplayfiles = FlxG.save.data.cachereplayfiles;
         }
+
+        if (FlxG.save.data.downscroll != null)
+        {
+            downscroll = FlxG.save.data.downscroll;
+        }
     }
 
     public static function saveConfig()
@@ -48,5 +54,6 @@ class Config
         FlxG.save.data.lowquality = lowquality;
         FlxG.save.data.recordreplays = recordreplays;
         FlxG.save.data.cachereplayfiles = cachereplayfiles;
+        FlxG.save.data.downscroll = downscroll;
     }
 }
