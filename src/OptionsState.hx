@@ -49,6 +49,7 @@ class OptionsState extends FlxState
             {
                 case BoolOptionType:
                     var setting:OptionType = new BoolOptionType(options[option][0], options[option][2]);
+                    optionids.insert(optionids.length + 10, setting);
             }
             
             var name:String = options[option][0];
