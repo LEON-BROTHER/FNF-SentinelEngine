@@ -20,6 +20,7 @@ class OptionsState extends FlxState
     private var item:Int;
     private var bg:FlxSprite;
 
+    private var optionids:Array<OptionType> = [];
     private var text:FlxTypedGroup<Alphabet>;
 
     public function new()
@@ -44,6 +45,12 @@ class OptionsState extends FlxState
 
         for (option in 0...options.length)
         {
+            switch (options[option][1])
+            {
+                case BoolOptionType:
+                    var setting:OptionType = new BoolOptionType(options[option][0], options[option][2]);
+            }
+            
             var name:String = options[option][0];
             for (letter in 0...name.length)
             {
@@ -75,6 +82,7 @@ class OptionsState extends FlxState
         if (FlxG.keys.justPressed.ESCAPE)
         {
             FlxG.sound.play(Files.sound("cancelMenu", "preload"));
+            Config.saveConfig();
             FlxG.switchState(new MainMenuState());
         }
     }
@@ -118,20 +126,29 @@ class OptionsState extends FlxState
 
 class OptionType
 {
-    public var title:String;
-    public var description:String;
+    public var title:String = "Title";
+    public var description:String = "This Is A Description, You Describe What The Option Does Here. Also, Sex!";
 
     public function new(titl:String, desc:String)
     {
         title = titl;
         description = desc;
     }
+
+    public function getValue():Dynamic
+    {
+        return Config.getValueByName(title);
+    }
 }
 
 class BoolOptionType extends OptionType
 {
+    public var value:Bool = false;
+
     public function new(titl:String, desc:String)
     {
         super(titl, desc);
+
+        value = getValue();
     }
 }

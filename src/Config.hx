@@ -56,4 +56,23 @@ class Config
         FlxG.save.data.cachereplayfiles = cachereplayfiles;
         FlxG.save.data.downscroll = downscroll;
     }
+
+    inline static public function getValueByName(name:String):Dynamic
+    {
+        switch (name)
+        {
+            case "Anti-Aliasing":
+                return antialiasing;
+            case "Low Quality":
+                return lowquality;
+            case "Record Replay's":
+                return recordreplays;
+            case "Cache Replay File's":
+                return cachereplayfiles;
+            case "Down Scroll":
+                return downscroll;
+            default:
+                return "404-Invalid";
+        }
+    }
 }
