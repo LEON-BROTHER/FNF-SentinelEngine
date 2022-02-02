@@ -173,6 +173,21 @@ class Character extends FlxSprite
                 animation.addByPrefix("down", "monster down", 24, false);
 
                 facingRight = false;
+            case "pico":
+                frames = Files.getSparrowAtlas("characters/Pico_FNF_assetss", "shared");
+                animation.addByPrefix("idle", "Pico Idle Dance", 24, true);
+
+                animation.addByPrefix("left", "Pico NOTE LEFT", 24, false);
+                animation.addByPrefix("right", "Pico Note Right", 24, false);
+                animation.addByPrefix("up", "pico Up note", 24, false);
+                animation.addByPrefix("down", "Pico Down Note", 24, false);
+
+                animation.addByPrefix("left-miss", "Pico NOTE LEFT miss", 24, false);
+                animation.addByPrefix("right-miss", "Pico Note Right Miss", 24, false);
+                animation.addByPrefix("up-miss", "pico Up note miss", 24, false);
+                animation.addByPrefix("down-miss", "Pico Down Note MISS", 24, false);
+
+                facingRight = true;
         }
 
         idle();
