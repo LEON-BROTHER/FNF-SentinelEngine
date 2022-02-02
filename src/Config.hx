@@ -8,8 +8,21 @@ import flixel.FlxG;
     High;
 }*/
 
+enum Language
+{
+    English;
+    French;
+    Spanish;
+    German;
+    Danish;
+    Russian;
+    Japanese;
+    Chinese;
+}
+
 class Config
 {
+    public static var language:Language = Language.English;
     public static var antialiasing:Bool = true;
     public static var lowquality:Bool = false;
     public static var recordreplays:Bool = true;
@@ -19,6 +32,11 @@ class Config
     public static function loadConfig()
     {
         FlxG.save.bind("FNF", "Generalisk");
+
+        if (FlxG.save.data.language != null)
+        {
+            language = FlxG.save.data.language;
+        }
 
         if (FlxG.save.data.antialiasing != null)
         {
@@ -50,6 +68,7 @@ class Config
     {
         FlxG.save.bind("FNF", "Generalisk");
 
+        FlxG.save.data.language = language;
         FlxG.save.data.antialiasing = antialiasing;
         FlxG.save.data.lowquality = lowquality;
         FlxG.save.data.recordreplays = recordreplays;
@@ -61,6 +80,8 @@ class Config
     {
         switch (name)
         {
+            case "Lanuage":
+                return language;
             case "Anti-Aliasing":
                 return antialiasing;
             case "Low Quality":
@@ -80,6 +101,8 @@ class Config
     {
         switch (name)
         {
+            case "Language":
+                language = value;
             case "Anti-Aliasing":
                 antialiasing = value;
             case "Low Quality":

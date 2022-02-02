@@ -10,6 +10,7 @@ import flixel.FlxState;
 class OptionsState extends FlxState
 {
     private var options:Array<Dynamic> = [
+        ["Language", LanguageOptionType, "Set The Game's Global Language"],
         ["Anti-Aliasing", BoolOptionType, "Enable/Disable Anti-Aliasing, Which Smoothes Out The Texture's To Make Them Look Less Pixelly"],
         ["Low Quality", BoolOptionType, "Decreases The Game's Quality, But Boost's Performance"],
         ["Record Replay's", BoolOptionType, "Enable/Disable Whether You Want The Game To Record Replay's"],
@@ -49,6 +50,9 @@ class OptionsState extends FlxState
             {
                 case BoolOptionType:
                     var setting:OptionType = new BoolOptionType(options[option][0], options[option][2]);
+                    optionids.insert(optionids.length + 10, setting);
+                case LanguageOptionType:
+                    var setting:OptionType = new LanguageOptionType(options[option][0], options[option][2]);
                     optionids.insert(optionids.length + 10, setting);
             }
             
@@ -176,6 +180,27 @@ class BoolOptionType extends OptionType
         {
             value = true;
         }
+
+        Config.updateValueByName(title, value);
+    }
+}
+
+class LanguageOptionType extends OptionType
+{
+    public var value:Config.Language = Config.Language.English;
+
+    public function new(titl:String, desc:String)
+    {
+        super(titl, desc);
+
+        value = getValue();
+    }
+
+    override function select()
+    {
+        super.select();
+
+        //Do Nothing RN
 
         Config.updateValueByName(title, value);
     }
