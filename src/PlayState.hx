@@ -75,6 +75,12 @@ class PlayState extends FlxState
         dad.x -= 450;
         dad.y += 100;
 
+        switch (player2)
+        {
+            case "spooky-kids":
+                dad.y += 100;
+        }
+
         boyfriend = new Character(player1);
         boyfriend.screenCenter();
         add(boyfriend);

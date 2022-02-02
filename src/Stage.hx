@@ -18,10 +18,11 @@ class Stage extends FlxTypedGroup<FlxSprite>
                 var bg:FlxSprite = new FlxSprite();
                 bg.frames = Files.getSparrowAtlas("halloween_bg", "week2");
                 bg.antialiasing = Config.antialiasing;
-                bg.setGraphicSize(Std.int(bg.width * 1.1), Std.int(bg.height * 1.1));
+                bg.setGraphicSize(Std.int(bg.width * 1.5), Std.int(bg.height * 1.5));
                 bg.scrollFactor.set(0.9, 0.9);
                 bg.screenCenter();
                 add(bg);
+                bg.y -= 100;
             default:
                 camZoom = 0.75;
 
