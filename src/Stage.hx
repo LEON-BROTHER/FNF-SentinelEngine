@@ -22,7 +22,7 @@ class Stage extends FlxTypedGroup<FlxSprite>
                 bg.scrollFactor.set(0.9, 0.9);
                 bg.screenCenter();
                 add(bg);
-                bg.y -= 100;
+                bg.y -= 50;
             default:
                 camZoom = 0.75;
 
