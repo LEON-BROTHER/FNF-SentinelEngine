@@ -143,6 +143,36 @@ class Character extends FlxSprite
                 animation.addByPrefix("down", "Dad Sing Note DOWN", 24, false);
 
                 facingRight = false;
+            case "spooky-kids":
+                frames = Files.getSparrowAtlas("characters/spooky_kids_assets", "shared");
+                animation.addByPrefix("idle", "spooky dance idle", 24, true);
+
+                animation.addByPrefix("left", "note sing left", 24, false);
+                animation.addByPrefix("right", "spooky sing right", 24, false);
+                animation.addByPrefix("up", "spooky UP NOTE", 24, false);
+                animation.addByPrefix("down", "spooky DOWN note", 24, false);
+
+                facingRight = false;
+            case "monster":
+                frames = Files.getSparrowAtlas("characters/Monster_Assets", "shared");
+                animation.addByPrefix("idle", "monster idle", 24, true);
+
+                animation.addByPrefix("left", "Monster left note", 24, false);
+                animation.addByPrefix("right", "Monster Right note", 24, false);
+                animation.addByPrefix("up", "monster up note", 24, false);
+                animation.addByPrefix("down", "monster down", 24, false);
+
+                facingRight = false;
+            case "monster-christmas":
+                frames = Files.getSparrowAtlas("characters/monsterChristmas", "shared");
+                animation.addByPrefix("idle", "monster idle", 24, true);
+
+                animation.addByPrefix("left", "Monster left note", 24, false);
+                animation.addByPrefix("right", "Monster Right note", 24, false);
+                animation.addByPrefix("up", "monster up note", 24, false);
+                animation.addByPrefix("down", "monster down", 24, false);
+
+                facingRight = false;
         }
 
         idle();
