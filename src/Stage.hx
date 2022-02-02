@@ -27,13 +27,13 @@ class Stage extends FlxTypedGroup<FlxSprite>
 
                 var bg:FlxSprite = new FlxSprite().loadGraphic(Files.image("philly/sky", "week3"));
                 bg.antialiasing = Config.antialiasing;
-                bg.setGraphicSize(Std.int(bg.width * 1.1), Std.int(bg.height * 1.1));
+                bg.setGraphicSize(Std.int(bg.width * 1.75), Std.int(bg.height * 1.75));
                 bg.scrollFactor.set(0.8, 0.8);
                 bg.screenCenter();
                 add(bg);
                 var city:FlxSprite = new FlxSprite().loadGraphic(Files.image("philly/city", "week3"));
                 city.antialiasing = Config.antialiasing;
-                city.setGraphicSize(Std.int(city.width * 1.1), Std.int(city.height * 1.1));
+                city.setGraphicSize(Std.int(city.width * 1.75), Std.int(city.height * 1.75));
                 city.scrollFactor.set(0.9, 0.9);
                 city.screenCenter();
                 add(city);
