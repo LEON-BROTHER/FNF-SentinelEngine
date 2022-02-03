@@ -23,7 +23,7 @@ class Stage extends FlxTypedGroup<FlxSprite>
                 bg.screenCenter();
                 add(bg);
             case "philly":
-                camZoom = 0.6;
+                camZoom = 0.7;
 
                 var bg:FlxSprite = new FlxSprite().loadGraphic(Files.image("philly/sky", "week3"));
                 bg.antialiasing = Config.antialiasing;
@@ -41,6 +41,14 @@ class Stage extends FlxTypedGroup<FlxSprite>
                     city.screenCenter();
                     add(city);
                     city.y += 50;
+
+                    var window:FlxSprite = new FlxSprite().loadGraphic(Files.image("philly/win0", "week3"));
+                    window.antialiasing = Config.antialiasing;
+                    window.setGraphicSize(Std.int(window.width * 1.75), Std.int(window.height * 1.75));
+                    window.scrollFactor.set(0.8, 0.8);
+                    window.screenCenter();
+                    add(window);
+                    window.y += 50;
 
                     var behindTrain:FlxSprite = new FlxSprite().loadGraphic(Files.image("philly/behindTrain", "week3"));
                     behindTrain.antialiasing = Config.antialiasing;
