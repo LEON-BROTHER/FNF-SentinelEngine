@@ -55,6 +55,7 @@ class CreateNewModEditorState extends FlxState
         {
             FlxG.sound.play(Files.sound("confirmMenu", "preload"));
             FileSystem.createDirectory("mods/" + name.text);
+            FileSystem.createDirectory("mods/" + name.text.toLowerCase().replace(" ", "-"));
             FlxG.switchState(new ModsMenuState());
         }
         #end
