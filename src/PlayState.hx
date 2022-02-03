@@ -120,6 +120,11 @@ class PlayState extends FlxState
         {
             FlxG.switchState(new FreeplayState());
         }
+
+        if (FlxG.keys.justPressed.ESCAPE)
+        {
+            FlxG.switchState(new MainMenuState());
+        }
     }
 
     public function startSong()

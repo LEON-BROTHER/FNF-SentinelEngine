@@ -13,7 +13,6 @@ class FreeplayState extends FlxState
 {
     private var songsList:Array<String>;
     private var item:Int;
-
     private var bg:FlxSprite;
 
     private var text:FlxTypedGroup<Alphabet>;
