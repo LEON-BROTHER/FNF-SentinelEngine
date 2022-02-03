@@ -4,6 +4,7 @@ package editors;
 import sys.FileSystem;
 #end
 
+import flixel.ui.FlxButton;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.addons.ui.FlxInputText;
@@ -28,6 +29,17 @@ class CreateNewModEditorState extends FlxState
         title.screenCenter();
         add(title);
         title.y = 50;
+
+        var createB:FlxButton = new FlxButton(0, 0, "Create Mod", createMod);
+        createB.setSize(310, 140);
+        createB.scale.x = 4;
+        createB.scale.y = 2;
+        createB.label.fieldWidth *= 4;
+        createB.updateHitbox();
+        createB.label.setFormat(Files.font("vcr.ttf"), 24, FlxColor.GRAY, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
+        createB.screenCenter();
+        add(createB);
+        createB.y += 210;
 
         name = new FlxInputText(0, 0, 500, null, 24, FlxColor.BLACK, FlxColor.WHITE, true);
         name.setFormat(Files.font("vcr.ttf"), 24, FlxColor.BLACK, FlxTextAlign.LEFT, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
