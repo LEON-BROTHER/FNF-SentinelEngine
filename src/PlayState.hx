@@ -79,6 +79,8 @@ class PlayState extends FlxState
         {
             case "dad":
                 dad.y -= 100;
+            case "pico":
+                dad.y += 50;
         }
 
         boyfriend = new Character(player1, false);
