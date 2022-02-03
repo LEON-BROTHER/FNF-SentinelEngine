@@ -51,7 +51,7 @@ class CreateNewModEditorState extends FlxState
     public function createMod()
     {
         #if sys
-        if (FileSystem.exists("mods/" + name.text))
+        if (!FileSystem.exists("mods/" + name.text))
         {
             FlxG.sound.play(Files.sound("confirmMenu", "preload"));
             FileSystem.createDirectory("mods/" + name.text);
