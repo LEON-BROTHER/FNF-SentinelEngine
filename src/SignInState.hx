@@ -65,17 +65,17 @@ class SignInState extends FlxState
         skip.y += 210;
     }
 
-    public function login():Void
+    public function login()
     {
         FlxG.switchState(new LoginState());
     }
 
-    public function signup():Void
+    public function signup()
     {
         FlxG.switchState(new SignupState());
     }
 
-    public function skipLogin():Void
+    public function skipLogin()
     {
         FlxG.sound.play(Files.sound("cancelMenu", "preload"));
         FlxG.switchState(new TitleState(false));
