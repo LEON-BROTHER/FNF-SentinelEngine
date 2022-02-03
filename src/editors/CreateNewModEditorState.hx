@@ -11,6 +11,8 @@ import flixel.addons.ui.FlxInputText;
 import flixel.FlxState;
 import flixel.FlxG;
 
+using StringTools;
+
 class CreateNewModEditorState extends FlxState
 {
     private var name:FlxInputText;
@@ -54,7 +56,6 @@ class CreateNewModEditorState extends FlxState
         if (!FileSystem.exists("mods/" + name.text))
         {
             FlxG.sound.play(Files.sound("confirmMenu", "preload"));
-            FileSystem.createDirectory("mods/" + name.text);
             FileSystem.createDirectory("mods/" + name.text.toLowerCase().replace(" ", "-"));
             FlxG.switchState(new ModsMenuState());
         }
