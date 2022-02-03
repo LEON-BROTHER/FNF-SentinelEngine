@@ -4,6 +4,7 @@ package;
 import sys.FileSystem;
 #end
 
+import editors.CreateNewModEditorState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;
 import flixel.FlxSprite;
@@ -145,7 +146,7 @@ class ModsMenuState extends FlxState
 
         if (item == mods.length)
         {
-            FlxG.switchState(new PlayState("Thorns", "bf-pixel", "spirit", "gf-pixel", "school-evil"));
+            FlxG.switchState(new CreateNewModEditorState());
         }
     }
 }
