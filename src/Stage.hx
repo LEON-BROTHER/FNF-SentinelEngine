@@ -23,20 +23,41 @@ class Stage extends FlxTypedGroup<FlxSprite>
                 bg.screenCenter();
                 add(bg);
             case "philly":
-                camZoom = 0.8;
+                camZoom = 0.6;
 
                 var bg:FlxSprite = new FlxSprite().loadGraphic(Files.image("philly/sky", "week3"));
                 bg.antialiasing = Config.antialiasing;
                 bg.setGraphicSize(Std.int(bg.width * 1.75), Std.int(bg.height * 1.75));
-                bg.scrollFactor.set(0.8, 0.8);
+                bg.scrollFactor.set(0.7, 0.7);
                 bg.screenCenter();
                 add(bg);
-                var city:FlxSprite = new FlxSprite().loadGraphic(Files.image("philly/city", "week3"));
-                city.antialiasing = Config.antialiasing;
-                city.setGraphicSize(Std.int(city.width * 1.75), Std.int(city.height * 1.75));
-                city.scrollFactor.set(0.9, 0.9);
-                city.screenCenter();
-                add(city);
+
+                if (!Config.lowquality)
+                {
+                    var city:FlxSprite = new FlxSprite().loadGraphic(Files.image("philly/city", "week3"));
+                    city.antialiasing = Config.antialiasing;
+                    city.setGraphicSize(Std.int(city.width * 1.75), Std.int(city.height * 1.75));
+                    city.scrollFactor.set(0.8, 0.8);
+                    city.screenCenter();
+                    add(city);
+                    city.y += 50;
+
+                    var behindTrain:FlxSprite = new FlxSprite().loadGraphic(Files.image("philly/behindTrain", "week3"));
+                    behindTrain.antialiasing = Config.antialiasing;
+                    behindTrain.setGraphicSize(Std.int(behindTrain.width * 1.75), Std.int(behindTrain.height * 1.75));
+                    behindTrain.scrollFactor.set(0.9, 0.9);
+                    behindTrain.screenCenter();
+                    add(behindTrain);
+                    behindTrain.y += 50;
+                }
+
+                var street:FlxSprite = new FlxSprite().loadGraphic(Files.image("philly/street", "week3"));
+                street.antialiasing = Config.antialiasing;
+                street.setGraphicSize(Std.int(street.width * 1.75), Std.int(street.height * 1.75));
+                street.scrollFactor.set(0.9, 0.9);
+                street.screenCenter();
+                add(street);
+                street.y += 50;
             default:
                 camZoom = 0.75;
 
