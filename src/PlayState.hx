@@ -64,26 +64,24 @@ class PlayState extends FlxState
         background = new Stage(stage);
         add(background);
 
-        girlfriend = new Character(gf);
+        girlfriend = new Character(gf, false);
         girlfriend.screenCenter();
         add(girlfriend);
         girlfriend.y += 100;
 
-        dad = new Character(player2);
+        dad = new Character(player2, false);
         dad.screenCenter();
         add(dad);
         dad.x -= 450;
-        dad.y += 100;
+        dad.y += 200;
 
         switch (player2)
         {
-            case "spooky-kids":
-                dad.y += 100;
-            case "monster":
-                dad.y += 100;
+            case "dad":
+                dad.y -= 100;
         }
 
-        boyfriend = new Character(player1);
+        boyfriend = new Character(player1, false);
         boyfriend.screenCenter();
         add(boyfriend);
         boyfriend.x += 450;

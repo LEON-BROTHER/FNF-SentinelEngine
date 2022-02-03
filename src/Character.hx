@@ -6,7 +6,7 @@ class Character extends FlxSprite
 {
     public var facingRight:Bool;
 
-    public function new(character:String)
+    public function new(character:String, player:Bool)
     {
         super();
 
@@ -188,6 +188,15 @@ class Character extends FlxSprite
                 animation.addByPrefix("down-miss", "Pico Down Note MISS", 24, false);
 
                 facingRight = true;
+        }
+
+        if ((player && !facingRight) || (!player && facingRight))
+        {
+            flipX = true;
+        }
+        else
+        {
+            flipX = false;
         }
 
         idle();
