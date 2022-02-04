@@ -3,6 +3,7 @@ package;
 import flixel.graphics.frames.FlxAtlasFrames;
 
 #if sys
+import sys.io.FileInput;
 import sys.io.File;
 import sys.FileSystem;
 #else
@@ -47,7 +48,7 @@ class Files
         return "shared"; //TODO
     }
 
-    private static function getPath(file:String, extension:String, directory:String, ?library:String = null):String
+    private static function getPath(file:String, extension:String, directory:String, ?library:String = null):Dynamic
     {
         if (library == null)
         {
@@ -86,29 +87,39 @@ class Files
         #if sys
         else if (FileSystem.exists("mods/" + mods[0]))
         {
-            output = "mods/" + mods[0];
+            output = null;
+            if (library == "preload")
+            {
+                var read:FileInput = File.read("mods/" + mods[0] + "/" + directory + "/" + file + "." + extension);
+                return read.readAll();
+            }
+            else
+            {
+                var read:FileInput = File.read("mods/" + mods[0] + "/" + library + "/" + directory + "/" + file + "." + extension);
+                return read.readAll();
+            }
         }
         #end
 
         return output;
     }
 
-    inline static public function file(file:String, extension:String, directory:String, ?library:String = null):String
+    inline static public function file(file:String, extension:String, directory:String, ?library:String = null):Dynamic
     {
         return getPath(file, extension, directory, library);
     }
 
-    inline static public function txt(file:String, directory:String, ?library:String = null):String
+    inline static public function txt(file:String, directory:String, ?library:String = null):Dynamic
     {
         return getPath(file, "txt", directory, library);
     }
 
-    inline static public function image(file:String, ?library:String = null):String
+    inline static public function image(file:String, ?library:String = null):Dynamic
     {
         return getPath(file, "png", "images", library);
     }
 
-    inline static public function sound(file:String, ?library:String = null):String
+    inline static public function sound(file:String, ?library:String = null):Dynamic
     {
         #if web
         return getPath(file, "mp3", "sounds", library);
@@ -117,7 +128,7 @@ class Files
         #end
     }
 
-    inline static public function music(file:String, ?library:String = null):String
+    inline static public function music(file:String, ?library:String = null):Dynamic
     {
         #if web
         return getPath(file, "mp3", "music", library);
@@ -126,7 +137,7 @@ class Files
         #end
     }
 
-    inline static public function inst(songName:String):String
+    inline static public function inst(songName:String):Dynamic
     {
         #if web
         return getPath("Inst", "mp3", songName.toLowerCase().replace(" ", "-"), "songs");
@@ -135,7 +146,7 @@ class Files
         #end
     }
 
-    inline static public function voices(songName:String):String
+    inline static public function voices(songName:String):Dynamic
     {
         #if web
         return getPath("Voices", "mp3", songName.toLowerCase().replace(" ", "-"), "songs");
@@ -144,7 +155,7 @@ class Files
         #end
     }
 
-    inline static public function font(file:String):String
+    inline static public function font(file:String):Dynamic
     {
         return "assets/fonts/" + file;
     }
