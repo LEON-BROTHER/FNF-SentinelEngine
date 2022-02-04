@@ -1,5 +1,9 @@
 package;
 
+import openfl.display.Bitmap;
+import openfl.utils.Assets;
+import openfl.display.BitmapData;
+
 import flixel.graphics.frames.FlxAtlasFrames;
 
 #if sys
@@ -88,8 +92,17 @@ class Files
         else if (FileSystem.exists("mods/" + mods[0]))
         {
             output = null;
-            var read:FileInput = File.read("mods/" + mods[0]);
-            return read.readAll();
+
+            switch(extension)
+            {
+                case "png":
+                    var data:BitmapData = Assets.getBitmapData("mods/" + mods[0], true);
+                    var bm:Bitmap = new Bitmap(data);
+                    return bm;
+                default:
+                    var read:FileInput = File.read("mods/" + mods[0]);
+                    return read.readAll();
+            }
         }
         #end
 
