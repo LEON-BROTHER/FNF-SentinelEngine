@@ -92,6 +92,10 @@ class Files
             return read.readAll();
         }
         #end
+        else
+        {
+            output = null;
+        }
 
         return output;
     }
