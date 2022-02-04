@@ -1,7 +1,10 @@
 package editors;
 
+import lime.app.Application;
 #if sys
+import sys.io.FileOutput;
 import sys.FileSystem;
+import sys.io.File;
 #end
 
 import flixel.ui.FlxButton;
@@ -57,6 +60,9 @@ class CreateNewModEditorState extends FlxState
         {
             FlxG.sound.play(Files.sound("confirmMenu", "preload"));
             FileSystem.createDirectory("mods/" + name.text.toLowerCase().replace(" ", "-"));
+            var config:FileOutput = File.write("mods/" + name.text.toLowerCase().replace(" ", "-") + "/mod.config", false);
+            config.writeString("ModConfig\n{\n\tid:\t" + name.text.toLowerCase().replace(" ", "-") + "\n\tname:\t" + name.text + "\n\tauthor:\t" + "Generalisk" + "\n\tversion:\t" + "1.0" + "\n\tsentinelVer:\t" + Application.current.meta.get("version") + "\n}");
+            config.close();
             FlxG.switchState(new ModsMenuState());
         }
         #end
