@@ -88,16 +88,8 @@ class Files
         else if (FileSystem.exists("mods/" + mods[0]))
         {
             output = null;
-            if (library == "preload")
-            {
-                var read:FileInput = File.read("mods/" + mods[0] + "/" + directory + "/" + file + "." + extension);
-                return read.readAll();
-            }
-            else
-            {
-                var read:FileInput = File.read("mods/" + mods[0] + "/" + library + "/" + directory + "/" + file + "." + extension);
-                return read.readAll();
-            }
+            var read:FileInput = File.read("mods/" + mods[0]);
+            return read.readAll();
         }
         #end
 
