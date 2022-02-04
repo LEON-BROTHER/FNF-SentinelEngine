@@ -25,15 +25,11 @@ class ModsMenuState extends FlxState
         super();
 
         #if sys
-        var temp:Array<String> = FileSystem.readDirectory("mods");
-        mods = new Array<String>();
+        mods = FileSystem.readDirectory("mods");
 
-        for (i in 0...temp.length)
+        if (mods.contains("README.txt"))
         {
-            if (temp[i] != "README.txt")
-            {
-                mods.insert(temp.length + 2, temp[i]);
-            }
+            mods.remove("README.txt");
         }
         #else
         mods = [""];
