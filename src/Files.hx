@@ -1,5 +1,6 @@
 package;
 
+import lime.app.Future;
 import openfl.display.Bitmap;
 import openfl.utils.Assets;
 import openfl.display.BitmapData;
@@ -96,9 +97,10 @@ class Files
             switch(extension)
             {
                 case "png":
-                    var data:BitmapData = Assets.getBitmapData("mods/" + mods[0], true);
-                    var bm:Bitmap = new Bitmap(data);
-                    return bm;
+                    var read:FileInput = File.read("mods/" + mods[0]);
+                    var data:Future<BitmapData> = BitmapData.loadFromBytes(read.readAll());
+                    //var bm:Bitmap = new Bitmap(data); //IDK
+                    return data;
                 default:
                     var read:FileInput = File.read("mods/" + mods[0]);
                     return read.readAll();
