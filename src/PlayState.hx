@@ -14,6 +14,7 @@ class PlayState extends FunkinState
     public var voices:FlxSound;
 
     public var game:FlxCamera;
+    public var hud:FlxCamera;
     public var target:FlxSprite;
 
     public var song:String = "null";
@@ -58,7 +59,13 @@ class PlayState extends FunkinState
         game = new FlxCamera();
         game.follow(target, FlxCameraFollowStyle.NO_DEAD_ZONE, 1);
         game.zoom = 1.3;
-        FlxG.cameras.add(game);
+        FlxG.cameras.reset(game);
+        FlxG.cameras.setDefaultDrawTarget(game, true);
+
+        hud = new FlxCamera();
+        hud.follow(new FlxSprite(-69420, -69420).makeGraphic(1, 1, FlxColor.TRANSPARENT, true, "targettedtoolol"), FlxCameraFollowStyle.NO_DEAD_ZONE, 1);
+        hud.bgColor.alpha = 0;
+        FlxG.cameras.add(hud);
 
         background = new Stage(stage);
         add(background);
@@ -115,10 +122,10 @@ class PlayState extends FunkinState
             boyfriend.right();
         }
 
-        if (!voices.playing)
+        /*if (!voices.playing)
         {
             FunkinState.switchState(new FreeplayState());
-        }
+        }*/
 
         if (FlxG.keys.justPressed.ESCAPE)
         {

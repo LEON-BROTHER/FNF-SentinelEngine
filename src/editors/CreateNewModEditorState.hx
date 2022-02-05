@@ -18,6 +18,8 @@ using StringTools;
 class CreateNewModEditorState extends FunkinState
 {
     private var name:FlxInputText;
+    private var author:FlxInputText;
+    private var version:FlxInputText;
 
     public function new()
     {
@@ -50,6 +52,17 @@ class CreateNewModEditorState extends FunkinState
         name.screenCenter();
         add(name);
         name.y -= 100;
+
+        author = new FlxInputText(0, 0, 500, null, 24, FlxColor.BLACK, FlxColor.WHITE, true);
+        author.setFormat(Files.font("vcr.ttf"), 24, FlxColor.BLACK, FlxTextAlign.LEFT, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
+        author.screenCenter();
+        add(author);
+
+        version = new FlxInputText(0, 0, 500, null, 24, FlxColor.BLACK, FlxColor.WHITE, true);
+        version.setFormat(Files.font("vcr.ttf"), 24, FlxColor.BLACK, FlxTextAlign.LEFT, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
+        version.screenCenter();
+        add(version);
+        version.y += 100;
     }
 
     public function createMod()
@@ -60,7 +73,7 @@ class CreateNewModEditorState extends FunkinState
             FlxG.sound.play(Files.sound("confirmMenu", "preload"));
             FileSystem.createDirectory("mods/" + name.text.toLowerCase().replace(" ", "-"));
             var config:FileOutput = File.write("mods/" + name.text.toLowerCase().replace(" ", "-") + "/mod.config", false);
-            config.writeString("ModConfig\n{\n\tid:\t" + name.text.toLowerCase().replace(" ", "-") + "\n\tname:\t" + name.text + "\n\tauthor:\t" + "Generalisk" + "\n\tversion:\t" + "1.0" + "\n\tsentinelVer:\t" + Application.current.meta.get("version") + "\n}");
+            config.writeString("ModConfig\n{\n\tid:\t" + name.text.toLowerCase().replace(" ", "-") + "\n\tname:\t" + name.text + "\n\tauthor:\t" + author.text + "\n\tversion:\t" + version.text + "\n\tsentinelVer:\t" + Application.current.meta.get("version") + "\n}");
             config.close();
             FunkinState.switchState(new ModsMenuState());
         }
