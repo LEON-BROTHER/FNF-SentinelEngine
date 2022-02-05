@@ -1,6 +1,6 @@
 package;
 
-#if sys
+#if MODS_ALLOWED
 import sys.FileSystem;
 #end
 
@@ -23,7 +23,7 @@ class ModsMenuState extends FunkinState
     {
         super();
 
-        #if sys
+        #if MODS_ALLOWED
         mods = FileSystem.readDirectory("mods");
 
         if (mods.contains("README.txt"))

@@ -1,7 +1,7 @@
 package editors;
 
 import lime.app.Application;
-#if sys
+#if MODS_ALLOWED
 import sys.io.FileOutput;
 import sys.FileSystem;
 import sys.io.File;
@@ -54,7 +54,7 @@ class CreateNewModEditorState extends FunkinState
 
     public function createMod()
     {
-        #if sys
+        #if MODS_ALLOWED
         if (!FileSystem.exists("mods/" + name.text))
         {
             FlxG.sound.play(Files.sound("confirmMenu", "preload"));

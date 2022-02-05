@@ -6,7 +6,7 @@ import openfl.display.BitmapData;
 
 import flixel.graphics.frames.FlxAtlasFrames;
 
-#if sys
+#if MODS_ALLOWED
 import sys.io.FileInput;
 import sys.io.File;
 import sys.FileSystem;
@@ -18,7 +18,7 @@ using StringTools;
 
 class Files
 {
-    #if sys
+    #if MODS_ALLOWED
     private static function getMods(file:String, extension:String, directory:String, ?library:String = null):Array<String>
     {
         var array:Array<String> = FileSystem.readDirectory("mods");
@@ -69,7 +69,7 @@ class Files
             output = "assets/" + library + "/" + directory + "/" + file + "." + extension;
         }
 
-        #if sys
+        #if MODS_ALLOWED
         var mods:Array<String> = getMods(file, extension, directory, library);
 
         if (!FileSystem.exists(output) && mods.length < 1)
@@ -88,7 +88,7 @@ class Files
                     output = null;
             }
         }
-        #if sys
+        #if MODS_ALLOWED
         else if (FileSystem.exists("mods/" + mods[0]))
         {
             output = null;
@@ -173,7 +173,7 @@ class Files
     inline static public function readTextFile(file:String):Array<String>
     {
         var textFile:Array<String> = [];
-		#if sys
+		#if MODS_ALLOWED
 		if(FileSystem.exists(file)) textFile = File.getContent(file).trim().split('\n');
 		#else
 		if(Assets.exists(file)) textFile = Assets.getText(file).trim().split('\n');
