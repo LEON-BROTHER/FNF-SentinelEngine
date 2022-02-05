@@ -11,12 +11,11 @@ import flixel.ui.FlxButton;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.addons.ui.FlxInputText;
-import flixel.FlxState;
 import flixel.FlxG;
 
 using StringTools;
 
-class CreateNewModEditorState extends FlxState
+class CreateNewModEditorState extends FunkinState
 {
     private var name:FlxInputText;
 
@@ -63,7 +62,7 @@ class CreateNewModEditorState extends FlxState
             var config:FileOutput = File.write("mods/" + name.text.toLowerCase().replace(" ", "-") + "/mod.config", false);
             config.writeString("ModConfig\n{\n\tid:\t" + name.text.toLowerCase().replace(" ", "-") + "\n\tname:\t" + name.text + "\n\tauthor:\t" + "Generalisk" + "\n\tversion:\t" + "1.0" + "\n\tsentinelVer:\t" + Application.current.meta.get("version") + "\n}");
             config.close();
-            FlxG.switchState(new ModsMenuState());
+            FunkinState.switchState(new ModsMenuState());
         }
         #end
     }

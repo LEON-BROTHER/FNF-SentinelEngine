@@ -6,11 +6,10 @@ import flixel.FlxG;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxSprite;
-import flixel.FlxState;
 
 using StringTools;
 
-class MainMenuState extends FlxState
+class MainMenuState extends FunkinState
 {
     #if desktop
     private var menuData:Array<String> = ["story mode", "freeplay", "donate", "achievements", "credits", "mods", "workshop", "options"];
@@ -147,33 +146,33 @@ class MainMenuState extends FlxState
         {
             case "story mode":
                 new FlxTimer().start(1.5, function(tmr:FlxTimer) {
-                    FlxG.switchState(new StoryModeState());
+                    FunkinState.switchState(new StoryModeState());
                 });
             case "freeplay":
                 new FlxTimer().start(1.5, function(tmr:FlxTimer) {
-                    FlxG.switchState(new FreeplayState());
+                    FunkinState.switchState(new FreeplayState());
                 });
             case "donate":
                 FlxG.openURL("https://ninja-muffin24.itch.io/funkin");
             case "achievements":
                 new FlxTimer().start(1.5, function(tmr:FlxTimer) {
-                    FlxG.switchState(new AchievementsState());
+                    FunkinState.switchState(new AchievementsState());
                 });
             case "credits":
                 new FlxTimer().start(1.5, function(tmr:FlxTimer) {
-                    FlxG.switchState(new CreditsState());
+                    FunkinState.switchState(new CreditsState());
                 });
             case "mods":
                 new FlxTimer().start(1.5, function(tmr:FlxTimer) {
-                    FlxG.switchState(new ModsMenuState());
+                    FunkinState.switchState(new ModsMenuState());
                 });
             case "workshop":
                 new FlxTimer().start(1.5, function(tmr:FlxTimer) {
-                    FlxG.switchState(new WorkshopState());
+                    FunkinState.switchState(new WorkshopState());
                 });
             case "options":
                 new FlxTimer().start(1.5, function(tmr:FlxTimer) {
-                    FlxG.switchState(new OptionsState());
+                    FunkinState.switchState(new OptionsState());
                 });
         }
     }

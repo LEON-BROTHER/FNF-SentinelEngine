@@ -5,9 +5,8 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxSprite;
 import flixel.FlxG;
-import flixel.FlxState;
 
-class OptionsState extends FlxState
+class OptionsState extends FunkinState
 {
     private var options:Array<Dynamic> = [
         ["Language", LanguageOptionType, "Set The Game's Global Language"],
@@ -94,7 +93,7 @@ class OptionsState extends FlxState
         {
             FlxG.sound.play(Files.sound("cancelMenu", "preload"));
             Config.saveConfig();
-            FlxG.switchState(new MainMenuState());
+            FunkinState.switchState(new MainMenuState());
         }
     }
 

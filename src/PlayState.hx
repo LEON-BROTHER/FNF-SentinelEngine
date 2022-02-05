@@ -8,9 +8,8 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxCamera;
 import flixel.FlxG;
-import flixel.FlxState;
 
-class PlayState extends FlxState
+class PlayState extends FunkinState
 {
     public var voices:FlxSound;
 
@@ -118,12 +117,12 @@ class PlayState extends FlxState
 
         if (!voices.playing)
         {
-            FlxG.switchState(new FreeplayState());
+            FunkinState.switchState(new FreeplayState());
         }
 
         if (FlxG.keys.justPressed.ESCAPE)
         {
-            FlxG.switchState(new MainMenuState());
+            FunkinState.switchState(new MainMenuState());
         }
     }
 

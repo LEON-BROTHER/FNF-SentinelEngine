@@ -5,9 +5,8 @@ import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.text.FlxText;
-import flixel.FlxState;
 
-class LoginState extends FlxState
+class LoginState extends FunkinState
 {
     private var username:FlxInputText;
     private var password:FlxInputText;
@@ -69,12 +68,12 @@ class LoginState extends FlxState
 
     public function signup()
     {
-        FlxG.switchState(new SignupState());
+        FunkinState.switchState(new SignupState());
     }
 
     public function skipLogin()
     {
         FlxG.sound.play(Files.sound("cancelMenu", "preload"));
-        FlxG.switchState(new TitleState(false));
+        FunkinState.switchState(new TitleState(false));
     }
 }

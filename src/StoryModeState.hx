@@ -1,9 +1,8 @@
 package;
 
 import flixel.FlxG;
-import flixel.FlxState;
 
-class StoryModeState extends FlxState
+class StoryModeState extends FunkinState
 {
     public function new()
     {
@@ -17,7 +16,7 @@ class StoryModeState extends FlxState
         if (FlxG.keys.justPressed.ESCAPE)
         {
             FlxG.sound.play(Files.sound("cancelMenu", "preload"));
-            FlxG.switchState(new MainMenuState());
+            FunkinState.switchState(new MainMenuState());
         }
     }
 }

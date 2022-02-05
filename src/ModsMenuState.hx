@@ -10,9 +10,8 @@ import flixel.tweens.FlxEase;
 import flixel.FlxSprite;
 import flixel.tweens.FlxTween;
 import flixel.FlxG;
-import flixel.FlxState;
 
-class ModsMenuState extends FlxState
+class ModsMenuState extends FunkinState
 {
     private var mods:Array<String>;
     private var item:Int;
@@ -96,7 +95,7 @@ class ModsMenuState extends FlxState
         if (FlxG.keys.justPressed.ESCAPE)
         {
             FlxG.sound.play(Files.sound("cancelMenu", "preload"));
-            FlxG.switchState(new MainMenuState());
+            FunkinState.switchState(new MainMenuState());
         }
     }
 
@@ -142,7 +141,7 @@ class ModsMenuState extends FlxState
 
         if (item == mods.length)
         {
-            FlxG.switchState(new CreateNewModEditorState());
+            FunkinState.switchState(new CreateNewModEditorState());
         }
     }
 }

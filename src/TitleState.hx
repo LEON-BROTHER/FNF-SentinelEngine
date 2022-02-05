@@ -6,11 +6,10 @@ import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
 import flixel.FlxSprite;
 import flixel.FlxG;
-import flixel.FlxState;
 
 using StringTools;
 
-class TitleState extends FlxState
+class TitleState extends FunkinState
 {
     private var enterText:FlxSprite;
     private var bg:FlxSprite;
@@ -90,7 +89,7 @@ class TitleState extends FlxState
                 enterText.animation.play("selected");
 
                 new FlxTimer().start(1.5, function(tmr:FlxTimer) {
-                    FlxG.switchState(new MainMenuState());
+                    FunkinState.switchState(new MainMenuState());
                 });
             }
         }

@@ -7,9 +7,8 @@ import flixel.tweens.FlxEase;
 import flixel.FlxG;
 import flixel.tweens.FlxTween;
 import flixel.FlxSprite;
-import flixel.FlxState;
 
-class FreeplayState extends FlxState
+class FreeplayState extends FunkinState
 {
     private var songsList:Array<String>;
     private var item:Int;
@@ -86,7 +85,7 @@ class FreeplayState extends FlxState
         if (FlxG.keys.justPressed.ESCAPE)
         {
             FlxG.sound.play(Files.sound("cancelMenu", "preload"));
-            FlxG.switchState(new MainMenuState());
+            FunkinState.switchState(new MainMenuState());
         }
     }
 
@@ -230,7 +229,7 @@ class FreeplayState extends FlxState
                     stage = "stage";
             }
 
-            FlxG.switchState(new PlayState(songsList[num].split(":")[0], bf, songsList[num].split(":")[1], gf, stage));
+            FunkinState.switchState(new PlayState(songsList[num].split(":")[0], bf, songsList[num].split(":")[1], gf, stage));
         });
     }
 }
