@@ -67,7 +67,7 @@ class Stage extends FlxTypedGroup<FlxSprite>
                 add(street);
                 street.y += 50;
             case "limo":
-                camZoom = 0.9;
+                camZoom = 0.95;
 
                 var bg:FlxSprite = new FlxSprite().loadGraphic(Files.image("limo/limoSunset", "week4"));
                 bg.antialiasing = Config.antialiasing;
