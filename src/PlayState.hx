@@ -98,6 +98,12 @@ class PlayState extends FunkinState
         boyfriend.x += 450;
         boyfriend.y += 360;
 
+        switch (stage)
+        {
+            case "limo":
+                boyfriend.y -= 150;
+        }
+
         countdown();
     }
 
