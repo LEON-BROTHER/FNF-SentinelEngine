@@ -152,7 +152,7 @@ class PlayState extends FunkinState
                         add(count02);
                         FlxG.sound.play(Files.sound("intro2-pixel", "week6"));
                     default:
-                        var count02:FlxSprite = new ReadyCard(Files.image("ready", "shared"));
+                        var count02:FlxSprite = new ReadyCard(Files.image("ready", "preload"));
                         add(count02);
                         FlxG.sound.play(Files.sound("intro2", "shared"));
                 }
@@ -164,7 +164,7 @@ class PlayState extends FunkinState
                             add(count01);
                             FlxG.sound.play(Files.sound("intro1-pixel", "week6"));
                         default:
-                            var count01:FlxSprite = new ReadyCard(Files.image("set", "shared"));
+                            var count01:FlxSprite = new ReadyCard(Files.image("set", "preload"));
                             add(count01);
                             FlxG.sound.play(Files.sound("intro1", "shared"));
                     }
@@ -176,7 +176,7 @@ class PlayState extends FunkinState
                                 add(count00);
                                 FlxG.sound.play(Files.sound("introGo-pixel", "week6"));
                             default:
-                                var count00:FlxSprite = new ReadyCard(Files.image("go", "shared"));
+                                var count00:FlxSprite = new ReadyCard(Files.image("go", "preload"));
                                 add(count00);
                                 FlxG.sound.play(Files.sound("introGo", "shared"));
                         }
