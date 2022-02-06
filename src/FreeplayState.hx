@@ -150,7 +150,7 @@ class FreeplayState extends FunkinState
             }
         }
 
-        FlxG.sound.playMusic(Files.inst(songsList[item].split(":")[0])); //TODO: Fix This Fucking Bullshit Not Loading //Update: Temporarily Fixed For Now, But Not Good. Need's Proper Fix...
+        FlxG.sound.playMusic(Files.inst(songsList[item].split(":")[0]), 1, true); //TODO: Fix This Fucking Bullshit Not Loading //Update: Temporarily Fixed For Now, But Not Good. Need's Proper Fix...
 
         for (num in 0...text.length)
         {

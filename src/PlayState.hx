@@ -95,7 +95,7 @@ class PlayState extends FunkinState
         boyfriend.x += 450;
         boyfriend.y += 360;
 
-        startSong();
+        countdown();
     }
 
     override function update(elapsed:Float)
@@ -133,9 +133,83 @@ class PlayState extends FunkinState
         }
     }
 
+    public function countdown()
+    {
+        moveCam(girlfriend);
+        new FlxTimer().start(0.5, function(tmr:FlxTimer) {
+            switch (player1)
+            {
+                case "bf-pixel":
+                    FlxG.sound.play(Files.sound("intro3-pixel", "week6"));
+                default:
+                    FlxG.sound.play(Files.sound("intro3", "shared"));
+            }
+            new FlxTimer().start(0.5, function(tmr:FlxTimer) {
+                var count02:FlxSprite = new FlxSprite();
+                switch (player1)
+                {
+                    case "bf-pixel":
+                        count02.loadGraphic(Files.image("weeb/pixelUI/ready-pixel", "week6"));
+                        FlxG.sound.play(Files.sound("intro2-pixel", "week6"));
+                    default:
+                        count02.loadGraphic(Files.image("ready", "shared"));
+                        FlxG.sound.play(Files.sound("intro2", "shared"));
+                }
+                count02.setPosition(-69420 - (count02.width / 2), -69420 - (count02.height / 2));
+                add(count02);
+                new FlxTimer().start(0.1, function(tmr:FlxTimer) {
+                    FlxTween.tween(count02, {alpha: 0}, 0.4, {
+                        ease: FlxEase.linear,
+                    });
+                });
+                new FlxTimer().start(0.5, function(tmr:FlxTimer) {
+                    var count01:FlxSprite = new FlxSprite();
+                    switch (player1)
+                    {
+                        case "bf-pixel":
+                            count01.loadGraphic(Files.image("weeb/pixelUI/set-pixel", "week6"));
+                            FlxG.sound.play(Files.sound("intro1-pixel", "week6"));
+                        default:
+                            count01.loadGraphic(Files.image("set", "shared"));
+                            FlxG.sound.play(Files.sound("intro1", "shared"));
+                    }
+                    count01.setPosition(-69420 - (count01.width / 2), -69420 - (count01.height / 2));
+                    add(count01);
+                    new FlxTimer().start(0.1, function(tmr:FlxTimer) {
+                        FlxTween.tween(count01, {alpha: 0}, 0.4, {
+                            ease: FlxEase.linear,
+                        });
+                    });
+                    new FlxTimer().start(0.5, function(tmr:FlxTimer) {
+                        var count00:FlxSprite = new FlxSprite();
+                        switch (player1)
+                        {
+                            case "bf-pixel":
+                                count00.loadGraphic(Files.image("weeb/pixelUI/go-pixel", "week6"));
+                                FlxG.sound.play(Files.sound("introGo-pixel", "week6"));
+                            default:
+                                count00.loadGraphic(Files.image("go", "shared"));
+                                FlxG.sound.play(Files.sound("introGo", "shared"));
+                        }
+                        count00.setPosition(-69420 - (count00.width / 2), -69420 - (count00.height / 2));
+                        add(count00);
+                        new FlxTimer().start(0.1, function(tmr:FlxTimer) {
+                            FlxTween.tween(count00, {alpha: 0}, 0.4, {
+                                ease: FlxEase.linear,
+                            });
+                        });
+                        new FlxTimer().start(0.5, function(tmr:FlxTimer) {
+                            startSong();
+                        });
+                    });
+                });
+            });
+        });
+    }
+
     public function startSong()
     {
-        FlxG.sound.playMusic(Files.inst(song));
+        FlxG.sound.playMusic(Files.inst(song), 1, false);
         voices = FlxG.sound.play(Files.voices(song));
         FlxG.sound.music.time = voices.time;
 
