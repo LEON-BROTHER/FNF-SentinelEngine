@@ -145,59 +145,41 @@ class PlayState extends FunkinState
                     FlxG.sound.play(Files.sound("intro3", "shared"));
             }
             new FlxTimer().start(0.5, function(tmr:FlxTimer) {
-                var count02:FlxSprite = new FlxSprite();
                 switch (player1)
                 {
                     case "bf-pixel":
-                        count02.loadGraphic(Files.image("weeb/pixelUI/ready-pixel", "week6"));
+                        var count02:FlxSprite = new ReadyCard(Files.image("weeb/pixelUI/ready-pixel", "week6"));
+                        add(count02);
                         FlxG.sound.play(Files.sound("intro2-pixel", "week6"));
                     default:
-                        count02.loadGraphic(Files.image("ready", "shared"));
+                        var count02:FlxSprite = new ReadyCard(Files.image("ready", "shared"));
+                        add(count02);
                         FlxG.sound.play(Files.sound("intro2", "shared"));
                 }
-                count02.setPosition(-69420 - (count02.width / 2), -69420 - (count02.height / 2));
-                add(count02);
-                new FlxTimer().start(0.1, function(tmr:FlxTimer) {
-                    FlxTween.tween(count02, {alpha: 0}, 0.4, {
-                        ease: FlxEase.linear,
-                    });
-                });
                 new FlxTimer().start(0.5, function(tmr:FlxTimer) {
-                    var count01:FlxSprite = new FlxSprite();
                     switch (player1)
                     {
                         case "bf-pixel":
-                            count01.loadGraphic(Files.image("weeb/pixelUI/set-pixel", "week6"));
+                            var count01:FlxSprite = new ReadyCard(Files.image("weeb/pixelUI/set-pixel", "week6"));
+                            add(count01);
                             FlxG.sound.play(Files.sound("intro1-pixel", "week6"));
                         default:
-                            count01.loadGraphic(Files.image("set", "shared"));
+                            var count01:FlxSprite = new ReadyCard(Files.image("set", "shared"));
+                            add(count01);
                             FlxG.sound.play(Files.sound("intro1", "shared"));
                     }
-                    count01.setPosition(-69420 - (count01.width / 2), -69420 - (count01.height / 2));
-                    add(count01);
-                    new FlxTimer().start(0.1, function(tmr:FlxTimer) {
-                        FlxTween.tween(count01, {alpha: 0}, 0.4, {
-                            ease: FlxEase.linear,
-                        });
-                    });
                     new FlxTimer().start(0.5, function(tmr:FlxTimer) {
-                        var count00:FlxSprite = new FlxSprite();
                         switch (player1)
                         {
                             case "bf-pixel":
-                                count00.loadGraphic(Files.image("weeb/pixelUI/go-pixel", "week6"));
+                                var count00:FlxSprite = new ReadyCard(Files.image("weeb/pixelUI/go-pixel", "week6"));
+                                add(count00);
                                 FlxG.sound.play(Files.sound("introGo-pixel", "week6"));
                             default:
-                                count00.loadGraphic(Files.image("go", "shared"));
+                                var count00:FlxSprite = new ReadyCard(Files.image("go", "shared"));
+                                add(count00);
                                 FlxG.sound.play(Files.sound("introGo", "shared"));
                         }
-                        count00.setPosition(-69420 - (count00.width / 2), -69420 - (count00.height / 2));
-                        add(count00);
-                        new FlxTimer().start(0.1, function(tmr:FlxTimer) {
-                            FlxTween.tween(count00, {alpha: 0}, 0.4, {
-                                ease: FlxEase.linear,
-                            });
-                        });
                         new FlxTimer().start(0.5, function(tmr:FlxTimer) {
                             startSong();
                         });
@@ -239,6 +221,22 @@ class PlayState extends FunkinState
             new FlxTimer().start(3.5, function(tmr:FlxTimer) {
                 moveCam(boyfriend);
                 loop();
+            });
+        });
+    }
+}
+
+class ReadyCard extends FlxSprite
+{
+    public function new(card:String)
+    {
+        super();
+        loadGraphic(card);
+        setPosition(-69420 - (width / 2), -69420 - (height / 2));
+
+        new FlxTimer().start(0.1, function(tmr:FlxTimer) {
+            FlxTween.tween(this, {alpha: 0}, 0.4, {
+                ease: FlxEase.linear,
             });
         });
     }
