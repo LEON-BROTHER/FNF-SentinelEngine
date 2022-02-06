@@ -19,4 +19,14 @@ class HealthIcon extends FlxSprite
     {
         animation.frameIndex = 0;
     }
+
+    public function losing()
+    {
+        animation.frameIndex = 1;
+    }
+
+    public function winning()
+    {
+        animation.frameIndex = 2;
+    }
 }
