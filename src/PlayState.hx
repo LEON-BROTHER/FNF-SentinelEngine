@@ -87,6 +87,9 @@ class PlayState extends FunkinState
                 dad.y -= 100;
             case "pico":
                 dad.y += 50;
+            case "mom" | "mom-car":
+                dad.x += 180;
+                dad.y -= 50;
         }
 
         boyfriend = new Character(player1, true);

@@ -188,6 +188,26 @@ class Character extends FlxSprite
                 animation.addByPrefix("down-miss", "Pico Down Note MISS", 24, false);
 
                 facingRight = true;
+            case "mom":
+                frames = Files.getSparrowAtlas("characters/Mom_Assets", "shared");
+                animation.addByPrefix("idle", "Mom Idle", 24, true);
+
+                animation.addByPrefix("left", "Mom Left Pose", 24, false);
+                animation.addByPrefix("right", "Mom Pose Left", 24, false); //Look's Like Someone Fucked Up The Animation Naming Lol -Generalisk
+                animation.addByPrefix("up", "Mom Up Pose", 24, false);
+                animation.addByPrefix("down", "MOM DOWN POSE", 24, false);
+
+                facingRight = false;
+            case "mom-car":
+                frames = Files.getSparrowAtlas("characters/momCar", "shared");
+                animation.addByPrefix("idle", "Mom Idle", 24, true);
+
+                animation.addByPrefix("left", "Mom Left Pose", 24, false);
+                animation.addByPrefix("right", "Mom Pose Left", 24, false); //Look's Like Someone Fucked Up The Animation Naming Lol -Generalisk
+                animation.addByPrefix("up", "Mom Up Pose", 24, false);
+                animation.addByPrefix("down", "MOM DOWN POSE", 24, false);
+
+                facingRight = false;
         }
 
         if ((player && !facingRight) || (!player && facingRight))

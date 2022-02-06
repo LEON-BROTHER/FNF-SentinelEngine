@@ -23,7 +23,7 @@ class Stage extends FlxTypedGroup<FlxSprite>
                 bg.screenCenter();
                 add(bg);
             case "philly":
-                camZoom = 0.7;
+                camZoom = 0.8;
 
                 var bg:FlxSprite = new FlxSprite().loadGraphic(Files.image("philly/sky", "week3"));
                 bg.antialiasing = Config.antialiasing;
@@ -66,6 +66,44 @@ class Stage extends FlxTypedGroup<FlxSprite>
                 street.screenCenter();
                 add(street);
                 street.y += 50;
+            case "limo":
+                camZoom = 0.9;
+
+                var bg:FlxSprite = new FlxSprite().loadGraphic(Files.image("limo/limoSunset", "week4"));
+                bg.antialiasing = Config.antialiasing;
+                bg.setGraphicSize(Std.int(bg.width * 1.75), Std.int(bg.height * 1.75));
+                bg.scrollFactor.set(0.7, 0.7);
+                bg.screenCenter();
+                add(bg);
+                bg.x -= 360;
+
+                if (!Config.lowquality)
+                {
+                    var bgLimo:FlxSprite = new FlxSprite();
+                    bgLimo.frames = Files.getSparrowAtlas("limo/bgLimo", "week4");
+                    bgLimo.animation.addByPrefix("idle", "background limo pink", 24, true);
+                    bgLimo.animation.play("idle");
+                    bgLimo.antialiasing = Config.antialiasing;
+                    bgLimo.scrollFactor.set(0.8, 0.8);
+                    bgLimo.screenCenter();
+                    add(bgLimo);
+                    bgLimo.x -= 360;
+                    bgLimo.y += 540;
+                }
+
+                var limo:FlxSprite = new FlxSprite();
+                limo.frames = Files.getSparrowAtlas("limo/limoDrive", "week4");
+                if (!Config.lowquality)
+                {
+                    limo.animation.addByPrefix("idle", "Limo stage", 24, true);
+                    limo.animation.play("idle");
+                }
+                limo.antialiasing = Config.antialiasing;
+                limo.scrollFactor.set(0.9, 0.9);
+                limo.screenCenter();
+                add(limo);
+                limo.x += 180;
+                limo.y += 640;
             default:
                 camZoom = 0.75;
 
