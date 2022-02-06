@@ -146,7 +146,7 @@ class FreeplayState extends FunkinState
                         clr = 0xFFFFFFFF;
                 }
 
-                FlxTween.tween(bg, {color: clr}, 1.5, {});
+                FlxTween.color(bg, 1.5, bg.color, clr, {});
             }
         }
 
