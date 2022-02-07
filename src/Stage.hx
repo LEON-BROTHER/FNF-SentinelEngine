@@ -122,6 +122,111 @@ class Stage extends FlxTypedGroup<FlxSprite>
                 add(limo);
                 limo.x += 180;
                 limo.y += 640;
+            case "mall":
+                camZoom = 0.8;
+
+                var bg:FlxSprite = new FlxSprite().loadGraphic(Files.image("christmas/bgWalls", "week5"));
+                bg.antialiasing = Config.antialiasing;
+                bg.scrollFactor.set(0.6, 0.6);
+                bg.screenCenter();
+                add(bg);
+
+                if (!Config.lowquality)
+                {
+                    var topDancers:FlxSprite = new FlxSprite();
+                    topDancers.frames = Files.getSparrowAtlas("christmas/upperBop", "week5");
+                    topDancers.animation.addByPrefix("idle", "Upper Crowd Bob", 24, true);
+                    topDancers.animation.play("idle");
+                    topDancers.antialiasing = Config.antialiasing;
+                    topDancers.scrollFactor.set(0.7, 0.7);
+                    topDancers.screenCenter();
+                    add(topDancers);
+
+                    var escalator:FlxSprite = new FlxSprite().loadGraphic(Files.image("christmas/bgEscalator", "week5"));
+                    escalator.antialiasing = Config.antialiasing;
+                    escalator.scrollFactor.set(0.7, 0.7);
+                    escalator.screenCenter();
+                    add(escalator);
+                    escalator.y += 150;
+
+                    var tree:FlxSprite = new FlxSprite().loadGraphic(Files.image("christmas/christmasTree", "week5"));
+                    tree.antialiasing = Config.antialiasing;
+                    tree.scrollFactor.set(0.65, 0.65);
+                    tree.screenCenter();
+                    add(tree);
+                }
+
+                var snow:FlxSprite = new FlxSprite().loadGraphic(Files.image("christmas/fgSnow", "week5"));
+                snow.antialiasing = Config.antialiasing;
+                snow.scrollFactor.set(0.9, 0.9);
+                snow.screenCenter();
+                add(snow);
+                snow.y += 690;
+
+                var snow2:FlxSprite = new FlxSprite().loadGraphic(Files.image("christmas/fgSnow", "week5"));
+                snow2.antialiasing = Config.antialiasing;
+                snow2.scrollFactor.set(0.9, 0.9);
+                snow2.screenCenter();
+                add(snow2);
+                snow2.y += 740;
+
+                if (!Config.lowquality)
+                {
+                    var bottomDancers:FlxSprite = new FlxSprite();
+                    bottomDancers.frames = Files.getSparrowAtlas("christmas/bottomBop", "week5");
+                    bottomDancers.animation.addByPrefix("idle", "Bottom Level Boppers", 24, true);
+                    bottomDancers.animation.play("idle");
+                    bottomDancers.antialiasing = Config.antialiasing;
+                    bottomDancers.scrollFactor.set(0.8, 0.8);
+                    bottomDancers.screenCenter();
+                    add(bottomDancers);
+                    bottomDancers.y += 450;
+                }
+
+                var santa:FlxSprite = new FlxSprite();
+                santa.frames = Files.getSparrowAtlas("christmas/santa", "week5");
+                if (!Config.lowquality)
+                {
+                    santa.animation.addByPrefix("idle", "santa idle in fear", 24, true);
+                    santa.animation.play("idle");
+                }
+                santa.antialiasing = Config.antialiasing;
+                santa.scrollFactor.set(0.8, 0.8);
+                santa.screenCenter();
+                add(santa);
+                santa.x -= 640;
+                santa.y += 420;
+            case "mall-evil":
+                camZoom = 0.8;
+
+                var bg:FlxSprite = new FlxSprite().loadGraphic(Files.image("christmas/christmasButSpoopy/evilBG", "week5"));
+                bg.antialiasing = Config.antialiasing;
+                bg.scrollFactor.set(0.6, 0.6);
+                bg.screenCenter();
+                add(bg);
+
+                if (!Config.lowquality)
+                {
+                    var tree:FlxSprite = new FlxSprite().loadGraphic(Files.image("christmas/christmasButSpoopy/evilTree", "week5"));
+                    tree.antialiasing = Config.antialiasing;
+                    tree.scrollFactor.set(0.65, 0.65);
+                    tree.screenCenter();
+                    add(tree);
+                }
+
+                var snow:FlxSprite = new FlxSprite().loadGraphic(Files.image("christmas/christmasButSpoopy/evilSnow", "week5"));
+                snow.antialiasing = Config.antialiasing;
+                snow.scrollFactor.set(0.9, 0.9);
+                snow.screenCenter();
+                add(snow);
+                snow.y += 690;
+
+                var snow2:FlxSprite = new FlxSprite().loadGraphic(Files.image("christmas/christmasButSpoopy/evilSnow", "week5"));
+                snow2.antialiasing = Config.antialiasing;
+                snow2.scrollFactor.set(0.9, 0.9);
+                snow2.screenCenter();
+                add(snow2);
+                snow2.y += 740;
             default:
                 camZoom = 0.75;
 

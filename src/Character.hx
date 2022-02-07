@@ -208,6 +208,21 @@ class Character extends FlxSprite
                 animation.addByPrefix("down", "MOM DOWN POSE", 24, false);
 
                 facingRight = false;
+            case "parents":
+                frames = Files.getSparrowAtlas("characters/mom_dad_christmas_assets", "shared");
+                animation.addByPrefix("idle", "Parent Christmas Idle", 24, true);
+
+                animation.addByPrefix("left", "Parent Down Note Dad", 24, false);
+                animation.addByPrefix("right", "Parent Right Note Dad", 24, false);
+                animation.addByPrefix("up", "Parent Up Note Dad", 24, false);
+                animation.addByPrefix("down", "Parent Down Note Dad", 24, false);
+
+                animation.addByPrefix("left-alt", "Parent Down Note Mom", 24, false);
+                animation.addByPrefix("right-alt", "Parent Right Note Mom", 24, false);
+                animation.addByPrefix("up-alt", "Parent Up Note Mom", 24, false);
+                animation.addByPrefix("down-alt", "Parent Down Note Mom", 24, false);
+
+                facingRight = false;
         }
 
         if ((player && !facingRight) || (!player && facingRight))
@@ -227,23 +242,51 @@ class Character extends FlxSprite
         animation.play("idle");
     }
 
-    public function left()
+    public function left(?alt:Bool = false)
     {
-        animation.play("left");
+        var suffix:String = "";
+
+        if (alt)
+        {
+            suffix = "-alt";
+        }
+
+        animation.play("left" + suffix);
     }
 
-    public function right()
+    public function right(?alt:Bool = false)
     {
-        animation.play("right");
+        var suffix:String = "";
+
+        if (alt)
+        {
+            suffix = "-alt";
+        }
+
+        animation.play("right" + suffix);
     }
 
-    public function up()
+    public function up(?alt:Bool = false)
     {
-        animation.play("up");
+        var suffix:String = "";
+
+        if (alt)
+        {
+            suffix = "-alt";
+        }
+
+        animation.play("up" + suffix);
     }
 
-    public function down()
+    public function down(?alt:Bool = false)
     {
-        animation.play("down");
+        var suffix:String = "";
+
+        if (alt)
+        {
+            suffix = "-alt";
+        }
+
+        animation.play("down" + suffix);
     }
 }
