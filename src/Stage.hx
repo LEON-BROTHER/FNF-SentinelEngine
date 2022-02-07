@@ -90,9 +90,9 @@ class Stage extends FlxTypedGroup<FlxSprite>
                     bgLimo.x -= 360;
                     bgLimo.y += 540;
 
-                    var x = -480;
+                    var x = -640;
 
-                    for (i in 0...5)
+                    for (i in 0...7)
                     {
                         var dancer:FlxSprite = new FlxSprite();
                         dancer.frames = Files.getSparrowAtlas("limo/limoDancer", "week4");
