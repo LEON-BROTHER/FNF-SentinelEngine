@@ -87,12 +87,12 @@ class Stage extends FlxTypedGroup<FlxSprite>
                     bgLimo.scrollFactor.set(0.8, 0.8);
                     bgLimo.screenCenter();
                     add(bgLimo);
-                    bgLimo.x -= 360;
+                    bgLimo.x -= 50;
                     bgLimo.y += 540;
 
-                    var x = -640;
+                    var x = -320;
 
-                    for (i in 0...7)
+                    for (i in 0...4)
                     {
                         var dancer:FlxSprite = new FlxSprite();
                         dancer.frames = Files.getSparrowAtlas("limo/limoDancer", "week4");
@@ -105,7 +105,7 @@ class Stage extends FlxTypedGroup<FlxSprite>
                         dancer.x += x;
                         dancer.y += 180;
 
-                        x += 225;
+                        x += 400;
                     }
                 }
 
