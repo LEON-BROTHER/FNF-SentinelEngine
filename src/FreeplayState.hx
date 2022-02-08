@@ -8,6 +8,8 @@ import flixel.FlxG;
 import flixel.tweens.FlxTween;
 import flixel.FlxSprite;
 
+using StringTools;
+
 class FreeplayState extends FunkinState
 {
     private var songsList:Array<String>;
@@ -207,7 +209,7 @@ class FreeplayState extends FunkinState
             case "4":
                 stage = "limo";
             case "5":
-                if (songsList[num].split(":")[0] == "winter-horrorland")
+                if (songsList[num].split(":")[0].toLowerCase().replace(" ", "-") == "winter-horrorland")
                 {
                     stage = "mall-evil";
                 }
@@ -216,7 +218,7 @@ class FreeplayState extends FunkinState
                     stage = "mall";
                 }
             case "6":
-                if (songsList[num].split(":")[0] == "thorns")
+                if (songsList[num].split(":")[0].toLowerCase() == "thorns")
                 {
                     stage = "school-evil";
                 }
