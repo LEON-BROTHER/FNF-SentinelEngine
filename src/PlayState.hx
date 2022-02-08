@@ -112,6 +112,10 @@ class PlayState extends FunkinState
                 dad.y += 560;
                 girlfriend.y += 666;
                 boyfriend.y += 540;
+            case "school":
+                girlfriend.y += 100;
+            case "school-evil":
+                girlfriend.y += 100;
         }
 
         countdown();
@@ -167,7 +171,7 @@ class PlayState extends FunkinState
                 switch (player1)
                 {
                     case "bf-pixel":
-                        var count02:FlxSprite = new ReadyCard(Files.image("weeb/pixelUI/ready-pixel", "week6"));
+                        var count02:FlxSprite = new ReadyCard(Files.image("weeb/pixelUI/ready-pixel", "week6"), 7);
                         add(count02);
                         FlxG.sound.play(Files.sound("intro2-pixel", "week6"));
                     default:
@@ -179,7 +183,7 @@ class PlayState extends FunkinState
                     switch (player1)
                     {
                         case "bf-pixel":
-                            var count01:FlxSprite = new ReadyCard(Files.image("weeb/pixelUI/set-pixel", "week6"));
+                            var count01:FlxSprite = new ReadyCard(Files.image("weeb/pixelUI/set-pixel", "week6"), 7);
                             add(count01);
                             FlxG.sound.play(Files.sound("intro1-pixel", "week6"));
                         default:
@@ -191,7 +195,7 @@ class PlayState extends FunkinState
                         switch (player1)
                         {
                             case "bf-pixel":
-                                var count00:FlxSprite = new ReadyCard(Files.image("weeb/pixelUI/go-pixel", "week6"));
+                                var count00:FlxSprite = new ReadyCard(Files.image("weeb/pixelUI/date-pixel", "week6"), 7);
                                 add(count00);
                                 FlxG.sound.play(Files.sound("introGo-pixel", "week6"));
                             default:
@@ -247,10 +251,11 @@ class PlayState extends FunkinState
 
 class ReadyCard extends FlxSprite
 {
-    public function new(card:String)
+    public function new(card:String, ?size:Float = 1)
     {
         super();
         loadGraphic(card);
+        setGraphicSize(Std.int(width * size), Std.int(height * size));
         setPosition(-69420 - (width / 2), -69420 - (height / 2));
 
         new FlxTimer().start(0.1, function(tmr:FlxTimer) {

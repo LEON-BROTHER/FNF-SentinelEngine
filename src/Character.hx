@@ -5,12 +5,11 @@ import flixel.FlxSprite;
 class Character extends FlxSprite
 {
     public var facingRight:Bool;
+    public var pixel:Bool;
 
     public function new(character:String, player:Bool)
     {
         super();
-
-        antialiasing = Config.antialiasing;
 
         switch (character)
         {
@@ -36,6 +35,7 @@ class Character extends FlxSprite
                 animation.addByPrefix("scared", "BF idle shaking", 24, false); //Week 2
 
                 facingRight = true;
+                pixel = false;
             case "bf-car":
                 frames = Files.getSparrowAtlas("characters/bfCar", "shared");
                 animation.addByPrefix("idle", "BF idle dance", 24, true);
@@ -51,6 +51,7 @@ class Character extends FlxSprite
                 animation.addByPrefix("down-miss", "BF NOTE DOWN MISS", 24, false);
 
                 facingRight = true;
+                pixel = false;
             case "bf-christmas":
                 frames = Files.getSparrowAtlas("characters/bfChristmas", "shared");
                 animation.addByPrefix("idle", "BF idle dance", 24, true);
@@ -68,6 +69,7 @@ class Character extends FlxSprite
                 animation.addByPrefix("cheer", "BF HEY!!", 24, false); //Week 1
 
                 facingRight = true;
+                pixel = false;
             case "bf-pixel":
                 frames = Files.getSparrowAtlas("characters/bfPixel", "shared");
                 animation.addByPrefix("idle", "BF idle dance", 24, true);
@@ -82,14 +84,20 @@ class Character extends FlxSprite
                 animation.addByPrefix("up-miss", "BF NOTE UP MISS", 24, false);
                 animation.addByPrefix("down-miss", "BF NOTE DOWN MISS", 24, false);
 
+                setGraphicSize(Std.int(width * 6), Std.int(height * 6));
+
                 facingRight = true;
+                pixel = true;
             case "bf-pixel-ded":
                 frames = Files.getSparrowAtlas("characters/bfPixelsDEAD", "shared");
                 animation.addByPrefix("death", "BF dies", 24, false);
                 animation.addByPrefix("deathLoop", "BF Dead Loop", 24, true);
                 animation.addByPrefix("deathConfirm", "BF Dead confirm", 24, false);
 
+                setGraphicSize(Std.int(width * 6), Std.int(height * 6));
+
                 facingRight = true;
+                pixel = true;
             case "gf":
                 frames = Files.getSparrowAtlas("characters/GF_assets", "shared");
                 animation.addByPrefix("idle", "GF Dancing Beat", 24, true);
@@ -107,11 +115,13 @@ class Character extends FlxSprite
                 animation.addByPrefix("scared", "GF FEAR ", 24, false); //Week 2
 
                 facingRight = false;
+                pixel = false;
             case "gf-car":
                 frames = Files.getSparrowAtlas("characters/gfCar", "shared");
                 animation.addByPrefix("idle", "GF Dancing Beat Hair blowing CAR", 24, true);
 
                 facingRight = false;
+                pixel = false;
             case "gf-christmas":
                 frames = Files.getSparrowAtlas("characters/gfChristmas", "shared");
                 animation.addByPrefix("idle", "GF Dancing Beat", 24, true);
@@ -128,11 +138,15 @@ class Character extends FlxSprite
                 animation.addByPrefix("scared", "GF FEAR ", 24, false); //Week 2
 
                 facingRight = false;
+                pixel = false;
             case "gf-pixel":
                 frames = Files.getSparrowAtlas("characters/gfPixel", "shared");
                 animation.addByPrefix("idle", "GF IDLE", 24, true);
 
+                setGraphicSize(Std.int(width * 6), Std.int(height * 6));
+
                 facingRight = false;
+                pixel = true;
             case "dad":
                 frames = Files.getSparrowAtlas("characters/DADDY_DEAREST", "shared");
                 animation.addByPrefix("idle", "Dad idle dance", 24, true);
@@ -143,6 +157,7 @@ class Character extends FlxSprite
                 animation.addByPrefix("down", "Dad Sing Note DOWN", 24, false);
 
                 facingRight = false;
+                pixel = false;
             case "spooky-kids":
                 frames = Files.getSparrowAtlas("characters/spooky_kids_assets", "shared");
                 animation.addByPrefix("idle", "spooky dance idle", 24, true);
@@ -153,6 +168,7 @@ class Character extends FlxSprite
                 animation.addByPrefix("down", "spooky DOWN note", 24, false);
 
                 facingRight = false;
+                pixel = false;
             case "monster":
                 frames = Files.getSparrowAtlas("characters/Monster_Assets", "shared");
                 animation.addByPrefix("idle", "monster idle", 24, true);
@@ -163,6 +179,7 @@ class Character extends FlxSprite
                 animation.addByPrefix("down", "monster down", 24, false);
 
                 facingRight = false;
+                pixel = false;
             case "monster-christmas":
                 frames = Files.getSparrowAtlas("characters/monsterChristmas", "shared");
                 animation.addByPrefix("idle", "monster idle", 24, true);
@@ -173,6 +190,7 @@ class Character extends FlxSprite
                 animation.addByPrefix("down", "monster down", 24, false);
 
                 facingRight = false;
+                pixel = false;
             case "pico":
                 frames = Files.getSparrowAtlas("characters/Pico_FNF_assetss", "shared");
                 animation.addByPrefix("idle", "Pico Idle Dance", 24, true);
@@ -188,6 +206,7 @@ class Character extends FlxSprite
                 animation.addByPrefix("down-miss", "Pico Down Note MISS", 24, false);
 
                 facingRight = true;
+                pixel = false;
             case "mom":
                 frames = Files.getSparrowAtlas("characters/Mom_Assets", "shared");
                 animation.addByPrefix("idle", "Mom Idle", 24, true);
@@ -198,6 +217,7 @@ class Character extends FlxSprite
                 animation.addByPrefix("down", "MOM DOWN POSE", 24, false);
 
                 facingRight = false;
+                pixel = false;
             case "mom-car":
                 frames = Files.getSparrowAtlas("characters/momCar", "shared");
                 animation.addByPrefix("idle", "Mom Idle", 24, true);
@@ -208,21 +228,62 @@ class Character extends FlxSprite
                 animation.addByPrefix("down", "MOM DOWN POSE", 24, false);
 
                 facingRight = false;
+                pixel = false;
             case "parents":
                 frames = Files.getSparrowAtlas("characters/mom_dad_christmas_assets", "shared");
                 animation.addByPrefix("idle", "Parent Christmas Idle", 24, true);
 
-                animation.addByPrefix("left", "Parent Down Note Dad", 24, false);
+                animation.addByPrefix("left", "Parent Left Note Dad", 24, false);
                 animation.addByPrefix("right", "Parent Right Note Dad", 24, false);
                 animation.addByPrefix("up", "Parent Up Note Dad", 24, false);
                 animation.addByPrefix("down", "Parent Down Note Dad", 24, false);
 
-                animation.addByPrefix("left-alt", "Parent Down Note Mom", 24, false);
+                animation.addByPrefix("left-alt", "Parent Left Note Mom", 24, false);
                 animation.addByPrefix("right-alt", "Parent Right Note Mom", 24, false);
                 animation.addByPrefix("up-alt", "Parent Up Note Mom", 24, false);
                 animation.addByPrefix("down-alt", "Parent Down Note Mom", 24, false);
 
                 facingRight = false;
+                pixel = false;
+            case "senpai":
+                frames = Files.getSparrowAtlas("characters/senpai", "shared");
+                animation.addByPrefix("idle", "Senpai Idle instance 1", 24, true);
+
+                animation.addByPrefix("left", "SENPAI LEFT NOTE instance 1", 24, false);
+                animation.addByPrefix("right", "SENPAI RIGHT NOTE instance 1", 24, false);
+                animation.addByPrefix("up", "SENPAI UP NOTE instance 1", 24, false);
+                animation.addByPrefix("down", "SENPAI DOWN NOTE instance 1", 24, false);
+
+                setGraphicSize(Std.int(width * 6), Std.int(height * 6));
+
+                facingRight = false;
+                pixel = true;
+            case "senpai-mad":
+                frames = Files.getSparrowAtlas("characters/senpai", "shared");
+                animation.addByPrefix("idle", "Angry Senpai Idle instance 1", 24, true);
+
+                animation.addByPrefix("left", "Angry Senpai LEFT NOTE instance 1", 24, false);
+                animation.addByPrefix("right", "Angry Senpai RIGHT NOTE instance 1", 24, false);
+                animation.addByPrefix("up", "Angry Senpai UP NOTE instance 10", 24, false);
+                animation.addByPrefix("down", "Angry Senpai DOWN NOTE instance 1", 24, false);
+
+                setGraphicSize(Std.int(width * 6), Std.int(height * 6));
+
+                facingRight = false;
+                pixel = true;
+            case "spirit":
+                frames = Files.getSparrowAtlas("characters/spirit", "shared");
+                animation.addByPrefix("idle", "idle spirit_", 24, true);
+
+                animation.addByPrefix("left", "left_", 24, false);
+                animation.addByPrefix("right", "right_", 24, false);
+                animation.addByPrefix("up", "up_", 24, false);
+                animation.addByPrefix("down", "spirit down_", 24, false);
+
+                setGraphicSize(Std.int(width * 6), Std.int(height * 6));
+
+                facingRight = false;
+                pixel = true;
         }
 
         if ((player && !facingRight) || (!player && facingRight))
@@ -232,6 +293,15 @@ class Character extends FlxSprite
         else
         {
             flipX = false;
+        }
+
+        if (pixel)
+        {
+            antialiasing = false;
+        }
+        else
+        {
+            antialiasing = Config.antialiasing;
         }
 
         idle();

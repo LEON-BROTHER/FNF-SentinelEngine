@@ -227,6 +227,85 @@ class Stage extends FlxTypedGroup<FlxSprite>
                 snow.screenCenter();
                 add(snow);
                 snow.y += 1050;
+            case "school":
+                camZoom = 0.95;
+
+                var bg:FlxSprite = new FlxSprite().loadGraphic(Files.image("weeb/weebSky", "week6"));
+                bg.setGraphicSize(Std.int(bg.width * 7), Std.int(bg.height * 7));
+                bg.antialiasing = false;
+                bg.scrollFactor.set(0.5, 0.5);
+                bg.screenCenter();
+                add(bg);
+
+                var school:FlxSprite = new FlxSprite().loadGraphic(Files.image("weeb/weebSchool", "week6"));
+                school.setGraphicSize(Std.int(school.width * 6.85), Std.int(school.height * 6.85));
+                school.antialiasing = false;
+                school.scrollFactor.set(0.6, 0.6);
+                school.screenCenter();
+                add(school);
+
+                var street:FlxSprite = new FlxSprite().loadGraphic(Files.image("weeb/weebStreet", "week6"));
+                street.setGraphicSize(Std.int(street.width * 6.85), Std.int(street.height * 6.85));
+                street.antialiasing = false;
+                street.scrollFactor.set(0.6, 0.6);
+                street.screenCenter();
+                add(street);
+
+                if (!Config.lowquality)
+                {
+                    var treesBack:FlxSprite = new FlxSprite().loadGraphic(Files.image("weeb/weebTreesBack", "week6"));
+                    treesBack.setGraphicSize(Std.int(treesBack.width * 7), Std.int(treesBack.height * 7));
+                    treesBack.antialiasing = false;
+                    treesBack.scrollFactor.set(0.7, 0.7);
+                    treesBack.screenCenter();
+                    add(treesBack);
+
+                    var trees:FlxSprite = new FlxSprite();
+                    trees.frames = Files.getSparrowAtlas("weeb/weebTrees", "week6");
+                    trees.animation.addByPrefix("idle", "trees_", 24, true);
+                    trees.animation.play("idle");
+                    trees.setGraphicSize(Std.int(trees.width * 7), Std.int(trees.height * 7));
+                    trees.antialiasing = false;
+                    trees.scrollFactor.set(0.9, 0.9);
+                    trees.screenCenter();
+                    add(trees);
+
+                    var freaks:FlxSprite = new FlxSprite();
+                    freaks.frames = Files.getSparrowAtlas("weeb/bgFreaks", "week6");
+                    freaks.animation.addByPrefix("idle", "BG girls group", 24, true);
+                    freaks.animation.play("idle");
+                    freaks.setGraphicSize(Std.int(freaks.width * 7), Std.int(freaks.height * 7));
+                    freaks.antialiasing = false;
+                    freaks.scrollFactor.set(0.8, 0.8);
+                    freaks.screenCenter();
+                    add(freaks);
+                    freaks.y += 50;
+
+                    var petals:FlxSprite = new FlxSprite();
+                    petals.frames = Files.getSparrowAtlas("weeb/petals", "week6");
+                    petals.animation.addByPrefix("idle", "PETALS ALL", 24, true);
+                    petals.animation.play("idle");
+                    petals.setGraphicSize(Std.int(petals.width * 7), Std.int(petals.height * 7));
+                    petals.antialiasing = false;
+                    petals.scrollFactor.set(0.9, 0.9);
+                    petals.screenCenter();
+                    add(petals);
+                }
+            case "school-evil":
+                camZoom = 0.95;
+
+                var bg:FlxSprite = new FlxSprite();
+                bg.frames = Files.getSparrowAtlas("weeb/weebButSpoopy/animatedEvilSchool", "week6");
+                if (!Config.lowquality)
+                {
+                    bg.animation.addByPrefix("idle", "background 2 instance 1", 24, true);
+                    bg.animation.play("idle");
+                }
+                bg.setGraphicSize(Std.int(bg.width * 7), Std.int(bg.height * 7));
+                bg.antialiasing = false;
+                bg.scrollFactor.set(0.5, 0.5);
+                bg.screenCenter();
+                add(bg);
             default:
                 camZoom = 0.75;
 
