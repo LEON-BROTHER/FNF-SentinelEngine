@@ -161,14 +161,21 @@ class Stage extends FlxTypedGroup<FlxSprite>
                 snow.scrollFactor.set(0.9, 0.9);
                 snow.screenCenter();
                 add(snow);
-                snow.y += 690;
+                snow.y += 840;
 
                 var snow2:FlxSprite = new FlxSprite().loadGraphic(Files.image("christmas/fgSnow", "week5"));
                 snow2.antialiasing = Config.antialiasing;
                 snow2.scrollFactor.set(0.9, 0.9);
                 snow2.screenCenter();
                 add(snow2);
-                snow2.y += 740;
+                snow2.y += 1020;
+
+                var snow3:FlxSprite = new FlxSprite().loadGraphic(Files.image("christmas/fgSnow", "week5"));
+                snow3.antialiasing = Config.antialiasing;
+                snow3.scrollFactor.set(0.9, 0.9);
+                snow3.screenCenter();
+                add(snow3);
+                snow3.y += 1120;
 
                 if (!Config.lowquality)
                 {
@@ -194,10 +201,10 @@ class Stage extends FlxTypedGroup<FlxSprite>
                 santa.scrollFactor.set(0.8, 0.8);
                 santa.screenCenter();
                 add(santa);
-                santa.x -= 640;
-                santa.y += 420;
+                santa.x -= 1020;
+                santa.y += 480;
             case "mall-evil":
-                camZoom = 0.8;
+                camZoom = 0.95;
 
                 var bg:FlxSprite = new FlxSprite().loadGraphic(Files.image("christmas/christmasButSpoopy/evilBG", "week5"));
                 bg.antialiasing = Config.antialiasing;
@@ -219,14 +226,7 @@ class Stage extends FlxTypedGroup<FlxSprite>
                 snow.scrollFactor.set(0.9, 0.9);
                 snow.screenCenter();
                 add(snow);
-                snow.y += 690;
-
-                var snow2:FlxSprite = new FlxSprite().loadGraphic(Files.image("christmas/christmasButSpoopy/evilSnow", "week5"));
-                snow2.antialiasing = Config.antialiasing;
-                snow2.scrollFactor.set(0.9, 0.9);
-                snow2.screenCenter();
-                add(snow2);
-                snow2.y += 740;
+                snow.y += 1050;
             default:
                 camZoom = 0.75;
 

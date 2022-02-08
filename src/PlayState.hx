@@ -106,8 +106,12 @@ class PlayState extends FunkinState
                 boyfriend.y -= 175;
             case "mall":
                 dad.y += 480;
-                girlfriend.y += 480;
+                girlfriend.y += 500;
                 boyfriend.y += 480;
+            case "mall-evil":
+                dad.y += 560;
+                girlfriend.y += 666;
+                boyfriend.y += 540;
         }
 
         countdown();
