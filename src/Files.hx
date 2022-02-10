@@ -48,9 +48,50 @@ class Files
     }
     #end
 
-    private static function getLibrary(file:String, extension:String, directory:String):String
+    private static function getLibrary(file:String, extension:String, directory:String):String //TODO: Improve On This So It's Not So Chunky -Generalisk
     {
-        return "shared"; //TODO
+        if (FileSystem.exists("assets/" + directory + "/" + file + "." + extension))
+        {
+            return "preload";
+        }
+        else if (FileSystem.exists("assets/shared/" + directory + "/" + file + "." + extension))
+        {
+            return "shared";
+        }
+        else if (FileSystem.exists("assets/tutorial/" + directory + "/" + file + "." + extension))
+        {
+            return "tutorial";
+        }
+        else if (FileSystem.exists("assets/week1/" + directory + "/" + file + "." + extension))
+        {
+            return "week1";
+        }
+        else if (FileSystem.exists("assets/week2/" + directory + "/" + file + "." + extension))
+        {
+            return "week2";
+        }
+        else if (FileSystem.exists("assets/week3/" + directory + "/" + file + "." + extension))
+        {
+            return "week3";
+        }
+        else if (FileSystem.exists("assets/week4/" + directory + "/" + file + "." + extension))
+        {
+            return "week4";
+        }
+        else if (FileSystem.exists("assets/week5/" + directory + "/" + file + "." + extension))
+        {
+            return "week5";
+        }
+        else if (FileSystem.exists("assets/week6/" + directory + "/" + file + "." + extension))
+        {
+            return "week6";
+        }
+        else if (FileSystem.exists("assets/week7/" + directory + "/" + file + "." + extension))
+        {
+            return "week7";
+        }
+
+        return "shared";
     }
 
     private static function getPath(file:String, extension:String, directory:String, ?library:String = null):Dynamic
