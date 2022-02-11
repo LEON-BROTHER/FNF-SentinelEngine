@@ -31,6 +31,23 @@ class PlayState extends FunkinState
 
     public var background:Stage;
 
+    public var health:Int;
+
+    public var healthBar:FlxSprite;
+
+    public var iconP1:HealthIcon;
+    public var iconP2:HealthIcon;
+
+    public var noteLeftP1:FlxSprite;
+    public var noteRightP1:FlxSprite;
+    public var noteDownP1:FlxSprite;
+    public var noteUpP1:FlxSprite;
+
+    public var noteLeftP2:FlxSprite;
+    public var noteRightP2:FlxSprite;
+    public var noteDownP2:FlxSprite;
+    public var noteUpP2:FlxSprite;
+
     public function new(lSong:String, ?p1:String = "bf", ?p2:String = "dad", ?p3:String = "gf", ?bg:String = "stage")
     {
         super();
@@ -45,6 +62,8 @@ class PlayState extends FunkinState
         {
             FlxG.sound.music.stop();
         }
+
+        health = 50;
     }
 
     override function create()
@@ -58,7 +77,7 @@ class PlayState extends FunkinState
 
         game = new FlxCamera();
         game.follow(target, FlxCameraFollowStyle.NO_DEAD_ZONE, 1);
-        game.zoom = 1.3;
+        game.zoom = 2.1;
         FlxG.cameras.reset(game);
         FlxG.cameras.setDefaultDrawTarget(game, true);
 
@@ -117,6 +136,18 @@ class PlayState extends FunkinState
             case "school-evil":
                 girlfriend.y += 100;
         }
+
+        healthBar = new FlxSprite(-69720, -69120).loadGraphic(Files.image("healthBar", "shared"));
+        healthBar.antialiasing = Config.antialiasing;
+        add(healthBar);
+
+        iconP1 = new HealthIcon(player1);
+        iconP1.screenCenter();
+        add(iconP1);
+
+        iconP2 = new HealthIcon(player2);
+        iconP2.screenCenter();
+        add(iconP2);
 
         countdown();
     }

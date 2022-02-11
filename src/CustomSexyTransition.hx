@@ -34,6 +34,7 @@ class CustomSexyTransition extends FlxSubState
         var height:Int = Std.int(FlxG.height / zoom);
 
         black = new FlxSprite().makeGraphic(width, height + 400, FlxColor.BLACK);
+        black.antialiasing = true;
         black.scrollFactor.set();
         add(black);
 

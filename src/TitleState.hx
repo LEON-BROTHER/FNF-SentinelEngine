@@ -164,6 +164,7 @@ class TitleState extends FunkinState
             if (text[line] == "[NG]")
             {
                 var pic:FlxSprite = new FlxSprite().loadGraphic(Files.image("newgrounds_logo", "preload"));
+                pic.antialiasing = Config.antialiasing;
                 pic.screenCenter();
                 introText.add(pic);
             }
