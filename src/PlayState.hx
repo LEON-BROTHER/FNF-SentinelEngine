@@ -219,8 +219,8 @@ class PlayState extends FunkinState
                 iconP1.winning();
                 iconP2.losing();
         }
-        iconP1.setPosition(healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - 0), healthBar.y - (iconP1.height / 2));
-        iconP2.setPosition(healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - 0), healthBar.y - (iconP2.height / 2));
+        iconP1.setPosition(healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - 21), healthBar.y - (iconP1.height / 2));
+        iconP2.setPosition(healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - 21), healthBar.y - (iconP2.height / 2));
     }
 
     public function countdown()
