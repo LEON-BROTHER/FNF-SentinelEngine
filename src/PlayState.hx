@@ -199,7 +199,7 @@ class PlayState extends FunkinState
             boyfriend.right(false);
         }
 
-        if (voices.playing && (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.RIGHT))
+        if (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.RIGHT)
         {
             if (false)
             {
