@@ -85,61 +85,60 @@ class CreditsState extends FunkinState
     }
 
     public function selectItem(numb:Int)
+    {
+        item = numb;
+    
+        if (item < 0)
         {
-            var temp:Int = item;
-            item = numb;
-        
-            if (item < 0)
-            {
-                item = creators.length - 1;
-            }
-    
-            if (item > creators.length - 1)
-            {
-                item = 0;
-            }
-    
-            FlxTween.cancelTweensOf(bg, ["y"]);
-    
-            for (num in 0...text.length)
-            {
-                FlxTween.cancelTweensOf(text.members[num]);
-            }
-    
-            for (num in 0...iconz.length)
-            {
-                FlxTween.cancelTweensOf(iconz.members[num]);
-            }
-    
-            FlxTween.tween(bg, {y: ((item - 2) - ((item - 2) * 2)) * (35 / (creators.length - 1))}, 1.5, {
+            item = creators.length - 1;
+        }
+
+        if (item > creators.length - 1)
+        {
+            item = 0;
+        }
+
+        FlxTween.cancelTweensOf(bg, ["y"]);
+
+        for (num in 0...text.length)
+        {
+            FlxTween.cancelTweensOf(text.members[num]);
+        }
+
+        for (num in 0...iconz.length)
+        {
+            FlxTween.cancelTweensOf(iconz.members[num]);
+        }
+
+        FlxTween.tween(bg, {y: ((item - 2) - ((item - 2) * 2)) * (35 / (creators.length - 1))}, 1.5, {
+            ease: FlxEase.expoOut,
+        });
+
+        for (num in 0...text.length)
+        {
+            FlxTween.tween(text.members[num], {y: 450 + ((text.members[num].itemID - item) * 160)}, 1.5, {
                 ease: FlxEase.expoOut,
             });
-    
-            for (num in 0...text.length)
-            {
-                FlxTween.tween(text.members[num], {y: 450 + ((text.members[num].itemID - item) * 160)}, 1.5, {
-                    ease: FlxEase.expoOut,
-                });
-                FlxTween.tween(text.members[num], {x: 110 + (12 * (text.members[num].itemID - item)) + (50 * text.members[num].itemLetterOffset)}, 1.5, {
-                    ease: FlxEase.expoOut,
-                });
-            }
-    
-            for (num in 0...iconz.length)
-            {
-                FlxTween.tween(iconz.members[num], {y: 450 + ((num - item) * 160) - 50}, 1.5, {
-                    ease: FlxEase.expoOut,
-                });
-                FlxTween.tween(iconz.members[num], {x: (creators[num].split(":")[0].length * 50) + (12 * (num - item)) + 100}, 1.5, {
-                    ease: FlxEase.expoOut,
-                });
-            }
+            FlxTween.tween(text.members[num], {x: 110 + (12 * (text.members[num].itemID - item)) + (50 * text.members[num].itemLetterOffset)}, 1.5, {
+                ease: FlxEase.expoOut,
+            });
         }
-    
-        public function select(num:Int)
+
+        for (num in 0...iconz.length)
         {
-            FlxG.sound.play(Files.sound("confirmMenu", "preload"));
-    
-            FlxG.openURL(creators[num].split(":")[1]);
+            FlxTween.tween(iconz.members[num], {y: 450 + ((num - item) * 160) - 50}, 1.5, {
+                ease: FlxEase.expoOut,
+            });
+            FlxTween.tween(iconz.members[num], {x: (creators[num].split(":")[0].length * 50) + (12 * (num - item)) + 100}, 1.5, {
+                ease: FlxEase.expoOut,
+            });
         }
+    }
+
+    public function select(num:Int)
+    {
+        FlxG.sound.play(Files.sound("confirmMenu", "preload"));
+
+        FlxG.openURL(creators[num].split(":")[1]);
+    }
 }
