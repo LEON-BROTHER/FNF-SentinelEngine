@@ -155,16 +155,16 @@ class PlayState extends FunkinState
         iconP2.screenCenter();
         add(iconP2);
 
-        noteLeftP1 = new Note(-69360, -69705, true, Left);
+        noteLeftP1 = new Note(-69350, -69705, true, Left);
         add(noteLeftP1);
 
-        noteUpP1 = new Note(-69320, -69705, true, Up);
+        noteUpP1 = new Note(-69250, -69705, true, Up);
         add(noteUpP1);
 
-        noteDownP1 = new Note(-69180, -69705, true, Down);
+        noteDownP1 = new Note(-69150, -69705, true, Down);
         add(noteDownP1);
 
-        noteRightP1 = new Note(-69140, -69705, true, Right);
+        noteRightP1 = new Note(-69050, -69705, true, Right);
         add(noteRightP1);
 
         countdown();
@@ -198,24 +198,36 @@ class PlayState extends FunkinState
             boyfriend.right();
         }
 
-        if (FlxG.keys.justReleased.LEFT)
+        if (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.RIGHT)
         {
-            noteUpP1.unPress();
+            if (false)
+            {
+                health += 2;
+            }
+            else
+            {
+                health -= 2;
+            }
+        }
+
+        if (FlxG.keys.justReleased.UP)
+        {
+            noteUpP1.idle();
         }
 
         if (FlxG.keys.justReleased.DOWN)
         {
-            noteDownP1.unPress();
+            noteDownP1.idle();
         }
 
         if (FlxG.keys.justReleased.LEFT)
         {
-            noteLeftP1.unPress();
+            noteLeftP1.idle();
         }
 
         if (FlxG.keys.justReleased.RIGHT)
         {
-            noteRightP1.unPress();
+            noteRightP1.idle();
         }
 
         /*if (!voices.playing)
@@ -407,6 +419,8 @@ class Note extends FlxSprite
 
         setGraphicSize(Std.int(width * 0.75), Std.int(height * 0.75));
         antialiasing = Config.antialiasing;
+
+        idle();
     }
 
     override function update(elapsed:Float)
@@ -421,15 +435,13 @@ class Note extends FlxSprite
 
     public function press()
     {
-        animation.play("press");
-    }
-
-    public function unPress()
-    {
-        animation.play("confirm", true);
-
-        new FlxTimer().start(0.2, function(tmr:FlxTimer) {
-            idle();
-        });
+        if (false)
+        {
+            animation.play("confirm", true);
+        }
+        else
+        {
+            animation.play("press", true);
+        }
     }
 }
