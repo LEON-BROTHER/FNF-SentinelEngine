@@ -155,16 +155,16 @@ class PlayState extends FunkinState
         iconP2.screenCenter();
         add(iconP2);
 
-        noteLeftP1 = new Note(-69380, -69705, true, Left);
+        noteLeftP1 = new Note(-69360, -69705, true, Left);
         add(noteLeftP1);
 
-        noteUpP1 = new Note(-69420, -69705, true, Up);
+        noteUpP1 = new Note(-69320, -69705, true, Up);
         add(noteUpP1);
 
-        noteDownP1 = new Note(-69420, -69705, true, Down);
+        noteDownP1 = new Note(-69180, -69705, true, Down);
         add(noteDownP1);
 
-        noteRightP1 = new Note(-69420, -69705, true, Right);
+        noteRightP1 = new Note(-69140, -69705, true, Right);
         add(noteRightP1);
 
         countdown();
@@ -365,15 +365,21 @@ class Note extends FlxSprite
         {
             case Left:
                 animation.addByPrefix("idle", "arrowLEFT", 24, false);
+                animation.addByPrefix("press", "left press", 24, true);
+                animation.addByPrefix("confirm", "left confirm", 24, false);
             case Right:
                 animation.addByPrefix("idle", "arrowRIGHT", 24, false);
+                animation.addByPrefix("press", "right press", 24, true);
+                animation.addByPrefix("confirm", "right confirm", 24, false);
             case Up:
                 animation.addByPrefix("idle", "arrowUP", 24, false);
+                animation.addByPrefix("press", "up press", 24, true);
+                animation.addByPrefix("confirm", "up confirm", 24, false);
             case Down:
                 animation.addByPrefix("idle", "arrowDOWN", 24, false);
+                animation.addByPrefix("press", "down press", 24, true);
+                animation.addByPrefix("confirm", "down confirm", 24, false);
         }
-
-        animation.play("idle");
 
         setGraphicSize(Std.int(width * 0.75), Std.int(height * 0.75));
         antialiasing = Config.antialiasing;
@@ -382,5 +388,24 @@ class Note extends FlxSprite
     override function update(elapsed:Float)
     {
         super.update(elapsed);
+    }
+
+    public function idle()
+    {
+        animation.play("idle");
+    }
+
+    public function press()
+    {
+        animation.play("press");
+    }
+
+    public function unPress()
+    {
+        animation.play("confirm");
+
+        new FlxTimer().start(0.2, function(tmr:FlxTimer) {
+            idle();
+        });
     }
 }
