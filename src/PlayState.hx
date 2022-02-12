@@ -1,5 +1,6 @@
 package;
 
+import flixel.math.FlxRandom;
 import flixel.math.FlxMath;
 import flixel.ui.FlxBar;
 import flixel.system.FlxSound;
@@ -198,10 +199,11 @@ class PlayState extends FunkinState
             boyfriend.right();
         }
 
-        if (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.RIGHT)
+        if (voices.playing && (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.RIGHT))
         {
             if (false)
             {
+                FlxG.sound.play(Files.sound("missnote" + new FlxRandom().int(1, 3), "shared"));
                 health += 2;
             }
             else
