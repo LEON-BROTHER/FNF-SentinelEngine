@@ -178,25 +178,25 @@ class PlayState extends FunkinState
         if (FlxG.keys.pressed.UP)
         {
             noteUpP1.press();
-            boyfriend.up();
+            boyfriend.up(false);
         }
 
         if (FlxG.keys.pressed.DOWN)
         {
             noteDownP1.press();
-            boyfriend.down();
+            boyfriend.down(false);
         }
 
         if (FlxG.keys.pressed.LEFT)
         {
             noteLeftP1.press();
-            boyfriend.left();
+            boyfriend.left(false);
         }
 
         if (FlxG.keys.pressed.RIGHT)
         {
             noteRightP1.press();
-            boyfriend.right();
+            boyfriend.right(false);
         }
 
         if (voices.playing && (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.RIGHT))

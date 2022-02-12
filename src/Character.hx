@@ -58,17 +58,17 @@ class Character extends FlxSprite
                 pixel = false;
             case "bf-christmas":
                 frames = Files.getSparrowAtlas("characters/bfChristmas", "shared");
-                animation.addByPrefix("idle", "BF idle dance", 24, true);
+                animation.addByPrefix("idle", "BF IDLE instance 1", 24, true);
 
-                animation.addByPrefix("left", "BF NOTE LEFT", 24, false);
-                animation.addByPrefix("right", "BF NOTE RIGHT", 24, false);
-                animation.addByPrefix("up", "BF NOTE UP", 24, false);
-                animation.addByPrefix("down", "BF NOTE DOWN", 24, false);
+                animation.addByPrefix("left", "BF LEFT NOTE instance 1", 24, false);
+                animation.addByPrefix("right", "BF RIGHT NOTE instance 1", 24, false);
+                animation.addByPrefix("up", "BF UP NOTE instance 1", 24, false);
+                animation.addByPrefix("down", "BF DOWN NOTE instance 1", 24, false);
 
-                animation.addByPrefix("left-miss", "BF NOTE LEFT MISS", 24, false);
-                animation.addByPrefix("right-miss", "BF NOTE RIGHT MISS", 24, false);
-                animation.addByPrefix("up-miss", "BF NOTE UP MISS", 24, false);
-                animation.addByPrefix("down-miss", "BF NOTE DOWN MISS", 24, false);
+                animation.addByPrefix("left-miss", "BF LEFT MISS instance 1", 24, false);
+                animation.addByPrefix("right-miss", "BF RIGHT MISS instance 1", 24, false);
+                animation.addByPrefix("up-miss", "BF UP MISS instance 1", 24, false);
+                animation.addByPrefix("down-miss", "BF DOWN MISS instance 1", 24, false);
 
                 animation.addByPrefix("cheer", "BF HEY!!", 24, false); //Week 1
 
@@ -94,9 +94,9 @@ class Character extends FlxSprite
                 pixel = true;
             case "bf-pixel-ded":
                 frames = Files.getSparrowAtlas("characters/bfPixelsDEAD", "shared");
-                animation.addByPrefix("death", "BF dies", 24, false);
-                animation.addByPrefix("deathLoop", "BF Dead Loop", 24, true);
-                animation.addByPrefix("deathConfirm", "BF Dead confirm", 24, false);
+                animation.addByPrefix("death", "BF Dies pixel", 24, false);
+                animation.addByPrefix("deathLoop", "Retry Loop", 24, true);
+                animation.addByPrefix("deathConfirm", "RETRY CONFIRM", 24, false);
 
                 setGraphicSize(Std.int(width * 6), Std.int(height * 6));
 
@@ -316,11 +316,15 @@ class Character extends FlxSprite
         animation.play("idle");
     }
 
-    public function left(?alt:Bool = false)
+    public function left(?miss:Bool = false, ?alt:Bool = false)
     {
         var suffix:String = "";
 
-        if (alt)
+        if (miss)
+        {
+            suffix = "-miss";
+        }
+        else if (alt)
         {
             suffix = "-alt";
         }
@@ -328,11 +332,15 @@ class Character extends FlxSprite
         animation.play("left" + suffix);
     }
 
-    public function right(?alt:Bool = false)
+    public function right(?miss:Bool = false, ?alt:Bool = false)
     {
         var suffix:String = "";
 
-        if (alt)
+        if (miss)
+        {
+            suffix = "-miss";
+        }
+        else if (alt)
         {
             suffix = "-alt";
         }
@@ -340,11 +348,15 @@ class Character extends FlxSprite
         animation.play("right" + suffix);
     }
 
-    public function up(?alt:Bool = false)
+    public function up(?miss:Bool = false, ?alt:Bool = false)
     {
         var suffix:String = "";
 
-        if (alt)
+        if (miss)
+        {
+            suffix = "-miss";
+        }
+        else if (alt)
         {
             suffix = "-alt";
         }
@@ -352,11 +364,15 @@ class Character extends FlxSprite
         animation.play("up" + suffix);
     }
 
-    public function down(?alt:Bool = false)
+    public function down(?miss:Bool = false, ?alt:Bool = false)
     {
         var suffix:String = "";
 
-        if (alt)
+        if (miss)
+        {
+            suffix = "-miss";
+        }
+        else if (alt)
         {
             suffix = "-alt";
         }
