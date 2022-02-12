@@ -375,6 +375,7 @@ class Note extends FlxSprite
 
         animation.play("idle");
 
+        setGraphicSize(Std.int(width * 0.75), Std.int(height * 0.75));
         antialiasing = Config.antialiasing;
     }
 
