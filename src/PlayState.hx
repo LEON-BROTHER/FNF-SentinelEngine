@@ -155,6 +155,18 @@ class PlayState extends FunkinState
         iconP2.screenCenter();
         add(iconP2);
 
+        noteLeftP1 = new Note(-69380, -69705, true, Left);
+        add(noteLeftP1);
+
+        noteUpP1 = new Note(-69420, -69705, true, Up);
+        add(noteUpP1);
+
+        noteDownP1 = new Note(-69420, -69705, true, Down);
+        add(noteDownP1);
+
+        noteRightP1 = new Note(-69420, -69705, true, Right);
+        add(noteRightP1);
+
         countdown();
     }
 
@@ -330,5 +342,44 @@ class ReadyCard extends FlxSprite
                 ease: FlxEase.linear,
             });
         });
+    }
+}
+
+enum NoteDirection
+{
+    Left;
+    Right;
+    Up;
+    Down;
+}
+
+class Note extends FlxSprite
+{
+    public function new(x:Int, y:Int, player:Bool, direction:NoteDirection)
+    {
+        super(x, y);
+
+        frames = Files.getSparrowAtlas("NOTE_assets", "preload");
+
+        switch (direction)
+        {
+            case Left:
+                animation.addByPrefix("idle", "arrowLEFT", 24, false);
+            case Right:
+                animation.addByPrefix("idle", "arrowRIGHT", 24, false);
+            case Up:
+                animation.addByPrefix("idle", "arrowUP", 24, false);
+            case Down:
+                animation.addByPrefix("idle", "arrowDOWN", 24, false);
+        }
+
+        animation.play("idle");
+
+        antialiasing = Config.antialiasing;
+    }
+
+    override function update(elapsed:Float)
+    {
+        super.update(elapsed);
     }
 }
