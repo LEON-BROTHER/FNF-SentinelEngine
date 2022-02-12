@@ -1,5 +1,7 @@
 package;
 
+import flixel.math.FlxMath;
+import flixel.ui.FlxBar;
 import flixel.system.FlxSound;
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
@@ -33,7 +35,8 @@ class PlayState extends FunkinState
 
     public var health:Int;
 
-    public var healthBar:FlxSprite;
+    public var healthBarBG:FlxSprite;
+    public var healthBar:FlxBar;
 
     public var iconP1:HealthIcon;
     public var iconP2:HealthIcon;
@@ -137,12 +140,15 @@ class PlayState extends FunkinState
                 girlfriend.y += 100;
         }
 
-        healthBar = new FlxSprite(-69720, -69120).loadGraphic(Files.image("healthBar", "shared"));
-        healthBar.antialiasing = Config.antialiasing;
+        healthBarBG = new FlxSprite(-69720, -69120).loadGraphic(Files.image("healthBar", "shared"));
+        healthBarBG.antialiasing = Config.antialiasing;
+        add(healthBarBG);
+        healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, FlxBarFillDirection.RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this, "health", 0, 100, false);
         add(healthBar);
 
         iconP1 = new HealthIcon(player1);
         iconP1.screenCenter();
+        iconP1.flipX = true;
         add(iconP1);
 
         iconP2 = new HealthIcon(player2);
@@ -185,6 +191,36 @@ class PlayState extends FunkinState
         {
             FunkinState.switchState(new MainMenuState());
         }
+
+        var phase:Int = 0;
+
+        if (health < 20)
+        {
+            phase = 0;
+        }
+        else if (health > 80)
+        {
+            phase = 2;
+        }
+        else
+        {
+            phase = 1;
+        }
+
+        switch (phase)
+        {
+            case 0:
+                iconP1.losing();
+                iconP2.winning();
+            case 1:
+                iconP1.neutral();
+                iconP2.neutral();
+            case 2:
+                iconP1.winning();
+                iconP2.losing();
+        }
+        iconP1.setPosition(healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - 0), healthBar.y - (iconP1.height / 2));
+        iconP2.setPosition(healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - 0), healthBar.y - (iconP2.height / 2));
     }
 
     public function countdown()
