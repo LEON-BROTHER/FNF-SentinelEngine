@@ -36,6 +36,9 @@ class CreditsState extends FunkinState
         text = new FlxTypedGroup<Alphabet>();
         add(text);
 
+        iconz = new FlxTypedGroup<FlxSprite>();
+        add(iconz);
+
         for (char in 0...creators.length)
         {
             var name:String = creators[char].split(":")[0];
