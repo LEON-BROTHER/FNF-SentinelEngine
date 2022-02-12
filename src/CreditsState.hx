@@ -20,6 +20,8 @@ class CreditsState extends FunkinState
     public function new()
     {
         super();
+
+        creators = Files.readTextFile(Files.txt("credits", "data", "preload"));
     }
 
     override function create()
@@ -50,7 +52,8 @@ class CreditsState extends FunkinState
                 text.add(alpha);
             }
 
-            var icon:FlxSprite = new FlxSprite().loadGraphic(Files.image("credits/" + creators[char].split(":")[0].toLowerCase().replace(" ", "_"), "preload"));
+            var icon:FlxSprite = new FlxSprite().loadGraphic(Files.image("credits/" + name.toLowerCase().replace(" ", "_"), "preload"));
+            icon.antialiasing = Config.antialiasing;
             iconz.add(icon);
         }
 
