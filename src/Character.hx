@@ -1,11 +1,14 @@
 package;
 
+import flixel.util.FlxColor;
 import flixel.FlxSprite;
 
 class Character extends FlxSprite
 {
     public var facingRight:Bool;
     public var pixel:Bool;
+
+    public var barClr:FlxColor;
 
     public function new(character:String, player:Bool)
     {
@@ -36,6 +39,7 @@ class Character extends FlxSprite
 
                 facingRight = true;
                 pixel = false;
+                barClr = 0xFF0000AA;
             case "bf-car":
                 frames = Files.getSparrowAtlas("characters/bfCar", "shared");
                 animation.addByPrefix("idle", "BF idle dance", 24, true);
