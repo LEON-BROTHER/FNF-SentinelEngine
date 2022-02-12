@@ -41,15 +41,15 @@ class PlayState extends FunkinState
     public var iconP1:HealthIcon;
     public var iconP2:HealthIcon;
 
-    public var noteLeftP1:FlxSprite;
-    public var noteRightP1:FlxSprite;
-    public var noteDownP1:FlxSprite;
-    public var noteUpP1:FlxSprite;
+    public var noteLeftP1:Note;
+    public var noteRightP1:Note;
+    public var noteDownP1:Note;
+    public var noteUpP1:Note;
 
-    public var noteLeftP2:FlxSprite;
-    public var noteRightP2:FlxSprite;
-    public var noteDownP2:FlxSprite;
-    public var noteUpP2:FlxSprite;
+    public var noteLeftP2:Note;
+    public var noteRightP2:Note;
+    public var noteDownP2:Note;
+    public var noteUpP2:Note;
 
     public function new(lSong:String, ?p1:String = "bf", ?p2:String = "dad", ?p3:String = "gf", ?bg:String = "stage")
     {
@@ -176,22 +176,46 @@ class PlayState extends FunkinState
 
         if (FlxG.keys.pressed.UP)
         {
+            noteUpP1.press();
             boyfriend.up();
         }
 
         if (FlxG.keys.pressed.DOWN)
         {
+            noteDownP1.press();
             boyfriend.down();
         }
 
         if (FlxG.keys.pressed.LEFT)
         {
+            noteLeftP1.press();
             boyfriend.left();
         }
 
         if (FlxG.keys.pressed.RIGHT)
         {
+            noteRightP1.press();
             boyfriend.right();
+        }
+
+        if (FlxG.keys.justReleased.LEFT)
+        {
+            noteUpP1.unPress();
+        }
+
+        if (FlxG.keys.justReleased.DOWN)
+        {
+            noteDownP1.unPress();
+        }
+
+        if (FlxG.keys.justReleased.LEFT)
+        {
+            noteLeftP1.unPress();
+        }
+
+        if (FlxG.keys.justReleased.RIGHT)
+        {
+            noteRightP1.unPress();
         }
 
         /*if (!voices.playing)
@@ -402,7 +426,7 @@ class Note extends FlxSprite
 
     public function unPress()
     {
-        animation.play("confirm");
+        animation.play("confirm", true);
 
         new FlxTimer().start(0.2, function(tmr:FlxTimer) {
             idle();
