@@ -1,5 +1,6 @@
 package;
 
+import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
 import flixel.math.FlxVector;
 import flixel.FlxSprite;
@@ -42,8 +43,8 @@ class GameOverSubState extends FlxSubState
         bg.screenCenter();
         add(bg);
 
-        bf = new Character("bf");
-        bf.setPosition(pos);
+        bf = new Character("bf", true);
+        bf.setPosition(pos.x, pos.y);
         add(bf);
 
         bf.animation.play("death", true);
@@ -51,7 +52,7 @@ class GameOverSubState extends FlxSubState
         FlxG.sound.play(Files.sound("fnf_loss_sfx", "shared"));
 
         new FlxTimer().start(1.7, function(tmr:FlxTimer) {
-            FlxG.sound.playMusic("gameOver", "shared");
+            FlxG.sound.playMusic(Files.music("gameOver", "shared"));
             bf.animation.play("deathLoop", true);
         });
     }
@@ -72,7 +73,7 @@ class GameOverSubState extends FlxSubState
             bf.animation.play("deathConfirm", true);
 
             new FlxTimer().start(1.7, function(tmr:FlxTimer) {
-                FunkinState.switchState(new PlayState(song, p1, p2, gf, stage));
+                FunkinState.switchState(new PlayState(song, p1, p2, p3, stage));
             });
         }
     }
