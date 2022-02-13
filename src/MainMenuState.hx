@@ -1,7 +1,10 @@
 package;
 
 #if sys
+import sys.io.File;
 import sys.FileSystem;
+#else
+import openfl.utils.Assets;
 #end
 
 import lime.app.Application;
@@ -65,6 +68,52 @@ class MainMenuState extends FunkinState
         var temp:Array<String> = FileSystem.readDirectory("mods");
         temp.remove("README.txt");
         var txt:FlxText = new FlxText(0, FlxG.height * 0.96, 1280, "Friday Night Funkin' Sentinel Engine Version " + Application.current.meta.get("version") + ": " + temp.length + " Mod(s) Active!", 24, true);
+
+        var invalid:String = "";
+        for (mod in 0...temp.length)
+        {
+            if (invalid == "")
+            {
+                var textFile:Array<String> = [];
+                var temper:Array<String> = [];
+
+                #if sys
+		        if(FileSystem.exists("mods/" + temp[mod] + "/mod.config")) temper = File.getContent("mods/" + temp[mod] + "/mod.config").trim().split('\n');
+		        #else
+		        if(Assets.exists("mods/" + temp[mod] + "/mod.config")) temper = Assets.getText("mods/" + temp[mod] + "/mod.config").trim().split('\n');
+		        #end
+
+		        for (i in 0...temper.length)
+		        {
+			        textFile.insert(textFile.length + 10, temper[i].trim());
+		        }
+
+                var detected:Bool = false;
+                for (line in 0...textFile.length)
+                {
+                    if (!detected)
+                    {
+                        var textago:Array<String> = textFile[line].split("\t");
+
+                        if (textago[textago.length - 2] == "sentinelVer:")
+                        {
+                            detected = true;
+                            if (textago[textago.length - 1] != Application.current.meta.get("version"))
+                            {
+                                invalid = temp[mod].replace("-", " ").toUpperCase();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if (invalid != "")
+        {
+            var txt2:FlxText = new FlxText(0, FlxG.height * 0.87, 1280, "WARNING: 1 Or More Mod's (Including \"" + invalid + "\") Are Not On The Current Version Of Sentinel Engine. This May Cause Unforseen Consequences, Please Make Sure That Your Sentinel Engine Is Up-To-Date Or Try Reaching Out To The Mod Author To Update The Mod", 24, true);
+            txt2.setFormat(Files.font("vcr.ttf"), 24, 0xFFAA0000, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, true);
+            add(txt2);
+        }
         #else
         var txt:FlxText = new FlxText(0, FlxG.height * 0.96, 1280, "Friday Night Funkin' Sentinel Engine Version " + Application.current.meta.get("version"), 24, true);
         #end
