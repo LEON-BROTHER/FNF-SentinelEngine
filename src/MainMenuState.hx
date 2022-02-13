@@ -46,16 +46,6 @@ class MainMenuState extends FunkinState
         add(bg);
         bg.x = 0;
 
-        #if MODS_ALLOWED
-        var temp:Array<String> = FileSystem.readDirectory("mods");
-        temp.remove("README.txt");
-        var txt:FlxText = new FlxText(0, FlxG.height * 0.9, 1280, "Friday Night Funkin' Sentinel Engine Version " + Application.current.meta.get("version") + ": " + temp.length + " Mod(s) Active!", 24, true);
-        #else
-        var txt:FlxText = new FlxText(0, FlxG.height * 0.9, 1280, "Friday Night Funkin' Sentinel Engine Version " + Application.current.meta.get("version"), 24, true);
-        #end
-        txt.setFormat(Files.font("vcr.ttf"), 24, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, true);
-        add(txt);
-
         menuButtons = new FlxTypedGroup<FlxSprite>();
         add(menuButtons);
 
@@ -70,6 +60,16 @@ class MainMenuState extends FunkinState
             button.animation.play("idle");
             menuButtons.add(button);
         }
+
+        #if MODS_ALLOWED
+        var temp:Array<String> = FileSystem.readDirectory("mods");
+        temp.remove("README.txt");
+        var txt:FlxText = new FlxText(0, FlxG.height * 0.96, 1280, "Friday Night Funkin' Sentinel Engine Version " + Application.current.meta.get("version") + ": " + temp.length + " Mod(s) Active!", 24, true);
+        #else
+        var txt:FlxText = new FlxText(0, FlxG.height * 0.96, 1280, "Friday Night Funkin' Sentinel Engine Version " + Application.current.meta.get("version"), 24, true);
+        #end
+        txt.setFormat(Files.font("vcr.ttf"), 24, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, true);
+        add(txt);
 
         selectItem(0);
     }
