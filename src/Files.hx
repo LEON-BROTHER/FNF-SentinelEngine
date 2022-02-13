@@ -20,7 +20,7 @@ using StringTools;
 class Files
 {
     #if MODS_ALLOWED
-    private static function getMods(file:String, extension:String, directory:String, ?library:String = null):Array<String>
+    private static function getMods(file:String, extension:String, directory:String, library:String):Array<String>
     {
         var array:Array<String> = FileSystem.readDirectory("mods");
 
@@ -94,7 +94,7 @@ class Files
         return "shared";
     }
 
-    private static function getPath(file:String, extension:String, directory:String, ?library:String = null):Dynamic
+    private static function getPath(file:String, extension:String, directory:String, library:String, ?ignoreMods:Bool = false):Dynamic
     {
         if (library == null)
         {
@@ -112,7 +112,12 @@ class Files
         }
 
         #if MODS_ALLOWED
-        var mods:Array<String> = getMods(file, extension, directory, library);
+        var mods:Array<String> = [];
+
+        if (!ignoreMods)
+        {
+            mods = getMods(file, extension, directory, library);
+        }
 
         if (!FileSystem.exists(output) && mods.length < 1)
         #else
@@ -142,6 +147,9 @@ class Files
                     var data:Future<BitmapData> = BitmapData.loadFromBytes(read.readAll());
                     var bm:Bitmap = new Bitmap(data.result());
                     return bm;
+                case "txt" | "xml":
+                    var op:String = "mods/" + mods[0];
+                    return op;
                 default:
                     var read:FileInput = File.read("mods/" + mods[0]);
                     return read.readAll();
@@ -213,19 +221,40 @@ class Files
         return FlxAtlasFrames.fromSparrow(image(fileName, library), file(fileName, "xml", "images", library));
     }
 
-    inline static public function readTextFile(file:String):Array<String>
+    inline static public function readTextFile(file:String, directory:String, ?library:String = null, ?modAdditions:Bool = false):Array<String>
     {
         var textFile:Array<String> = [];
-		#if MODS_ALLOWED
-		if(FileSystem.exists(file)) textFile = File.getContent(file).trim().split('\n');
+        var temp:Array<String> = [];
+		#if sys
+		if(FileSystem.exists(getPath(file, "txt", directory, library, modAdditions))) temp = File.getContent(getPath(file, "txt", directory, library, modAdditions)).trim().split('\n');
 		#else
-		if(Assets.exists(file)) textFile = Assets.getText(file).trim().split('\n');
+		if(Assets.exists(getPath(file, "txt", directory, library, modAdditions))) temp = Assets.getText(getPath(file, "txt", directory, library, modAdditions)).trim().split('\n');
 		#end
 
 		for (i in 0...textFile.length)
 		{
-			textFile[i] = textFile[i].trim();
+			textFile.insert(textFile.length + 10, temp[i].trim());
 		}
+
+        if (modAdditions)
+        {
+            var mods:Array<String> = getMods(file, "txt", directory, library);
+
+            for (mod in 0...mods.length)
+            {
+                temp = [];
+		        #if sys
+		        if(FileSystem.exists("mods/" + mods[mod])) temp = File.getContent("mods/" + mods[mod]).trim().split('\n');
+		        #else
+		        if(Assets.exists("mods/" + mods[mod])) temp = Assets.getText("mods/" + mods[mod]).trim().split('\n');
+		        #end
+
+		        for (i in 0...textFile.length)
+		        {
+			        textFile.insert(textFile.length + 10, temp[i].trim());
+		        }
+            }
+        }
 
         return textFile;
     }

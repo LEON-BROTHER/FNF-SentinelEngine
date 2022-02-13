@@ -103,7 +103,7 @@ class TitleState extends FunkinState
         add(introText);
 
         var random:FlxRandom =  new FlxRandom();
-        intro(0, random.int(0, Files.readTextFile(Files.txt("introText", "data", "preload")).length));
+        intro(0, random.int(0, Files.readTextFile("introText", "data", "preload", true).length));
     }
 
     public function endIntro()
@@ -123,21 +123,21 @@ class TitleState extends FunkinState
             case 0:
                 clearText();
             case 1:
-                updateText(Files.readTextFile(Files.txt("creators", "data", "preload")), 1);
+                updateText(Files.readTextFile("creators", "data", "preload"), 1);
             case 2:
                 updateText(["Present's"]);
             case 3:
                 clearText();
             case 4:
-                updateText([Files.readTextFile(Files.txt("ascociation", "data", "preload"))[0]], 5);
+                updateText([Files.readTextFile("ascociation", "data", "preload")[0]], 5);
             case 5:
-                updateText(Files.readTextFile(Files.txt("ascociation", "data", "preload"))[1].split("="), 4);
+                updateText(Files.readTextFile("ascociation", "data", "preload")[1].split("="), 4);
             case 6:
                 clearText();
             case 7:
-                updateText([Files.readTextFile(Files.txt("introText", "data", "preload"))[text].split("=")[0]], 1);
+                updateText([Files.readTextFile("introText", "data", "preload", true)[text].split("=")[0]], 1);
             case 8:
-                updateText([Files.readTextFile(Files.txt("introText", "data", "preload"))[text].split("=")[1]]);
+                updateText([Files.readTextFile("introText", "data", "preload", true)[text].split("=")[1]]);
             case 9:
                 clearText();
             case 10:

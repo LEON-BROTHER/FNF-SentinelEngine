@@ -23,7 +23,7 @@ class FreeplayState extends FunkinState
     {
         super();
 
-        songsList = Files.readTextFile(Files.txt("songList", "data", "preload"));
+        songsList = Files.readTextFile("songList", "data", "preload", true);
     }
 
     override function create()

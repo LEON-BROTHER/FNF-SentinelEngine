@@ -21,7 +21,7 @@ class CreditsState extends FunkinState
     {
         super();
 
-        creators = Files.readTextFile(Files.txt("credits", "data", "preload"));
+        creators = Files.readTextFile("credits", "data", "preload", true);
     }
 
     override function create()
