@@ -368,6 +368,8 @@ class PlayState extends FunkinState
 
     public function dead()
     {
+        voices.stop();
+        FlxG.cameras.remove(hud);
         FlxG.state.openSubState(new GameOverSubState(song, player1, player2, gf, stage, boyfriend));
     }
 }
