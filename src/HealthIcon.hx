@@ -13,6 +13,7 @@ class HealthIcon extends FlxSprite
         super();
 
         antialiasing = Config.antialiasing;
+
         #if sys
         if (FileSystem.exists(Files.image("icons/icon-" + character, "preload")))
         #else
@@ -25,6 +26,7 @@ class HealthIcon extends FlxSprite
         {
             loadGraphic(Files.image("icons/icon-null", "preload"), true, 150, 150);
         }
+        
         animation.pause();
 
         neutral();
