@@ -145,6 +145,7 @@ class PlayState extends FunkinState
         healthBarBG.antialiasing = Config.antialiasing;
         add(healthBarBG);
         healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, FlxBarFillDirection.RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this, "health", 0, 100, false);
+        healthBar.emptyCallback(dead);
         add(healthBar);
 
         iconP1 = new HealthIcon(player1);
@@ -363,6 +364,11 @@ class PlayState extends FunkinState
                 loop();
             });
         });
+    }
+
+    public function dead()
+    {
+        FlxG.state.openSubState(new GameOverSubState());
     }
 }
 
