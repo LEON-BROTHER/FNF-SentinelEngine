@@ -231,7 +231,7 @@ class Files
 		if(Assets.exists(getPath(file, "txt", directory, library, modAdditions))) temp = Assets.getText(getPath(file, "txt", directory, library, modAdditions)).trim().split('\n');
 		#end
 
-		for (i in 0...textFile.length)
+		for (i in 0...temp.length)
 		{
 			textFile.insert(textFile.length + 10, temp[i].trim());
 		}
@@ -249,7 +249,7 @@ class Files
 		        if(Assets.exists("mods/" + mods[mod])) temp = Assets.getText("mods/" + mods[mod]).trim().split('\n');
 		        #end
 
-		        for (i in 0...textFile.length)
+		        for (i in 0...temp.length)
 		        {
 			        textFile.insert(textFile.length + 10, temp[i].trim());
 		        }
