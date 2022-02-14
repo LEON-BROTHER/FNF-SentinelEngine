@@ -21,16 +21,16 @@ class CreditsState extends FunkinState
     {
         super();
 
-        #if desktop
-        Discord.UpdateStatus("In The Menu", "In The Credits Menu");
-        #end
-
         creators = Files.readTextFile("credits", "data", "preload", true);
     }
 
     override function create()
     {
         super.create();
+
+        #if desktop
+        Discord.UpdateStatus("In The Menu", "In The Credits Menu");
+        #end
 
         bg = new FlxSprite().loadGraphic(Files.image("menuBG", "preload"));
         bg.antialiasing = Config.antialiasing;

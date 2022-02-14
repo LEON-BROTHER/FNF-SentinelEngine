@@ -24,10 +24,6 @@ class TitleState extends FunkinState
     {
         super();
 
-        #if desktop
-        Discord.UpdateStatus("In The Intro Menu", null);
-        #end
-
         Config.loadConfig();
 
         introPlaying = false;
@@ -37,6 +33,10 @@ class TitleState extends FunkinState
     override function create()
     {
         super.create();
+
+        #if desktop
+        Discord.UpdateStatus("In The Intro Menu", null);
+        #end
 
         if (FlxG.sound.music == null)
         {

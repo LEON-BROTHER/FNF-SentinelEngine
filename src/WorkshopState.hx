@@ -9,6 +9,15 @@ class WorkshopState extends FunkinState
         super();
     }
 
+    override function create()
+    {
+        super.create();
+
+        #if desktop
+        Discord.UpdateStatus("Browsing The Workshop", null);
+        #end
+    }
+
     override function update(elapsed:Float)
     {
         super.update(elapsed);

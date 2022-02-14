@@ -7,6 +7,11 @@ class AchievementsState extends FunkinState
     public function new()
     {
         super();
+    }
+
+    override function create()
+    {
+        super.create();
 
         #if desktop
         Discord.UpdateStatus("In The Menu", "In The Achievements Menu");

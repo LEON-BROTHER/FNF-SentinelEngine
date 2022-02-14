@@ -30,6 +30,10 @@ class CreateNewModEditorState extends FunkinState
     {
         super.create();
 
+        #if desktop
+        Discord.UpdateStatus("In The Menu", "Creating A New Mod");
+        #end
+
         var title:FlxText = new FlxText(0, 0, 1280, "Enter The Name Of Your Newly Created Mod", 48, true);
         title.setFormat(Files.font("vcr.ttf"), 48, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);
         title.screenCenter();

@@ -10,17 +10,16 @@ class SignInState extends FunkinState
     public function new()
     {
         super();
-
-        #if desktop
-        Discord.NewInstance();
-        #end
-
         Config.loadConfig();
     }
 
     override function create()
     {
         super.create();
+
+        #if desktop
+        Discord.NewInstance();
+        #end
 
         var title:FlxText = new FlxText(0, 0, 1280, "Sign Into A Sentinel Account", 48, true);
         title.setFormat(Files.font("vcr.ttf"), 48, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);

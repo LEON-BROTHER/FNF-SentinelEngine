@@ -23,10 +23,6 @@ class ModsMenuState extends FunkinState
     {
         super();
 
-        #if desktop
-        Discord.UpdateStatus("In The Menu", "In The Mods Menu");
-        #end
-
         #if MODS_ALLOWED
         mods = FileSystem.readDirectory("mods");
 
@@ -42,6 +38,10 @@ class ModsMenuState extends FunkinState
     override function create()
     {
         super.create();
+
+        #if desktop
+        Discord.UpdateStatus("In The Menu", "In The Mods Menu");
+        #end
 
         bg = new FlxSprite().loadGraphic(Files.image("menuBGBlue", "preload"));
         bg.antialiasing = Config.antialiasing;
