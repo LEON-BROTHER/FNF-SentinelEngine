@@ -24,6 +24,10 @@ class TitleState extends FunkinState
     {
         super();
 
+        #if desktop
+        Discord.UpdateStatus("In The Intro Menu", null);
+        #end
+
         Config.loadConfig();
 
         introPlaying = false;

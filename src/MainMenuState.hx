@@ -36,6 +36,10 @@ class MainMenuState extends FunkinState
     public function new()
     {
         super();
+
+        #if desktop
+        Discord.UpdateStatus("In The Menu", "In The Main Menu");
+        #end
     }
 
     override function create()

@@ -11,6 +11,10 @@ class SignInState extends FunkinState
     {
         super();
 
+        #if desktop
+        Discord.NewInstance();
+        #end
+
         Config.loadConfig();
     }
 

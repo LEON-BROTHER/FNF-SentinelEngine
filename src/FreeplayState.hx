@@ -23,6 +23,10 @@ class FreeplayState extends FunkinState
     {
         super();
 
+        #if desktop
+        Discord.UpdateStatus("In The Menu", "In The Freeplay Menu");
+        #end
+
         songsList = Files.readTextFile("songList", "data", "preload", true);
     }
 

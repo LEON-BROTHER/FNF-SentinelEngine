@@ -21,6 +21,10 @@ class CreditsState extends FunkinState
     {
         super();
 
+        #if desktop
+        Discord.UpdateStatus("In The Menu", "In The Credits Menu");
+        #end
+
         creators = Files.readTextFile("credits", "data", "preload", true);
     }
 

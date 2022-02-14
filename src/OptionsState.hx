@@ -26,6 +26,11 @@ class OptionsState extends FunkinState
     public function new()
     {
         super();
+
+        #if desktop
+        Discord.UpdateStatus("In The Menu", "In The Options Menu");
+        #end
+
         Config.loadConfig();
     }
 

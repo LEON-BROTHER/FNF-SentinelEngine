@@ -23,6 +23,10 @@ class ModsMenuState extends FunkinState
     {
         super();
 
+        #if desktop
+        Discord.UpdateStatus("In The Menu", "In The Mods Menu");
+        #end
+
         #if MODS_ALLOWED
         mods = FileSystem.readDirectory("mods");
 
