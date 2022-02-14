@@ -1,11 +1,12 @@
 package;
 
+import sys.thread.Thread;
 import Sys.sleep;
 import discord_rpc.DiscordRpc;
 
 class Discord
 {
-    public static function NewInstance()
+    public function new()
     {
         DiscordRpc.start({
             clientID: "942728867100123146",
@@ -17,6 +18,16 @@ class Discord
             DiscordRpc.process();
             sleep(1);
         }
+
+        DiscordRpc.shutdown();
+    }
+
+    public static function NewInstance()
+    {
+        var SexyDiscordRPC = Thread.create(() ->
+		{
+			new Discord();
+		});
     }
 
     public static function OnReady()
