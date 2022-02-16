@@ -44,15 +44,15 @@ class PlayState extends FunkinState
     public var iconP1:HealthIcon;
     public var iconP2:HealthIcon;
 
-    public var noteLeftP1:Note;
-    public var noteRightP1:Note;
-    public var noteDownP1:Note;
-    public var noteUpP1:Note;
+    public var noteLeftP1:PlayerNote;
+    public var noteRightP1:PlayerNote;
+    public var noteDownP1:PlayerNote;
+    public var noteUpP1:PlayerNote;
 
-    public var noteLeftP2:Note;
-    public var noteRightP2:Note;
-    public var noteDownP2:Note;
-    public var noteUpP2:Note;
+    public var noteLeftP2:PlayerNote;
+    public var noteRightP2:PlayerNote;
+    public var noteDownP2:PlayerNote;
+    public var noteUpP2:PlayerNote;
 
     public function new(lSong:String, ?p1:String = "bf", ?p2:String = "dad", ?p3:String = "gf", ?bg:String = "stage", ?difficulty:String = "normal", ?songsQueue:Array<String>)
     {
@@ -165,17 +165,29 @@ class PlayState extends FunkinState
         iconP2.screenCenter();
         add(iconP2);
 
-        noteLeftP1 = new Note(-69350, -69705, true, Left);
+        noteLeftP1 = new PlayerNote(-69420, 10, true, Left);
         add(noteLeftP1);
+        noteLeftP1.y -= FlxG.height / 2;
+        noteLeftP1.x += 70 + (112 * 0);
+        noteLeftP1.y -= 69420;
 
-        noteUpP1 = new Note(-69250, -69705, true, Up);
+        noteUpP1 = new PlayerNote(-69420, 10, true, Up);
         add(noteUpP1);
+        noteUpP1.y -= FlxG.height / 2;
+        noteUpP1.x += 70 + (112 * 1);
+        noteUpP1.y -= 69420;
 
-        noteDownP1 = new Note(-69150, -69705, true, Down);
+        noteDownP1 = new PlayerNote(-69420, 10, true, Down);
         add(noteDownP1);
+        noteDownP1.y -= FlxG.height / 2;
+        noteDownP1.x += 70 + (112 * 2);
+        noteDownP1.y -= 69420;
 
-        noteRightP1 = new Note(-69050, -69705, true, Right);
+        noteRightP1 = new PlayerNote(-69420, 10, true, Right);
         add(noteRightP1);
+        noteRightP1.y -= FlxG.height / 2;
+        noteRightP1.x += 70 + (112 * 3);
+        noteRightP1.y -= 69420;
 
         countdown();
     }
@@ -434,7 +446,7 @@ enum NoteDirection
     Down;
 }
 
-class Note extends FlxSprite
+class PlayerNote extends FlxSprite
 {
     public function new(x:Int, y:Int, player:Bool, direction:NoteDirection)
     {
@@ -462,7 +474,7 @@ class Note extends FlxSprite
                 animation.addByPrefix("confirm", "down confirm", 24, false);
         }
 
-        setGraphicSize(Std.int(width * 0.75), Std.int(height * 0.75));
+        setGraphicSize(Std.int(width * 0.7), Std.int(height * 0.7));
         antialiasing = Config.antialiasing;
 
         idle();
