@@ -189,6 +189,30 @@ class PlayState extends FunkinState
         noteRightP1.x += 70 + (112 * 3);
         noteRightP1.y -= 69420;
 
+        noteLeftP2 = new PlayerNote(-69420, 10, true, Left);
+        add(noteLeftP2);
+        noteLeftP2.y -= FlxG.height / 2;
+        noteLeftP2.x -= 70 + (112 * 3);
+        noteLeftP2.y += 69420;
+
+        noteUpP2 = new PlayerNote(-69420, 10, true, Up);
+        add(noteUpP2);
+        noteUpP2.y -= FlxG.height / 2;
+        noteUpP2.x -= 70 + (112 * 2);
+        noteUpP2.y -= 69420;
+
+        noteDownP2 = new PlayerNote(-69420, 10, true, Down);
+        add(noteDownP2);
+        noteDownP2.y -= FlxG.height / 2;
+        noteDownP2.x -= 70 + (112 * 1);
+        noteDownP2.y -= 69420;
+
+        noteRightP2 = new PlayerNote(-69420, 10, true, Right);
+        add(noteRightP2);
+        noteRightP2.y -= FlxG.height / 2;
+        noteRightP2.x -= 70 + (112 * 0);
+        noteRightP2.y -= 69420;
+
         countdown();
     }
 
@@ -257,25 +281,25 @@ class PlayState extends FunkinState
 
         if (random == 12)
         {
-            //noteUpP2.press();
+            noteUpP2.press();
             dad.up(false);
         }
 
         if (random == 21)
         {
-            //noteDownP2.press();
+            noteDownP2.press();
             dad.down(false);
         }
 
         if (random == 42)
         {
-            //noteLeftP2.press();
+            noteLeftP2.press();
             dad.left(false);
         }
 
         if (random == 42)
         {
-            //noteRightP2.press();
+            noteRightP2.press();
             dad.right(false);
         }
 
