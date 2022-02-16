@@ -234,6 +234,6 @@ class FreeplayState extends FunkinState
                 stage = "stage";
         }
 
-        FunkinState.switchState(new PlayState(songsList[num].split(":")[0], bf, songsList[num].split(":")[1], gf, stage));
+        FunkinState.switchState(new PlayState(songsList[num].split(":")[0], bf, songsList[num].split(":")[1], gf, stage, "normal", []));
     }
 }
