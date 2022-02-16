@@ -21,6 +21,8 @@ class PlayState extends FunkinState
     public var target:FlxSprite;
 
     public var song:String = "null";
+    public var songsQueue:Array<String> = [];
+    public var difficulty:String = "normal";
 
     public var player1:String = "bf";
     public var player2:String = "dad";
@@ -52,7 +54,7 @@ class PlayState extends FunkinState
     public var noteDownP2:Note;
     public var noteUpP2:Note;
 
-    public function new(lSong:String, ?p1:String = "bf", ?p2:String = "dad", ?p3:String = "gf", ?bg:String = "stage")
+    public function new(lSong:String, ?p1:String = "bf", ?p2:String = "dad", ?p3:String = "gf", ?bg:String = "stage", ?difficulty:String = "normal", ?songsQueue:Array<String>)
     {
         super();
 
@@ -61,6 +63,8 @@ class PlayState extends FunkinState
         player2 = p2;
         gf = p3;
         stage = bg;
+        this.difficulty = difficulty;
+        this.songsQueue = songsQueue;
 
         if (FlxG.sound.music != null)
         {
@@ -73,6 +77,10 @@ class PlayState extends FunkinState
     override function create()
     {
         super.create();
+
+        #if desktop
+        Discord.UpdateStatus("In Game", song + " - " + difficulty);
+        #end
 
         target = new FlxSprite().makeGraphic(1, 1, FlxColor.TRANSPARENT, true, "targettedlol");
         target.antialiasing = false;
@@ -233,6 +241,32 @@ class PlayState extends FunkinState
             noteRightP1.idle();
         }
 
+        var random:Float = new FlxRandom().int(0, 100);
+
+        if (random == 12)
+        {
+            //noteUpP2.press();
+            dad.up(false);
+        }
+
+        if (random == 21)
+        {
+            //noteDownP2.press();
+            dad.down(false);
+        }
+
+        if (random == 42)
+        {
+            //noteLeftP2.press();
+            dad.left(false);
+        }
+
+        if (random == 42)
+        {
+            //noteRightP2.press();
+            dad.right(false);
+        }
+
         /*if (!voices.playing)
         {
             FunkinState.switchState(new FreeplayState());
@@ -343,7 +377,7 @@ class PlayState extends FunkinState
     public function moveCam(char:Character)
     {
         FlxTween.cancelTweensOf(game);
-        FlxTween.tween(game, {zoom: background.camZoom}, 1, {
+        FlxTween.tween(game, {zoom: background.camZoom}, 3.5, {
             ease: FlxEase.expoOut,
         });
         FlxTween.cancelTweensOf(target);
