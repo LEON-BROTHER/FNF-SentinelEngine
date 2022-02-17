@@ -1,10 +1,6 @@
 package;
 
-import haxe.Resource;
-import openfl.utils.ByteArray;
-import lime.app.Future;
-import openfl.display.BitmapData;
-
+import openfl.utils.AssetManifest;
 import flixel.graphics.frames.FlxAtlasFrames;
 
 #if MODS_ALLOWED
@@ -142,18 +138,10 @@ class Files
 
             switch(extension)
             {
-                case "png":
-                    var bytes:haxe.io.Bytes = Resource.getBytes("mods/" + mods[0]);
-                    var ba:ByteArray = ByteArray.fromBytes(bytes);
-                    var data:Future<BitmapData> = BitmapData.loadFromBytes(ba);
-                    var bmd:BitmapData = data.result();
-                    return bmd;
                 case "txt" | "xml":
-                    var op:String = "mods/" + mods[0];
-                    return op;
+                    return "mods/" + mods[0];
                 default:
-                    var read:FileInput = File.read("mods/" + mods[0]);
-                    return read.readAll();
+                    return "mods/" + mods[0];
             }
         }
         #end
