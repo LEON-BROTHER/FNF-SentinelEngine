@@ -69,8 +69,7 @@ class MainMenuState extends FunkinState
         }
 
         #if MODS_ALLOWED
-        var temp:Array<String> = FileSystem.readDirectory("mods");
-        temp.remove("README.txt");
+        var temp:Array<String> = Files.getModsList();
         var txt:FlxText = new FlxText(0, FlxG.height * 0.96, 1280, "Friday Night Funkin' Sentinel Engine Version " + Application.current.meta.get("version") + ": " + temp.length + " Mod(s) Active!", 24, true);
 
         var invalid:String = "";

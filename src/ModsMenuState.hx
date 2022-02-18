@@ -24,12 +24,7 @@ class ModsMenuState extends FunkinState
         super();
 
         #if MODS_ALLOWED
-        mods = FileSystem.readDirectory("mods");
-
-        if (mods.contains("README.txt"))
-        {
-            mods.remove("README.txt");
-        }
+        mods = Files.getModsList();
         #else
         mods = [""];
         #end

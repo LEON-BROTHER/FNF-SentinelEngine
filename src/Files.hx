@@ -155,6 +155,24 @@ class Files
         return output;
     }
 
+    #if MODS_ALLOWED
+    inline static public function getModsList():Array<String>
+    {
+        var array:Array<String> = FileSystem.readDirectory("mods");
+
+        var output:Array<String> = new Array<String>();
+
+        for (i in 0...array.length)
+        {
+            output.insert(array.length + 1, "mods/" + array[i]);
+        }
+
+        output.remove("README.txt");
+
+        return output;
+    }
+    #end
+
     inline static public function file(file:String, extension:String, directory:String, ?library:String = null):Dynamic
     {
         return getPath(file, extension, directory, library);
@@ -231,6 +249,7 @@ class Files
 			textFile.insert(textFile.length + 10, temp[i].trim());
 		}
 
+        #if MODS_ALLOWED
         if (modAdditions)
         {
             var mods:Array<String> = getMods(file, "txt", directory, library);
@@ -250,6 +269,7 @@ class Files
 		        }
             }
         }
+        #end
 
         return textFile;
     }
