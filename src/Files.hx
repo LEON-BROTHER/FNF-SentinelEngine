@@ -1,10 +1,8 @@
 package;
 
-import openfl.utils.AssetManifest;
 import flixel.graphics.frames.FlxAtlasFrames;
 
 #if MODS_ALLOWED
-import sys.io.FileInput;
 import sys.io.File;
 import sys.FileSystem;
 #else
