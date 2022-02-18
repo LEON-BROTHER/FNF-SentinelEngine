@@ -7,6 +7,7 @@ import sys.FileSystem;
 import openfl.utils.Assets;
 #end
 
+import editors.MainEditorState;
 import lime.app.Application;
 import flixel.util.FlxColor;
 import flixel.text.FlxText;
@@ -144,6 +145,11 @@ class MainMenuState extends FunkinState
         if (FlxG.keys.justPressed.ENTER)
         {
             select(item);
+        }
+
+        if (FlxG.keys.justPressed.SEVEN)
+        {
+            FunkinState.switchState(new MainEditorState());
         }
     }
 
