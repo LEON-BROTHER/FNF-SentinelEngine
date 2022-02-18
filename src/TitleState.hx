@@ -133,9 +133,9 @@ class TitleState extends FunkinState
             case 3:
                 clearText();
             case 4:
-                updateText([Files.readTextFile("ascociation", "data", "preload")[0]], 5);
+                updateText(["In Ascociation With"], 5);
             case 5:
-                updateText(Files.readTextFile("ascociation", "data", "preload")[1].split("="), 4);
+                updateText(["Newgrounds", "[NG]"], 4);
             case 6:
                 clearText();
             case 7:
