@@ -150,7 +150,7 @@ class Files
 
         for (i in 0...array.length)
         {
-            output.insert(array.length + 1, "mods/" + array[i]);
+            output.insert(array.length + 1, array[i]);
         }
 
         output.remove("README.txt");
