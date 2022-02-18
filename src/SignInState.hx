@@ -1,6 +1,6 @@
 package;
 
-import polymod.Polymod;
+//import polymod.Polymod;
 import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
 import flixel.FlxG;
