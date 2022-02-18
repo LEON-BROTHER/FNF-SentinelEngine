@@ -1,5 +1,6 @@
 package;
 
+import editors.ChartingEditorState;
 import flixel.math.FlxRandom;
 import flixel.math.FlxMath;
 import flixel.ui.FlxBar;
@@ -311,6 +312,11 @@ class PlayState extends FunkinState
         if (FlxG.keys.justPressed.ESCAPE)
         {
             FunkinState.switchState(new MainMenuState());
+        }
+
+        if (FlxG.keys.justPressed.SEVEN)
+        {
+            FunkinState.switchState(new ChartingEditorState());
         }
 
         var phase:Int = 0;
