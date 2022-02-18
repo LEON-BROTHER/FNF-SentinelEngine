@@ -1,9 +1,5 @@
 package;
 
-#if sys
-import sys.FileSystem;
-#end
-
 import flixel.FlxSprite;
 
 class HealthIcon extends FlxSprite
@@ -13,18 +9,14 @@ class HealthIcon extends FlxSprite
         super();
 
         antialiasing = Config.antialiasing;
-
-        #if sys
-        if (FileSystem.exists(Files.image("icons/icon-" + character, "preload")))
-        #else
-        if (Assets.exists(Files.image("icons/icon-" + character, "preload")))
-        #end
+    
+        if (Files.image("icons/icon-" + character, "preload") == "assets/MissingTexture.png")
         {
-            loadGraphic(Files.image("icons/icon-" + character, "preload"), true, 150, 150);
+            loadGraphic(Files.image("icons/icon-null", "preload"), true, 150, 150);
         }
         else
         {
-            loadGraphic(Files.image("icons/icon-null", "preload"), true, 150, 150);
+            loadGraphic(Files.image("icons/icon-" + character, "preload"), true, 150, 150);
         }
         
         animation.pause();

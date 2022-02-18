@@ -90,7 +90,7 @@ class Files
         return "shared";
     }
 
-    private static function getPath(file:String, extension:String, directory:String, library:String):Dynamic
+    private static function getPath(file:String, extension:String, directory:String, library:String):String
     {
         if (library == null)
         {
@@ -108,14 +108,10 @@ class Files
         }
 
         #if MODS_ALLOWED
-        /*var mods:Array<String> = [];
+        var mods:Array<String> = [];
+        mods = getMods(file, extension, directory, library);
 
-        if (!ignoreMods)
-        {
-            mods = getMods(file, extension, directory, library);
-        }*/
-
-        if (!FileSystem.exists(output))
+        if (!FileSystem.exists(output) && mods.length < 1)
         #else
         if(!Assets.exists(output))
         #end
@@ -159,22 +155,22 @@ class Files
     }
     #end
 
-    inline static public function file(file:String, extension:String, directory:String, ?library:String = null):Dynamic
+    inline static public function file(file:String, extension:String, directory:String, ?library:String = null):String
     {
         return getPath(file, extension, directory, library);
     }
 
-    inline static public function txt(file:String, directory:String, ?library:String = null):Dynamic
+    inline static public function txt(file:String, directory:String, ?library:String = null):String
     {
         return getPath(file, "txt", directory, library);
     }
 
-    inline static public function image(file:String, ?library:String = null):Dynamic
+    inline static public function image(file:String, ?library:String = null):String
     {
         return getPath(file, "png", "images", library);
     }
 
-    inline static public function sound(file:String, ?library:String = null):Dynamic
+    inline static public function sound(file:String, ?library:String = null):String
     {
         #if web
         return getPath(file, "mp3", "sounds", library);
@@ -183,7 +179,7 @@ class Files
         #end
     }
 
-    inline static public function music(file:String, ?library:String = null):Dynamic
+    inline static public function music(file:String, ?library:String = null):String
     {
         #if web
         return getPath(file, "mp3", "music", library);
@@ -192,7 +188,7 @@ class Files
         #end
     }
 
-    inline static public function inst(songName:String):Dynamic
+    inline static public function inst(songName:String):String
     {
         #if web
         return getPath("Inst", "mp3", songName.toLowerCase().replace(" ", "-"), "songs");
@@ -201,7 +197,7 @@ class Files
         #end
     }
 
-    inline static public function voices(songName:String):Dynamic
+    inline static public function voices(songName:String):String
     {
         #if web
         return getPath("Voices", "mp3", songName.toLowerCase().replace(" ", "-"), "songs");
@@ -210,7 +206,7 @@ class Files
         #end
     }
 
-    inline static public function font(file:String):Dynamic
+    inline static public function font(file:String):String
     {
         return "assets/fonts/" + file;
     }
