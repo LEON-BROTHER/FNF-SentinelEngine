@@ -90,7 +90,7 @@ class Files
         return "shared";
     }
 
-    private static function getPath(file:String, extension:String, directory:String, library:String, ?ignoreMods:Bool = false):Dynamic
+    private static function getPath(file:String, extension:String, directory:String, library:String):Dynamic
     {
         if (library == null)
         {
@@ -108,14 +108,14 @@ class Files
         }
 
         #if MODS_ALLOWED
-        var mods:Array<String> = [];
+        /*var mods:Array<String> = [];
 
         if (!ignoreMods)
         {
             mods = getMods(file, extension, directory, library);
-        }
+        }*/
 
-        if (!FileSystem.exists(output) && mods.length < 1)
+        if (!FileSystem.exists(output))
         #else
         if(!Assets.exists(output))
         #end
@@ -225,9 +225,9 @@ class Files
         var textFile:Array<String> = [];
         var temp:Array<String> = [];
 		#if sys
-		if(FileSystem.exists(getPath(file, "txt", directory, library, modAdditions))) temp = File.getContent(getPath(file, "txt", directory, library, modAdditions)).trim().split('\n');
+		if(FileSystem.exists(getPath(file, "txt", directory, library))) temp = File.getContent(getPath(file, "txt", directory, library)).trim().split('\n');
 		#else
-		if(Assets.exists(getPath(file, "txt", directory, library, modAdditions))) temp = Assets.getText(getPath(file, "txt", directory, library, modAdditions)).trim().split('\n');
+		if(Assets.exists(getPath(file, "txt", directory, library))) temp = Assets.getText(getPath(file, "txt", directory, library)).trim().split('\n');
 		#end
 
 		for (i in 0...temp.length)
