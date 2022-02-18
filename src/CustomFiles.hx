@@ -68,8 +68,8 @@ class CustomFiles
     {
         var output:ChartConfig = {
             song: "Tutorial",
-            player1: "dad",
-            player2: "bf",
+            player1: "bf",
+            player2: "dad",
             gf: "gf",
             stage: "stage",
             noteStyle: "default",
