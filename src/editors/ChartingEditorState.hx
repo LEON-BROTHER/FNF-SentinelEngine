@@ -37,7 +37,7 @@ class ChartingEditorState extends FunkinState
     {
         super.create();
 
-        //FlxG.camera.follow(new FlxSprite(-69420, -69420).makeGraphic(1, 1, FlxColor.TRANSPARENT, true, "targettedlol"), FlxCameraFollowStyle.NO_DEAD_ZONE, 1);
+        FlxG.camera.follow(new FlxSprite(-69420, -69420).makeGraphic(1, 1, FlxColor.TRANSPARENT, true, "targettedlol"), FlxCameraFollowStyle.NO_DEAD_ZONE, 1);
 
         reloadPage();
         scroll = 0;
@@ -63,10 +63,10 @@ class ChartingEditorState extends FunkinState
             scroll = 0;
         }
 
-        for (i in 0...gridBG.members.length)
+        /*for (i in 0...gridBG.members.length)
         {
-            gridBG.members[i].y = 40 + (640 * i) + scroll;
-        }
+            gridBG.members[i].y = 40 + (640 * i) - scroll;
+        }*/
     }
 
     public function reloadPage()
