@@ -75,7 +75,7 @@ class MainEditorState extends FunkinState
 
         if (FlxG.keys.justPressed.ENTER)
         {
-            FlxG.sound.play(Files.sound("scrollMenu", "preload"));
+            FlxG.sound.play(Files.sound("confirmMenu", "preload"));
             select();
         }
 

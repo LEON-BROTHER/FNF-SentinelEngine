@@ -73,7 +73,7 @@ class GameOverSubState extends FlxSubState
             bf.animation.play("deathConfirm", true);
 
             new FlxTimer().start(1.7, function(tmr:FlxTimer) {
-                FunkinState.switchState(new PlayState(song, p1, p2, p3, stage));
+                FunkinState.switchState(new PlayState(song, p1, p2, p3, stage, "normal", []));
             });
         }
     }
