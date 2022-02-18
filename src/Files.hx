@@ -131,12 +131,12 @@ class Files
                     output = null;
             }
         }
-        #if MODS_ALLOWED
+        /*#if MODS_ALLOWED
         else if (FileSystem.exists("mods/" + mods[0]))
         {
             return "mods/" + mods[0];
         }
-        #end
+        #end*/
 
         return output;
     }
