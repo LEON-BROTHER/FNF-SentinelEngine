@@ -72,15 +72,15 @@ class PlayState extends FunkinState
         }
 
         health = 50;
+
+        #if desktop
+        Discord.UpdateStatus("In Game", song + " - " + difficulty);
+        #end
     }
 
     override function create()
     {
         super.create();
-
-        #if desktop
-        Discord.UpdateStatus("In Game", song + " - " + difficulty);
-        #end
 
         target = new FlxSprite().makeGraphic(1, 1, FlxColor.TRANSPARENT, true, "targettedlol");
         target.antialiasing = false;

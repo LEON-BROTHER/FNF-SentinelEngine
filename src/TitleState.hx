@@ -28,15 +28,15 @@ class TitleState extends FunkinState
 
         introPlaying = false;
         introStart = !skipIntro;
+
+        #if desktop
+        Discord.UpdateStatus("In The Intro Menu", null);
+        #end
     }
 
     override function create()
     {
         super.create();
-
-        #if desktop
-        Discord.UpdateStatus("In The Intro Menu", null);
-        #end
 
         if (FlxG.sound.music == null)
         {

@@ -36,15 +36,15 @@ class MainMenuState extends FunkinState
     public function new()
     {
         super();
+
+        #if desktop
+        Discord.UpdateStatus("In The Menu", "In The Main Menu");
+        #end
     }
 
     override function create()
     {
         super.create();
-
-        #if desktop
-        Discord.UpdateStatus("In The Menu", "In The Main Menu");
-        #end
 
         bg = new FlxSprite().loadGraphic(Files.image("menuBG", "preload"));
         bg.antialiasing = Config.antialiasing;

@@ -1,6 +1,6 @@
 package;
 
-//import polymod.Polymod;
+import polymod.Polymod;
 import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
 import flixel.FlxG;
@@ -11,23 +11,24 @@ class SignInState extends FunkinState
     public function new()
     {
         super();
+
+        #if MODS_ALLOWED
+        Polymod.init({
+            modRoot: "mods/",
+            dirs: Files.getModsList()
+        });
+        #end
+        
         Config.loadConfig();
+
+        #if desktop
+        Discord.NewInstance();
+        #end
     }
 
     override function create()
     {
         super.create();
-
-        #if desktop
-        Discord.NewInstance();
-        #end
-
-        /*#if MODS_ALLOWED
-        Polymod.init({
-            modRoot: "mods/",
-            dirs: Files.getModsList()
-        });
-        #end*/
 
         var title:FlxText = new FlxText(0, 0, 1280, "Sign Into A Sentinel Account", 48, true);
         title.setFormat(Files.font("vcr.ttf"), 48, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.TRANSPARENT, true);

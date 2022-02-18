@@ -28,15 +28,15 @@ class OptionsState extends FunkinState
         super();
 
         Config.loadConfig();
+
+        #if desktop
+        Discord.UpdateStatus("In The Menu", "In The Options Menu");
+        #end
     }
 
     override function create()
     {
         super.create();
-
-        #if desktop
-        Discord.UpdateStatus("In The Menu", "In The Options Menu");
-        #end
 
         bg = new FlxSprite().loadGraphic(Files.image("menuBGBlue", "preload"));
         bg.antialiasing = Config.antialiasing;

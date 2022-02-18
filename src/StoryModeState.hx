@@ -7,11 +7,6 @@ class StoryModeState extends FunkinState
     public function new()
     {
         super();
-    }
-
-    override function create()
-    {
-        super.create();
 
         #if desktop
         Discord.UpdateStatus("In The Menu", "In The Story Mode Menu");

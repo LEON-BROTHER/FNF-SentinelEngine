@@ -28,15 +28,15 @@ class ModsMenuState extends FunkinState
         #else
         mods = [""];
         #end
+
+        #if desktop
+        Discord.UpdateStatus("In The Menu", "In The Mods Menu");
+        #end
     }
 
     override function create()
     {
         super.create();
-
-        #if desktop
-        Discord.UpdateStatus("In The Menu", "In The Mods Menu");
-        #end
 
         bg = new FlxSprite().loadGraphic(Files.image("menuBGBlue", "preload"));
         bg.antialiasing = Config.antialiasing;

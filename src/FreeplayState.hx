@@ -24,15 +24,15 @@ class FreeplayState extends FunkinState
         super();
 
         songsList = Files.readTextFile("songList", "data", "preload", true);
+
+        #if desktop
+        Discord.UpdateStatus("In The Menu", "In The Freeplay Menu");
+        #end
     }
 
     override function create()
     {
         super.create();
-
-        #if desktop
-        Discord.UpdateStatus("In The Menu", "In The Freeplay Menu");
-        #end
 
         bg = new FlxSprite().loadGraphic(Files.image("menuDesat", "preload"));
         bg.antialiasing = Config.antialiasing;
