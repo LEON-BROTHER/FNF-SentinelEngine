@@ -63,15 +63,16 @@ class ChartingEditorState extends FunkinState
             scroll = 0;
         }
 
-        /*for (i in 0...gridBG.members.length)
+        for (i in 0...gridBG.members.length)
         {
-            gridBG.members[i].y = 40 + (640 * i) - scroll;
-        }*/
+            gridBG.members[i].y = 40 + (640 * i) + scroll;
+        }
     }
 
     public function reloadPage()
     {
         gridBG = new FlxTypedGroup<FlxSprite>();
+        add(gridBG);
         chartLength = Std.int(FlxG.sound.load(Files.inst(config.song)).length + 1);
 
         for (i in 0...chartLength)
