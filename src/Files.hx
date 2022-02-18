@@ -134,21 +134,7 @@ class Files
         #if MODS_ALLOWED
         else if (FileSystem.exists("mods/" + mods[0]))
         {
-            output = null;
-
-            switch(extension)
-            {
-                case "png":
-                    new AssetManifest().addBitmapData("mods/" + mods[0]);
-                    return "mods/" + mods[0];
-                case "ogg" | "mp3":
-                    new AssetManifest().addSound(["mods/" + mods[0]]);
-                    return "mods/" + mods[0];
-                case "txt" | "xml":
-                    return "mods/" + mods[0];
-                default:
-                    return "mods/" + mods[0];
-            }
+            return "mods/" + mods[0];
         }
         #end
 

@@ -60,6 +60,7 @@
     <haxelib name="flixel-addons" />
     <haxelib name="flixel-ui" />
     <haxelib name="discord_rpc" if="desktop" />
+    <haxelib name="polymod" if="MODS_ALLOWED" />
 
     <haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
     <haxedef name="FLX_NO_DEBUG" unless="debug" />
