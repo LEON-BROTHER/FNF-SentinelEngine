@@ -24,6 +24,7 @@ If You Don't Have HaxeFlixel Or The Required Package's Installed, Do The Followi
 - `haxelib install flixel`
 - `haxelib install flixel-addons`
 - `haxelib install flixel-ui`
+- `haxelib install polymod`
 
 Now You Have HaxeFlixel And The Required Packages:
 - In The Repository, Run The Bat File `compile-[PlatformName].bat`. I'll Get To Mac, Linux, HTML & Android (And Maybe Even Newground's) At Some Point.
