@@ -37,7 +37,10 @@ class ChartingEditorState extends FunkinState
     {
         super.create();
 
-        FlxG.camera.follow(new FlxSprite(-69420, -69420).makeGraphic(1, 1, FlxColor.TRANSPARENT, true, "targettedlol"), FlxCameraFollowStyle.NO_DEAD_ZONE, 1);
+        FlxG.camera.follow(new FlxSprite((FlxG.width / 2) - FlxG.width, (FlxG.height / 2) - FlxG.height).makeGraphic(1, 1, FlxColor.TRANSPARENT, true, "targettedlol"), FlxCameraFollowStyle.NO_DEAD_ZONE, 1);
+
+        gridBG = new FlxTypedGroup<FlxSprite>();
+        add(gridBG);
 
         reloadPage();
         scroll = 0;
@@ -65,20 +68,21 @@ class ChartingEditorState extends FunkinState
 
         for (i in 0...gridBG.members.length)
         {
-            gridBG.members[i].y = 40 + (640 * i) + scroll;
+            gridBG.members[i].y = 40 + (640 * i) - scroll;
         }
     }
 
     public function reloadPage()
     {
         gridBG = new FlxTypedGroup<FlxSprite>();
-        add(gridBG);
         chartLength = Std.int(FlxG.sound.load(Files.inst(config.song)).length + 1);
+        trace(chartLength);
 
         for (i in 0...chartLength)
         {
             var grid:FlxSprite = FlxGridOverlay.create(40, 40 + (640 * i), 320, 640);
 		    gridBG.add(grid);
+            trace(gridBG.length);
         }
 
 		dad = new HealthIcon("bf");
