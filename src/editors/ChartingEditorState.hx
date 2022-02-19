@@ -75,7 +75,7 @@ class ChartingEditorState extends FunkinState
     public function reloadPage()
     {
         gridBG = new FlxTypedGroup<FlxSprite>();
-        chartLength = Std.int(FlxG.sound.load(Files.inst(config.song)).length + 1);
+        chartLength = Std.int((FlxG.sound.load(Files.inst(config.song)).length + 1) / 1000);
         trace(chartLength);
 
         for (i in 0...chartLength)
