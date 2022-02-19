@@ -28,6 +28,7 @@ typedef Chart =
 
 typedef Section = 
 {
+    camAtPlayer:Bool,
     notes:Array<ChartNote>,
     events:Array<Event>
 }
