@@ -10,7 +10,9 @@ class Discord
     {
         DiscordRpc.start({
             clientID: "942728867100123146",
-			onReady: OnReady
+			onReady: OnReady,
+            onDisconnected: OnDisconnect,
+            onError: OnError
         });
 
         while (true)
@@ -30,13 +32,24 @@ class Discord
 		});
     }
 
-    public static function OnReady()
+    public function OnReady()
     {
+        trace("Discord Setup Successful");
         #if LOGIN_ALLOWED
         UpdateStatus("Logging Into A Sentinel Engine Account", null);
         #else
         UpdateStatus("In The Intro Menu", null);
         #end
+    }
+
+    public function OnDisconnect(_code:Int, _message:String)
+    {
+        trace("Discord Client Disconnected. Client Returned Code" + _code + " - " + _message);
+    }
+
+    public function OnError(_code:Int, _message:String)
+    {
+        trace("Discord Client Crashed! Client Returned ERROR " + _code + " - " + _message);
     }
 
     public static function UpdateStatus(details:String, state:String)
@@ -47,5 +60,6 @@ class Discord
             largeImageKey: "title-card",
             largeImageText: "Sentinel Engine"
         });
+        trace("Discord Rich Presence Updated To " + details + " - " + state);
     }
 }

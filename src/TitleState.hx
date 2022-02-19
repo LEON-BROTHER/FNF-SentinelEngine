@@ -68,6 +68,8 @@ class TitleState extends FunkinState
 
         if (introStart)
         {
+            trace("Welcome To The C00m Zone!");
+            
             bg = new FlxSprite().makeGraphic(3840, 2160, FlxColor.BLACK, true, "title-bg");
             bg.antialiasing = false;
             add(bg);

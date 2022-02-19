@@ -13,6 +13,7 @@ class Character extends FlxSprite
     public function new(character:String, player:Bool)
     {
         super();
+        trace("Attempting Character Load - " + character);
 
         switch (character)
         {

@@ -66,6 +66,7 @@ class Config
 
     public static function saveConfig()
     {
+        trace("Saving Setting's");
         FlxG.save.bind("FNF", "Generalisk");
 
         FlxG.save.data.language = language;
@@ -93,6 +94,7 @@ class Config
             case "Down Scroll":
                 return downscroll;
             default:
+                trace("ERROR: No Setting With The Name " + name + " Exist's. Did You Use The Caputal's Properly");
                 return "404-Invalid";
         }
     }
@@ -113,6 +115,8 @@ class Config
                 cachereplayfiles = value;
             case "Down Scroll":
                 downscroll = value;
+            default:
+                trace("ERROR: No Setting With The Name " + name + " Exist's. Did You Use The Caputal's Properly");
         }
     }
 }

@@ -66,6 +66,7 @@ class CustomFiles
 
     public static function newChartConfig():ChartConfig
     {
+        trace("Creating New Chart Config");
         var output:ChartConfig = {
             song: "Tutorial",
             player1: "bf",
@@ -75,6 +76,11 @@ class CustomFiles
             noteStyle: "default",
             tempo: "100"
         };
+
+        if (output == null)
+        {
+            trace("Creation Of New Chart Config Failed!");
+        }
 
         return output;
     }
@@ -111,10 +117,16 @@ class CustomFiles
 
     public static function newChart():Chart
     {
+        trace("Creating New Chart");
         var output:Chart = {
             scrollSpeed: 1,
             sections: []
         };
+
+        if (output == null)
+        {
+            trace("Creation Of New Chart Config Failed!");
+        }
 
         return output;
     }

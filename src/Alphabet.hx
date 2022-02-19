@@ -91,6 +91,7 @@ class Alphabet extends FlxSprite
                 case "9":
                     animation.addByPrefix("text", "bold9", 24, true);
                 default:
+                    trace("ERROR: Letter " + letter.toUpperCase() + " Does Not Exist!");
                     alpha = 0;
             }
         }
