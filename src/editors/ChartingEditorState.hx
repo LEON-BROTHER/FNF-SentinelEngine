@@ -85,18 +85,17 @@ class ChartingEditorState extends FunkinState
         for (i in 0...chartLength)
         {
             var grid:FlxSprite = FlxGridOverlay.create(40, 40 + (640 * i), 320, 640);
-
 		    gridBG.add(grid);
             trace(i);
             trace(gridBG.length);
         }
 
-		dad = new HealthIcon("bf");
+		dad = new HealthIcon(config.player2);
         dad.setGraphicSize(0, 45);
         dad.setPosition(0, -100);
         add(dad);
 
-		bf = new HealthIcon('dad');
+		bf = new HealthIcon(config.player1);
         bf.setGraphicSize(0, 45);
         bf.setPosition(gridBG.members[0].width / 2, -100);
         add(bf);
