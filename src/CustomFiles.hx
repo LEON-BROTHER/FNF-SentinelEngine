@@ -37,6 +37,7 @@ typedef Section =
 
 typedef ChartNote = 
 {
+    player:Bool,
     noteType:Int,
     position:Int,
     location:Int,
