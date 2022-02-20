@@ -129,7 +129,7 @@ class TitleState extends FunkinState
             case 0:
                 clearText();
             case 1:
-                updateText(Files.readTextFile("creators", "data", "preload"), 1);
+                updateText(["Generalisk", "& The FNF Team"], 1);
             case 2:
                 updateText(["Present's"]);
             case 3:

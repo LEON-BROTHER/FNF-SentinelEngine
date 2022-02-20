@@ -9,6 +9,8 @@ import sys.FileSystem;
 import openfl.utils.Assets;
 #end
 
+using StringTools;
+
 typedef ChartConfig = 
 {
     song:String,
@@ -55,9 +57,9 @@ class CustomFiles
         var jsonData:String = "";
 
         #if sys
-		if(FileSystem.exists(Files.file(song + "/config", "json", "data", "preload"))) jsonData = File.getContent(Files.file(song + "/config", "json", "data", "preload"));
+		if(FileSystem.exists(Files.file(song.toLowerCase().replace(" ", "-") + "/config", "json", "data", "preload"))) jsonData = File.getContent(Files.file(song.toLowerCase().replace(" ", "-") + "/config", "json", "data", "preload"));
 		#else
-		if(Assets.exists(Files.file(song + "/config", "json", "data", "preload"))) jsonData = Assets.getText(Files.file(song + "/config", "json", "data", "preload"));
+		if(Assets.exists(Files.file(song.toLowerCase().replace(" ", "-") + "/config", "json", "data", "preload"))) jsonData = Assets.getText(Files.file(song.toLowerCase().replace(" ", "-") + "/config", "json", "data", "preload"));
 		#end
 
         var output:ChartConfig = Json.parse(jsonData);
@@ -91,7 +93,7 @@ class CustomFiles
         var jsonData:String = Json.stringify(file);
 
         #if sys
-        File.saveContent(Files.file(song + "/config", "json", "data", "preload"), jsonData);
+        File.saveContent("assets/data/songs/" + song.toLowerCase().replace(" ", "-") + "/config.json", jsonData);
         #end
     }
 
@@ -106,9 +108,9 @@ class CustomFiles
         }
 
         #if sys
-		if(FileSystem.exists(Files.file(song + "/" + song + suffix, "json", "data", "preload"))) jsonData = File.getContent(Files.file(song + "/" + song + suffix, "json", "data", "preload"));
+		if(FileSystem.exists(Files.file(song.toLowerCase().replace(" ", "-") + "/" + song.toLowerCase().replace(" ", "-") + suffix, "json", "data", "preload"))) jsonData = File.getContent(Files.file(song.toLowerCase().replace(" ", "-") + "/" + song.toLowerCase().replace(" ", "-") + suffix, "json", "data", "preload"));
 		#else
-		if(Assets.exists(Files.file(song + "/" + song + suffix, "json", "data", "preload"))) jsonData = Assets.getText(Files.file(song + "/" + song + suffix, "json", "data", "preload"));
+		if(Assets.exists(Files.file(song.toLowerCase().replace(" ", "-") + "/" + song.toLowerCase().replace(" ", "-") + suffix, "json", "data", "preload"))) jsonData = Assets.getText(Files.file(song.toLowerCase().replace(" ", "-") + "/" + song.toLowerCase().replace(" ", "-") + suffix, "json", "data", "preload"));
 		#end
 
         var output:Chart = Json.parse(jsonData);
@@ -132,7 +134,7 @@ class CustomFiles
         return output;
     }
 
-    public static function saveChart(song:String, difficulty:String, file:ChartConfig)
+    public static function saveChart(song:String, difficulty:String, file:Chart)
     {
         var jsonData:String = Json.stringify(file);
 
@@ -143,7 +145,7 @@ class CustomFiles
         }
 
         #if sys
-        File.saveContent(Files.file(song + "/" + song + suffix, "json", "data", "preload"), jsonData);
+        File.saveContent("assets/data/songs/" + song.toLowerCase().replace(" ", "-") + "/" + song.toLowerCase().replace(" ", "-") + suffix + "." + "json", jsonData);
         #end
     }
 }

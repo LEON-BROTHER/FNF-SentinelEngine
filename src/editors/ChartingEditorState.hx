@@ -1,5 +1,6 @@
 package editors;
 
+import flixel.util.FlxTimer;
 import flixel.system.FlxSound;
 import flixel.FlxCamera.FlxCameraFollowStyle;
 import flixel.FlxG;
@@ -10,6 +11,7 @@ import flixel.addons.display.FlxGridOverlay;
 
 import CustomFiles.ChartConfig;
 import CustomFiles.Chart;
+import CustomFiles.Section;
 
 class ChartingEditorState extends FunkinState
 {
@@ -44,6 +46,8 @@ class ChartingEditorState extends FunkinState
 
         reloadPage();
         scroll = 0;
+
+        autosave();
     }
 
     override function update(elapsed:Float)
@@ -96,5 +100,29 @@ class ChartingEditorState extends FunkinState
         bf.setGraphicSize(0, 45);
         bf.setPosition(gridBG.members[0].width / 2, -100);
         add(bf);
+
+        generateSections();
+    }
+
+    public function generateSections()
+    {
+        for (i in 0...chartLength)
+        {
+            var secks:Section = {
+                camAtPlayer: false,
+                notes: [],
+                events: []
+            };
+            chart.sections.insert(chart.sections.length + 8, secks);
+        }
+    }
+
+    public function autosave()
+    {
+        new FlxTimer().start(8, function(tmr:FlxTimer) {
+            CustomFiles.saveChartConfig(config.song, config);
+            CustomFiles.saveChart(config.song, "Hard", chart);
+            autosave();
+        });
     }
 }
