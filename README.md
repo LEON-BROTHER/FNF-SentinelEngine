@@ -3,6 +3,19 @@ Friday Night Funkin' Sentinel Engine Is An Engine For Friday Night Funkin' Which
 # Feature's
 Friday Night Funkin' Sentinel Engine Contain's A Wide Range Of Feature's, Including:
 - Easy & Simple Modding System
+# TODO
+Stuff To Get Done For Version 0.1
+- [x] Create Funtional Modding Support!
+- [x] Create Discord RPC Support
+- [ ] Finish The Charting State
+- [ ] Create Gamejolt Support
+- [ ] Add Custom Character & Stage Support For Modding!
+- [ ] Finish The Story Mode State
+- [ ] Make The Game More Playable
+- [ ] Create Achievement's
+- [ ] Finish The Option's Menu
+- [ ] Create Sentinel Engine Login Support
+- [ ] Create A Functional Workshop (Using mod.io (Hopefully))
 # Credit's
 ## The Engine Mod Dev's:
 - [Generalisk](https://www.youtube.com/channel/UCS7UTEe7YAozWVJS5gCaohQ) (Lead Programmer)
@@ -17,7 +30,7 @@ Friday Night Funkin' Sentinel Engine Contain's A Wide Range Of Feature's, Includ
 Download The Repo And Run The Folder Is VS Code, Idiot!
 # How To Build
 If You Don't Have HaxeFlixel Or The Required Package's Installed, Do The Following
-1) Install [Haxe 4.1.5](https://haxe.org/download/version/4.1.5/) (Version 4.1.5 Is Reccomended As Older/Newer Versions Can Be Unstable)
+1) Install [Haxe 4.1.5](https://haxe.org/download/version/4.1.5/) (Version 4.1.5 Is Recommended As Older/Newer Versions Can Be Unstable)
 2) Install [HaxeFlixel](https://haxeflixel.com/documentation/install-haxeflixel/) (Require's Haxe Installed To Install)
 3) Install [Git](https://git-scm.com/downloads)
 4) Run The Following Commands:
@@ -29,4 +42,4 @@ If You Don't Have HaxeFlixel Or The Required Package's Installed, Do The Followi
 
 Now You Have HaxeFlixel And The Required Packages:
 - In The Repository, Run The Bat File `compile-[PlatformName].bat`. I'll Get To Mac, Linux, HTML & Android (And Maybe Even Newground's) At Some Point.
-# TODO: Finish This README!
+# Thank's, And Enjoy!
